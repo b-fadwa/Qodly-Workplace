@@ -1,0 +1,12 @@
+{
+  "name": "qodly_avatargroup",
+  "version": "0.4.1",
+  "scope": "qodly_56415fbfa795854d3f81",
+  "author": {
+    "name": "Qodly Team",
+    "email": "contact@qodly.com",
+    "url": "https://qodly.com"
+  },
+  "module": "components",
+  "remoteEntryFileName": "components.js"
+}

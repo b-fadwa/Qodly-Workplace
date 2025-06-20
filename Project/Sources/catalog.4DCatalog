@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="Qodly WorkPlace" uuid="79B63BFEF990D34EBB97769AE505D401" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="User" uuid="F4BD490FDC05451A800F30ABAB252E07" id="1">
+		<field name="ID" uuid="1A8CD5119C7A4D18B7596616E4B83E19" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="firstName" uuid="EEB5E167EBF74D19A5CD5C78EFBD2300" type="10" id="2"/>
+		<field name="lastName" uuid="60C26CB68A984EEEAAC19ACDC9E30709" type="10" id="3"/>
+		<field name="email" uuid="B8DB0F5E29C244BBA3173EBEEC03F991" type="10" id="4"/>
+		<field name="birthDate" uuid="8104EC6EAF3A4CA28437CB8DE5BB7D76" type="8" id="5"/>
+		<field name="bio" uuid="BBBBB4CDEB204A02A3293196B7BA888F" type="10" id="6"/>
+		<field name="skills" uuid="CC5432B2E88240C495F3B6E5B21FD63F" type="10" id="7"/>
+		<field name="avatar" uuid="45D90ACE9E56473FAB24ACDCDD190809" type="10" id="8"/>
+		<field name="lastLogin" uuid="C9D1789300CC4DA3961E9E5E979A4272" type="9" id="9"/>
+		<field name="timeZone" uuid="67273BC1E62648A0B9FEBAFFA67AFE24" type="10" id="10"/>
+		<field name="personalPhone" uuid="A4E2583CF027442CA8EE8F86A74186E9" type="10" id="11"/>
+		<field name="workPhone" uuid="E8DB186AA13749D0AFF2F4FC3BC4D71E" type="10" id="12"/>
+		<field name="role" uuid="D2840DF0372D2D4B874F4AEBB7E761BE" type="10" limiting_length="255" id="13"/>
+		<field name="jobTitle" uuid="38C58AE381EC4C588AAABB25BCADD1F1" type="10" id="23"/>
+		<field name="location" uuid="CE3AD367C8874DFAA4904FAC7226F658" type="10" id="24"/>
+		<field name="password" uuid="50601EEBA0234C639827ACECC7E9FD8E" type="10" id="26"/>
+		<field name="status" uuid="547AC3BD18744E2D9BD81C6D3AC366A5" type="21" blob_switch_size="2147483647" id="29"/>
+		<field name="department" uuid="3F056C20B9B447BFB7B4DC559A3FA9A3" type="10" id="31"/>
+		<field name="notificationDestination" uuid="E40ED6A639B1405181E2510B46B7F24D" type="10" id="36"/>
+		<primary_key field_name="ID" field_uuid="1A8CD5119C7A4D18B7596616E4B83E19"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="24">
+				<color red="41" green="219" blue="37" alpha="255"/>
+				<coordinates left="934.88677978516" top="320.87564086914" width="359" height="564.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Friendship" uuid="FA08AB1A65584D798A68C24ED34A9326" id="2">
+		<field name="ID" uuid="F14CB7CCDA764AF3940701534275E7FA" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="isAccepted" uuid="DB798D86910A4D9BB02CD1C31085CC4C" type="1" id="2"/>
+		<field name="createdAt" uuid="B3FCC92BF6544A59A4FA6A2ACFBC800F" type="8" id="3"/>
+		<field name="user1_ID" uuid="52D90DD528974250B6408FD1EDC91755" type="4" id="4"/>
+		<field name="user2_ID" uuid="8B7ADDF74D2C49B29B7EFC0A3366DB9D" type="4" id="5"/>
+		<field name="isFollowing" uuid="677D3B86895847679F7486F9C913704F" type="1" id="6"/>
+		<primary_key field_name="ID" field_uuid="F14CB7CCDA764AF3940701534275E7FA"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="7">
+				<color red="41" green="219" blue="37" alpha="255"/>
+				<coordinates left="462.13256835938" top="223.6174621582" width="219" height="207.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Group" uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" id="3">
+		<field name="ID" uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="name" uuid="691340232B17447486B41DF7C0399763" type="10" id="2"/>
+		<field name="description" uuid="8F5342038F2F4976835E94ADD32BCA1E" type="10" id="3"/>
+		<field name="type" uuid="88F2EC3D280543049A9211867DAD2D89" type="10" id="4"/>
+		<field name="createdBy_ID" uuid="3BDE5F1091DA4987AE14D727891AB77F" type="4" id="5"/>
+		<field name="createdAt" uuid="A721145F9F8C4CEBBB95E3CFB2415443" type="8" id="6"/>
+		<field name="cover" uuid="E42A7B480D87478B9A7A8DAB9D6F9746" type="10" id="9"/>
+		<primary_key field_name="ID" field_uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="41" green="219" blue="37" alpha="255"/>
+				<coordinates left="1344.5305175781" top="0" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="GroupMember" uuid="DCD4EA6E19BF421A8930C8E7B93EC932" id="4">
+		<field name="ID" uuid="C9199C1818FC4E43A7D809F2A33DE86D" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="group_ID" uuid="BB7FAF98CBE147E7BA890F0D80F05277" type="4" id="2"/>
+		<field name="user_ID" uuid="DA14499C6DD2421EAC2199AF6A9856D6" type="4" id="3"/>
+		<field name="joinedAt" uuid="2B08E950C67B4354BA5180F2FFA3A1BC" type="8" id="4"/>
+		<field name="isAdmin" uuid="489FEAFC7F1C4F33A83EAA31DD309884" type="1" id="5"/>
+		<field name="isPinned" uuid="C7EB9307BA3D4E2E8D48B57AAC10DED2" type="1" id="6"/>
+		<primary_key field_name="ID" field_uuid="C9199C1818FC4E43A7D809F2A33DE86D"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="41" green="219" blue="37" alpha="255"/>
+				<coordinates left="2015.6590576172" top="339.79180908203" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Post" uuid="137EE2DD739341C49B7A0492C353FEFF" id="5">
+		<field name="ID" uuid="674B88A3626947E680C11E321DB56D7D" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="user_ID" uuid="365C51F36883481A85B347CFBCCD8464" type="4" id="2"/>
+		<field name="group_ID" uuid="FD7C135679274BCCAC369CB655D81329" type="4" id="3"/>
+		<field name="content" uuid="95D9874143264983A57417172931D671" type="10" id="4"/>
+		<field name="mediaUrl" uuid="60D4F017BB934B04A8B07B5AA430FF1D" type="10" id="5"/>
+		<field name="visibility" uuid="66350329EF854A0B8A64F5AA56B8DE18" type="10" id="6"/>
+		<field name="enableComments" uuid="915211ABB3EB4EFEA7BD1C68D0ACB7F4" type="1" id="7"/>
+		<field name="createdAt" uuid="BA7E152E5C2C4AC285603DFC0AB97FF9" type="8" id="8"/>
+		<field name="image" uuid="80C1D017D20C4C52985871FF4ABE4312" type="10" id="13"/>
+		<field name="title" uuid="8A558E3936B6459EB6930D85E01F4A7C" type="10" id="14"/>
+		<field name="isKeyUpdate" uuid="E69573205B8D421FAB4F5F69C7DE93F5" type="1" id="15"/>
+		<primary_key field_name="ID" field_uuid="674B88A3626947E680C11E321DB56D7D"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="59" green="130" blue="246" alpha="255"/>
+				<coordinates left="2256.3010253906" top="771.90869140625" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Comment" uuid="A0D83CFB75414E9BB033085DF617504C" id="6">
+		<field name="ID" uuid="8DC0359348C4409B8753BBA3985E52B6" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="post_ID" uuid="85F707D6623C4156AA5A3D7491343BC3" type="4" id="2"/>
+		<field name="user_ID" uuid="BC663A5AF1504B2E9B8C299098B369A2" type="4" id="3"/>
+		<field name="content" uuid="4E735CF4EF924BB3BC2B835DF0625BF4" type="10" id="4"/>
+		<field name="createdAt" uuid="25501EF7CD7A461DA284F0567103FF2D" type="8" id="5"/>
+		<field name="note_ID" uuid="CEAC73AA4CBC481A9B54E2F8036E77E0" type="4" id="7"/>
+		<primary_key field_name="ID" field_uuid="8DC0359348C4409B8753BBA3985E52B6"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="59" green="130" blue="246" alpha="255"/>
+				<coordinates left="1690.7125244141" top="800.26538085938" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Reaction" uuid="2E507556EF8F4B9C8ABC60157CA121C8" id="7">
+		<field name="ID" uuid="07A5E986791B4B0FABD6A97E71CBACAA" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="post_ID" uuid="9A60E95FEC6F42BAB60A6E6DED01D1A7" type="4" id="2"/>
+		<field name="comment_ID" uuid="9DFD8B9478D843A198C8939553971881" type="4" id="3"/>
+		<field name="user_ID" uuid="0EF92F2F3A534FC4828EC670E3923E27" type="4" id="4"/>
+		<field name="reactionType" uuid="21E72284841145D2AF58E32B3CE8A9F4" type="10" id="5"/>
+		<field name="createdAt" uuid="8318DAD058704471B0036B7FCFA411FE" type="8" id="6"/>
+		<primary_key field_name="ID" field_uuid="07A5E986791B4B0FABD6A97E71CBACAA"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="59" green="130" blue="246" alpha="255"/>
+				<coordinates left="1465.4669189453" top="1232.8618164062" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Message" uuid="B413E98922AE49B5B371A25DC1923D27" id="8">
+		<field name="ID" uuid="67B3FA372D5440DB86589194477E2728" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="sender_ID" uuid="21235BFA774A43679758B1C2BFE25295" type="4" id="2"/>
+		<field name="receiver_ID" uuid="8BFE1D0CED8740BF98FF809EA443D26E" type="4" id="3"/>
+		<field name="type" uuid="A9011BB6166049E4AFA2301E659493D4" type="10" id="4"/>
+		<field name="content" uuid="F9081B19A2564028998554B80CB04696" type="10" id="5"/>
+		<field name="createdAt" uuid="91207DC5A27E4F67AEDE2A862F65F225" type="8" id="6"/>
+		<field name="isRead" uuid="CEC70477EBF04E15ADF18B9D80C509D3" type="1" id="7"/>
+		<field name="isMuted" uuid="643A4D3B0D964EF58EC7B81370A1F31C" type="1" id="8"/>
+		<field name="isPinned" uuid="EA63A17D8005465F871B3782765F5071" type="1" id="9"/>
+		<field name="receiverGroup_ID" uuid="D085DC2C9EE849B2AD50E5B3D68F6FD6" type="4" id="10"/>
+		<field name="isDraft" uuid="8F9A63D4C3984C7585CF0EC9DD5728B4" type="1" id="11"/>
+		<field name="isHidden" uuid="128CA2F2C41240919928CCF777FAC681" type="1" id="12"/>
+		<field name="atHour" uuid="86D38C46E2174FC2B3DC154AE1B47819" type="9" id="13"/>
+		<field name="receiverAddress" uuid="CB96CA9123644B7D904787746D181DF2" type="10" id="14"/>
+		<field name="senderAddress" uuid="85C6C30DC2E94C4E82D015CD66A09435" type="10" id="15"/>
+		<primary_key field_name="ID" field_uuid="67B3FA372D5440DB86589194477E2728"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="245" green="231" blue="23" alpha="255"/>
+				<coordinates left="0" top="596.79241943359" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Event" uuid="FC1B1281187442B2B1B3A1C0985F901E" id="9">
+		<field name="ID" uuid="F1D59ACCE4F4483DA2392BBE2B471A56" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="name" uuid="1DC7B1004D7E40A6B223E4ABFDC18675" type="10" id="2"/>
+		<field name="description" uuid="04DE2DCE12AA42239F9A13115D7F2DE6" type="10" id="3"/>
+		<field name="createdBy_ID" uuid="136AD2B4025942E891CF2BDFED6734BC" type="4" id="4"/>
+		<field name="startDate" uuid="F557A5E480B143CF8B666B861A390380" type="8" id="5"/>
+		<field name="createdAt" uuid="2F412E09AAE344938FB0691DE2AA2C54" type="8" id="6"/>
+		<field name="endDate" uuid="73B11CB1D11949DA804D41FB7117833A" type="8" id="7"/>
+		<field name="startHour" uuid="A49CD724D18A4E83A100EE5275E1F108" type="9" id="8"/>
+		<field name="endHour" uuid="FC9A97E6190243AFBC53E0C7D238C2E3" type="9" id="9"/>
+		<field name="cover" uuid="D4CCC9F6759C42999618032C8490518B" type="10" id="10"/>
+		<field name="location" uuid="142B1E22CA8D49DC8A8B391FE8F9ED13" type="10" id="11"/>
+		<field name="isInPerson" uuid="2074D32FE1634DD983EF2A54A6262FDD" type="1" id="12"/>
+		<field name="place" uuid="B99885348AE146C5B29602F0164B2709" type="10" id="13"/>
+		<field name="mapLocation" uuid="C6F0612286924F0BB8A0D87F1A7F7EE2" type="21" blob_switch_size="2147483647" id="14"/>
+		<field name="type" uuid="42DCE45278EE4F17BEFCA6BBE42F000C" type="10" id="15"/>
+		<field name="nbOfVisits" uuid="194CC1C2710E4F5DB0B9A09942D41B39" type="6" id="16"/>
+		<field name="group_ID" uuid="6D130FDFECD74775AAB3D01D95559AC4" type="4" id="17"/>
+		<primary_key field_name="ID" field_uuid="F1D59ACCE4F4483DA2392BBE2B471A56"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="17">
+				<color red="231" green="51" blue="81" alpha="255"/>
+				<coordinates left="453.43450927734" top="761.19299316406" width="288" height="415.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="UserView" uuid="98244D9ADD05442D80AF7FA814CEC8AE" id="10">
+		<field name="ID" uuid="FD9FFABA7D5842008B3D00586E38EC01" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="post_ID" uuid="7B72D7763FAB4BF9AF5D496D2FBB5FFA" type="4" id="2"/>
+		<field name="user_ID" uuid="C68F38B5F2E74E7799B5CD16CF5E2E18" type="4" id="3"/>
+		<field name="viewedAt" uuid="26A179F0DC2641DEBD3A139C9080FBFB" type="8" id="4"/>
+		<primary_key field_name="ID" field_uuid="FD9FFABA7D5842008B3D00586E38EC01"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="59" green="130" blue="246" alpha="255"/>
+				<coordinates left="1491.3591308594" top="1677.1271972656" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Notification" uuid="9A9B486CC78D4DF7BF851F5AB3A7B979" id="11">
+		<field name="ID" uuid="F190634FA84F47BAB37BD988C35F5F9B" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="user_ID" uuid="69FD4BE3B72E4C5BA97C81E936560E8A" type="4" id="2"/>
+		<field name="content" uuid="FF7FE38F43D34AFAA57B1520D83AF1F0" type="10" id="3"/>
+		<field name="type" uuid="85F394561B3E4D399ED7149211726573" type="10" id="4"/>
+		<field name="group_ID" uuid="7EBEF1B77F48446DB171045DCC7468F0" type="4" id="5"/>
+		<field name="post_ID" uuid="311AEAA49211477D95A91BAE4606C21E" type="4" id="6"/>
+		<field name="isRead" uuid="6CCE37A0EFB2409988449A7D32A38FC0" type="1" id="7"/>
+		<field name="isPrior" uuid="9E86206910884A898ADC401EFA0BE1EC" type="1" id="8"/>
+		<field name="isTurnedOff" uuid="799A2EFF3EB24D28B690D9A4C12BB44D" type="1" id="9"/>
+		<primary_key field_name="ID" field_uuid="F190634FA84F47BAB37BD988C35F5F9B"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="59" green="130" blue="246" alpha="255"/>
+				<coordinates left="1488.8479003906" top="2059.1928710938" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Team" uuid="55DCB24081DF4769B559260B2E1F2CAE" id="12">
+		<field name="ID" uuid="2ECEC992E6E341EDBFA7435E7A1E29F3" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="label" uuid="9438EB7AC4CC4410A9F133064DC4ED2D" type="10" id="2"/>
+		<field name="manager_ID" uuid="7938582090C24B148A3175ED33BF7E09" type="4" id="3"/>
+		<field name="description" uuid="876910773E444BAB8E71A48252F8B7EF" type="10" id="4"/>
+		<primary_key field_name="ID" field_uuid="2ECEC992E6E341EDBFA7435E7A1E29F3"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="41" green="219" blue="37" alpha="255"/>
+				<coordinates left="171.02954101562" top="1338.4794921875" width="223" height="177.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="TeamMember" uuid="09B32D1B17FC4B0BB65D66A6FF00E635" id="13">
+		<field name="ID" uuid="124CAB8DCF5B4133AF71205923190C5E" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="team_ID" uuid="BE14C55237CF4770B81D5B8E78A6D819" type="4" id="2"/>
+		<field name="user_ID" uuid="CCA6CCA73CDC45E7B1F8AE082511947A" type="4" id="3"/>
+		<primary_key field_name="ID" field_uuid="124CAB8DCF5B4133AF71205923190C5E"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="41" green="219" blue="37" alpha="255"/>
+				<coordinates left="548.05529785156" top="1827.1494140625" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="ActivityLog" uuid="2474655241364196B6A87267B906E36C" id="14">
+		<field name="ID" uuid="04F8146A517A4A0885EDCEC10971D4F6" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="content" uuid="8724CC4BC0E34863820A76967E4BACEC" type="10" id="2"/>
+		<field name="logDate" uuid="57AC0BC185114680954AB6520284DE1A" type="8" id="3"/>
+		<field name="logHour" uuid="A5D0F35983DA426DBDAB83D5DB4B364C" type="9" id="4"/>
+		<field name="user_ID" uuid="04B3EA053BDB4B76AD6CEFD3E9D242EE" type="4" id="5"/>
+		<primary_key field_name="ID" field_uuid="04F8146A517A4A0885EDCEC10971D4F6"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="1345.4306640625" top="729.61553955078" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Token" uuid="3218FFCCBBF3405A8660982C6A974B13" id="15">
+		<field name="ID" uuid="5D9B3C896B154BA3B716F4E1E705D577" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="userName" uuid="4956EBB9BF9C4B448BC20276A9FF92E9" type="10" id="2"/>
+		<field name="token" uuid="88516C194B8D4FA983E0C538234F3B61" type="10" id="3"/>
+		<field name="additionalToken" uuid="CBFCF13EF828411C83816FA19E57916B" type="10" id="4"/>
+		<field name="user_ID" uuid="BBC4B1CAE0C444A2AE097EC9220C0209" type="4" id="5"/>
+		<field name="label" uuid="F2F1B403BED9475E8F1D0816384C7BCB" type="10" id="6"/>
+		<primary_key field_name="ID" field_uuid="5D9B3C896B154BA3B716F4E1E705D577"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="50.904296875" top="253.05932617188" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Note" uuid="79F5D0A7265C4695BAAEA32BFE9498FF" id="16">
+		<field name="ID" uuid="CB3F1B3A7CF04FC48FFC787ECDC3D30C" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="content" uuid="42CD1FC6C2AC4350847781E8EF9ED8A0" type="10" id="2"/>
+		<field name="writer_ID" uuid="A5CEBE301F924879AB2685C095A573FB" type="4" id="3"/>
+		<field name="createdAt" uuid="0DE36E8A55F4466EB76491ADA44A9BAC" type="8" id="4"/>
+		<field name="updatedAt" uuid="B151BB02C397442CBEBEC6411A7AE9E4" type="8" id="5"/>
+		<field name="updateTime" uuid="C90F36745C47440D812D5E54B5EE0867" type="9" id="6"/>
+		<field name="title" uuid="7646271DA4374FBA99DEA1826163F2B3" type="10" id="7"/>
+		<field name="isPrivate" uuid="05F86AFB8A6C426D9C5BE78750ADB761" type="1" id="10"/>
+		<primary_key field_name="ID" field_uuid="CB3F1B3A7CF04FC48FFC787ECDC3D30C"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="90.100463867188" top="1774.9035644531" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Contribution" uuid="824C177FFE054669B225802A39383D19" id="17">
+		<field name="ID" uuid="3CD464145F1A435FBECCFC812262194A" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="note_ID" uuid="F8440A57C49C49E693CA4790D9655D48" type="4" id="2"/>
+		<field name="user_ID" uuid="E9940009E98846638F888669863FB85F" type="4" id="3"/>
+		<primary_key field_name="ID" field_uuid="3CD464145F1A435FBECCFC812262194A"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="579.10491943359" top="1505.7869873047" width="200" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<relation uuid="840BABBBD5794CB4A4957E1EDD8C4597" name_Nto1="createdBy" name_1toN="createdGroups" state="1">
+		<related_field kind="source">
+			<field_ref uuid="3BDE5F1091DA4987AE14D727891AB77F" name="createdBy_ID">
+				<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="2DE9DECF87CD4B3185817E821450BB13" name_Nto1="user" name_1toN="groupMembers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="DA14499C6DD2421EAC2199AF6A9856D6" name="user_ID">
+				<table_ref uuid="DCD4EA6E19BF421A8930C8E7B93EC932" name="GroupMember"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="B968D62CCAFC45C4A8038747F402D399" name_Nto1="user" name_1toN="posts" state="1">
+		<related_field kind="source">
+			<field_ref uuid="365C51F36883481A85B347CFBCCD8464" name="user_ID">
+				<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="71A4B276CA7842BC9376B4F20E4AC13B" name_Nto1="user" name_1toN="comments" state="1">
+		<related_field kind="source">
+			<field_ref uuid="BC663A5AF1504B2E9B8C299098B369A2" name="user_ID">
+				<table_ref uuid="A0D83CFB75414E9BB033085DF617504C" name="Comment"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="D2F242BFB73442D8A8EE071B7DA53D4B" name_Nto1="user" name_1toN="reactions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="0EF92F2F3A534FC4828EC670E3923E27" name="user_ID">
+				<table_ref uuid="2E507556EF8F4B9C8ABC60157CA121C8" name="Reaction"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="A2EC62D6C2D04EE580DC8EA9626A8129" name_Nto1="sender" name_1toN="sentMessages" state="1">
+		<related_field kind="source">
+			<field_ref uuid="21235BFA774A43679758B1C2BFE25295" name="sender_ID">
+				<table_ref uuid="B413E98922AE49B5B371A25DC1923D27" name="Message"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="23A2BA03A01E44EC9EB2AA1357FE236A" name_Nto1="receiver" name_1toN="receivedMessages" state="1">
+		<related_field kind="source">
+			<field_ref uuid="8BFE1D0CED8740BF98FF809EA443D26E" name="receiver_ID">
+				<table_ref uuid="B413E98922AE49B5B371A25DC1923D27" name="Message"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="1B471935331A4C9EB2540429166FFC7C" name_Nto1="createdBy" name_1toN="events" state="1">
+		<related_field kind="source">
+			<field_ref uuid="136AD2B4025942E891CF2BDFED6734BC" name="createdBy_ID">
+				<table_ref uuid="FC1B1281187442B2B1B3A1C0985F901E" name="Event"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="60C391294CF74B03A601AA7A31D0A2EB" name_Nto1="user" name_1toN="userViews" state="1">
+		<related_field kind="source">
+			<field_ref uuid="C68F38B5F2E74E7799B5CD16CF5E2E18" name="user_ID">
+				<table_ref uuid="98244D9ADD05442D80AF7FA814CEC8AE" name="UserView"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="05C6F1C0C4124D44A9DC8AD234FAE71E" name_Nto1="user" name_1toN="notifications" state="1">
+		<related_field kind="source">
+			<field_ref uuid="69FD4BE3B72E4C5BA97C81E936560E8A" name="user_ID">
+				<table_ref uuid="9A9B486CC78D4DF7BF851F5AB3A7B979" name="Notification"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="56083D07563743F79BB37C9FC67E6C43" name_Nto1="manager" name_1toN="managedTeams" state="1">
+		<related_field kind="source">
+			<field_ref uuid="7938582090C24B148A3175ED33BF7E09" name="manager_ID">
+				<table_ref uuid="55DCB24081DF4769B559260B2E1F2CAE" name="Team"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="E48274D7612A4D6FA91E88F422BEDF1C" name_Nto1="user1" name_1toN="friendships" state="1">
+		<related_field kind="source">
+			<field_ref uuid="52D90DD528974250B6408FD1EDC91755" name="user1_ID">
+				<table_ref uuid="FA08AB1A65584D798A68C24ED34A9326" name="Friendship"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="E518858B0B064CE58A63BEB0743480F2" name_Nto1="user2" name_1toN="xx_friendships" state="1">
+		<related_field kind="source">
+			<field_ref uuid="8B7ADDF74D2C49B29B7EFC0A3366DB9D" name="user2_ID">
+				<table_ref uuid="FA08AB1A65584D798A68C24ED34A9326" name="Friendship"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="D5ED5373D45846D6ADD8A7E1311A4A48" name_Nto1="user" name_1toN="teamMembers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="CCA6CCA73CDC45E7B1F8AE082511947A" name="user_ID">
+				<table_ref uuid="09B32D1B17FC4B0BB65D66A6FF00E635" name="TeamMember"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="E62113308D134C9FA4CC815C12D306D2" name_Nto1="user" name_1toN="activityLogs" state="1">
+		<related_field kind="source">
+			<field_ref uuid="04B3EA053BDB4B76AD6CEFD3E9D242EE" name="user_ID">
+				<table_ref uuid="2474655241364196B6A87267B906E36C" name="ActivityLog"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="27EAD16DAF404F78876AAF99C3005630" name_Nto1="user" name_1toN="tokens" state="1">
+		<related_field kind="source">
+			<field_ref uuid="BBC4B1CAE0C444A2AE097EC9220C0209" name="user_ID">
+				<table_ref uuid="3218FFCCBBF3405A8660982C6A974B13" name="Token"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="A56E67D88D4D4B138240A6BA00F28BC6" name_Nto1="writer" name_1toN="notes" state="1">
+		<related_field kind="source">
+			<field_ref uuid="A5CEBE301F924879AB2685C095A573FB" name="writer_ID">
+				<table_ref uuid="79F5D0A7265C4695BAAEA32BFE9498FF" name="Note"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="A32A09E1E73A4DE59ECA3430B80CBE10" name_Nto1="user" name_1toN="contributions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="E9940009E98846638F888669863FB85F" name="user_ID">
+				<table_ref uuid="824C177FFE054669B225802A39383D19" name="Contribution"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+				<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="822171D2DEF343BA803620818D73EE8F" name_Nto1="group" name_1toN="groupMembers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="BB7FAF98CBE147E7BA890F0D80F05277" name="group_ID">
+				<table_ref uuid="DCD4EA6E19BF421A8930C8E7B93EC932" name="GroupMember"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" name="ID">
+				<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="D1E573C7648B46F793BACAE6E856E620" name_Nto1="group" name_1toN="posts" state="1">
+		<related_field kind="source">
+			<field_ref uuid="FD7C135679274BCCAC369CB655D81329" name="group_ID">
+				<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" name="ID">
+				<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="A88B77119CA54125AA62555848D6681A" name_Nto1="group" name_1toN="notifications" state="1">
+		<related_field kind="source">
+			<field_ref uuid="7EBEF1B77F48446DB171045DCC7468F0" name="group_ID">
+				<table_ref uuid="9A9B486CC78D4DF7BF851F5AB3A7B979" name="Notification"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" name="ID">
+				<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="24C31973E365464A9C1A6C27F99CBF74" name_Nto1="receiverGroup" name_1toN="messages" state="1">
+		<related_field kind="source">
+			<field_ref uuid="D085DC2C9EE849B2AD50E5B3D68F6FD6" name="receiverGroup_ID">
+				<table_ref uuid="B413E98922AE49B5B371A25DC1923D27" name="Message"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" name="ID">
+				<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="43F7FEC208D74F5C95A2698249CC5F0A" name_Nto1="group" name_1toN="events" state="1">
+		<related_field kind="source">
+			<field_ref uuid="6D130FDFECD74775AAB3D01D95559AC4" name="group_ID">
+				<table_ref uuid="FC1B1281187442B2B1B3A1C0985F901E" name="Event"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" name="ID">
+				<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="6D01ADE1E2B54E2CA69400C57440011B" name_Nto1="post" name_1toN="comments" state="1">
+		<related_field kind="source">
+			<field_ref uuid="85F707D6623C4156AA5A3D7491343BC3" name="post_ID">
+				<table_ref uuid="A0D83CFB75414E9BB033085DF617504C" name="Comment"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="674B88A3626947E680C11E321DB56D7D" name="ID">
+				<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="872B5C513807436FA65C3FD19E7BD88B" name_Nto1="post" name_1toN="reactions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="9A60E95FEC6F42BAB60A6E6DED01D1A7" name="post_ID">
+				<table_ref uuid="2E507556EF8F4B9C8ABC60157CA121C8" name="Reaction"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="674B88A3626947E680C11E321DB56D7D" name="ID">
+				<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="17B69DB65A9E4A7B918E640A7600C73A" name_Nto1="post" name_1toN="userViews" state="1">
+		<related_field kind="source">
+			<field_ref uuid="7B72D7763FAB4BF9AF5D496D2FBB5FFA" name="post_ID">
+				<table_ref uuid="98244D9ADD05442D80AF7FA814CEC8AE" name="UserView"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="674B88A3626947E680C11E321DB56D7D" name="ID">
+				<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="07176788737A42029414998E7B27FD9B" name_Nto1="post" name_1toN="notifications" state="1">
+		<related_field kind="source">
+			<field_ref uuid="311AEAA49211477D95A91BAE4606C21E" name="post_ID">
+				<table_ref uuid="9A9B486CC78D4DF7BF851F5AB3A7B979" name="Notification"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="674B88A3626947E680C11E321DB56D7D" name="ID">
+				<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="C8E3C9229A0C4C0488DE9B130758DDE1" name_Nto1="comment" name_1toN="reactions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="9DFD8B9478D843A198C8939553971881" name="comment_ID">
+				<table_ref uuid="2E507556EF8F4B9C8ABC60157CA121C8" name="Reaction"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="8DC0359348C4409B8753BBA3985E52B6" name="ID">
+				<table_ref uuid="A0D83CFB75414E9BB033085DF617504C" name="Comment"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="6296533D209445B1A0C8128FE1E3613A" name_Nto1="team" name_1toN="teamMembers" state="1">
+		<related_field kind="source">
+			<field_ref uuid="BE14C55237CF4770B81D5B8E78A6D819" name="team_ID">
+				<table_ref uuid="09B32D1B17FC4B0BB65D66A6FF00E635" name="TeamMember"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="2ECEC992E6E341EDBFA7435E7A1E29F3" name="ID">
+				<table_ref uuid="55DCB24081DF4769B559260B2E1F2CAE" name="Team"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="AE24D8F54C2849B3A5620D15110264D6" name_Nto1="note" name_1toN="comments" state="1">
+		<related_field kind="source">
+			<field_ref uuid="CEAC73AA4CBC481A9B54E2F8036E77E0" name="note_ID">
+				<table_ref uuid="A0D83CFB75414E9BB033085DF617504C" name="Comment"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CB3F1B3A7CF04FC48FFC787ECDC3D30C" name="ID">
+				<table_ref uuid="79F5D0A7265C4695BAAEA32BFE9498FF" name="Note"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="DC51EA8F137C4FF39AA59B2791D3B78A" name_Nto1="note" name_1toN="contributions" state="1">
+		<related_field kind="source">
+			<field_ref uuid="F8440A57C49C49E693CA4790D9655D48" name="note_ID">
+				<table_ref uuid="824C177FFE054669B225802A39383D19" name="Contribution"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CB3F1B3A7CF04FC48FFC787ECDC3D30C" name="ID">
+				<table_ref uuid="79F5D0A7265C4695BAAEA32BFE9498FF" name="Note"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<index kind="regular" unique_keys="true" uuid="0C98D07C42B1784CA7D6780519200497" type="1">
+		<field_ref uuid="1A8CD5119C7A4D18B7596616E4B83E19" name="ID">
+			<table_ref uuid="F4BD490FDC05451A800F30ABAB252E07" name="User"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0F2FF129E51DC147906D714A834CD41E" type="1">
+		<field_ref uuid="3CD464145F1A435FBECCFC812262194A" name="ID">
+			<table_ref uuid="824C177FFE054669B225802A39383D19" name="Contribution"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="156865E6E830724AAC001C527411B1D7" type="1">
+		<field_ref uuid="F1D59ACCE4F4483DA2392BBE2B471A56" name="ID">
+			<table_ref uuid="FC1B1281187442B2B1B3A1C0985F901E" name="Event"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="389246933239944E81A49C471AFD9CBD" type="1">
+		<field_ref uuid="04F8146A517A4A0885EDCEC10971D4F6" name="ID">
+			<table_ref uuid="2474655241364196B6A87267B906E36C" name="ActivityLog"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="3EFDD1DB766AB343AC73CA6E83105D16" type="1">
+		<field_ref uuid="2ECEC992E6E341EDBFA7435E7A1E29F3" name="ID">
+			<table_ref uuid="55DCB24081DF4769B559260B2E1F2CAE" name="Team"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="58B15092D45A1F418DAD22F87B329A43" type="1">
+		<field_ref uuid="5D9B3C896B154BA3B716F4E1E705D577" name="ID">
+			<table_ref uuid="3218FFCCBBF3405A8660982C6A974B13" name="Token"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="60DB033B3B3FAE4EB761034BCCBEB17E" type="1">
+		<field_ref uuid="C9199C1818FC4E43A7D809F2A33DE86D" name="ID">
+			<table_ref uuid="DCD4EA6E19BF421A8930C8E7B93EC932" name="GroupMember"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="6CE2E6509C44284187B09955BB52011B" type="1">
+		<field_ref uuid="674B88A3626947E680C11E321DB56D7D" name="ID">
+			<table_ref uuid="137EE2DD739341C49B7A0492C353FEFF" name="Post"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="780B24348EC6A247AD31400011DF3A8B" type="1">
+		<field_ref uuid="FD9FFABA7D5842008B3D00586E38EC01" name="ID">
+			<table_ref uuid="98244D9ADD05442D80AF7FA814CEC8AE" name="UserView"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="B6FBFE77E5304C48A6068289E691E1B5" type="1">
+		<field_ref uuid="F190634FA84F47BAB37BD988C35F5F9B" name="ID">
+			<table_ref uuid="9A9B486CC78D4DF7BF851F5AB3A7B979" name="Notification"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="B9A2E33D5E141942AA8D406EC890E25A" type="1">
+		<field_ref uuid="124CAB8DCF5B4133AF71205923190C5E" name="ID">
+			<table_ref uuid="09B32D1B17FC4B0BB65D66A6FF00E635" name="TeamMember"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="B9AF1F9719AF02418407257644CF671E" type="1">
+		<field_ref uuid="F14CB7CCDA764AF3940701534275E7FA" name="ID">
+			<table_ref uuid="FA08AB1A65584D798A68C24ED34A9326" name="Friendship"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="BD091BEBDFCBA542AAAA370FB420E0E6" type="1">
+		<field_ref uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0" name="ID">
+			<table_ref uuid="4FA5C37A2BAC4C1F81F755EA589A8B64" name="Group"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="C3D5BD2DABA46B4D8DDDA86C60EA33F2" type="1">
+		<field_ref uuid="07A5E986791B4B0FABD6A97E71CBACAA" name="ID">
+			<table_ref uuid="2E507556EF8F4B9C8ABC60157CA121C8" name="Reaction"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="D1C0B8B63A671E4CB24DDEA155DA2037" type="1">
+		<field_ref uuid="CB3F1B3A7CF04FC48FFC787ECDC3D30C" name="ID">
+			<table_ref uuid="79F5D0A7265C4695BAAEA32BFE9498FF" name="Note"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="E839E199B134844D8DC48594787818D4" type="1">
+		<field_ref uuid="8DC0359348C4409B8753BBA3985E52B6" name="ID">
+			<table_ref uuid="A0D83CFB75414E9BB033085DF617504C" name="Comment"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="FD8FB7B98C56E7479EE0469C06C56C87" type="1">
+		<field_ref uuid="67B3FA372D5440DB86589194477E2728" name="ID">
+			<table_ref uuid="B413E98922AE49B5B371A25DC1923D27" name="Message"/>
+		</field_ref>
+	</index>
+</base>

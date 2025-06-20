@@ -1,0 +1,8711 @@
+{
+	"metadata": {
+		"v": "1.0",
+		"datasources": [
+			{
+				"id": "filter",
+				"type": "scalar",
+				"namespace": "",
+				"dataType": "string",
+				"initialValue": "recent"
+			},
+			{
+				"id": "newComment",
+				"type": "entity",
+				"dataclass": "Comment",
+				"initialValue": "",
+				"depth": null
+			},
+			{
+				"id": "newViewPost",
+				"type": "entity",
+				"dataclass": "UserView",
+				"initialValue": "",
+				"depth": null
+			},
+			{
+				"id": "newReaction",
+				"type": "entity",
+				"dataclass": "Reaction",
+				"initialValue": "",
+				"depth": null
+			},
+			{
+				"id": "newFriendship",
+				"type": "entity",
+				"dataclass": "Friendship",
+				"initialValue": "",
+				"depth": null
+			},
+			{
+				"id": "selectedReaction",
+				"type": "entity",
+				"dataclass": "Reaction",
+				"initialValue": "",
+				"depth": null
+			},
+			{
+				"id": "selectedViewer",
+				"type": "entity",
+				"dataclass": "UserView",
+				"initialValue": "",
+				"depth": null
+			},
+			{
+				"id": "mediaURL",
+				"type": "scalar",
+				"namespace": "",
+				"dataType": "string",
+				"initialValue": ""
+			}
+		],
+		"styles": [
+			{
+				"id": "joyQ7UlooWLFmRpRZ1c1C",
+				"name": "isReacted",
+				"content": "self:has(p span[title=\"false\"]){\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"children": {}
+			},
+			{
+				"id": "QD3bvqAOQDZ2W_dp2SFfz",
+				"name": "hasComments",
+				"content": "self:has(p span[title=\"false\"]){\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"children": {}
+			},
+			{
+				"name": "disabledComments",
+				"content": "self:has(p span[title=\"true\"]){\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"id": "XNMlUpqixnh-eBD4HPzRO"
+			},
+			{
+				"name": "postLiked",
+				"content": "self:has(p span[title=\"Liked\"]) {\n\tdisplay: flex !important;\n}",
+				"parentId": null,
+				"id": "pz8ztsW1olOO_Eu41-DDY"
+			},
+			{
+				"id": "BWqP4eNW0PC712LdWFI2t",
+				"name": "postLoved",
+				"content": "self:has(p span[title=\"Loved\"]) {\n\tdisplay: flex !important;\n}",
+				"parentId": null,
+				"children": {}
+			},
+			{
+				"id": "UHt--Oy5t1b4Ie5Kv2Qdp",
+				"name": "postHaha",
+				"content": "self:has(p span[title=\"Laughed\"]) {\n\tdisplay: flex !important;\n}",
+				"parentId": null,
+				"children": {}
+			},
+			{
+				"name": "postNotReacted",
+				"content": "self:has(p span[title=\"Liked\"]),\nself:has(p span[title=\"Loved\"]),\nself:has(p span[title=\"Laughed\"]) {\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"id": "r9B-SGR4XvGbgL2YnvEvg"
+			},
+			{
+				"id": "yQYcCzhMyKBIl2Hi2BoPx",
+				"name": "enabledComments",
+				"content": "self:has(p span[title=\"false\"]){\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"children": {}
+			},
+			{
+				"name": "isByConnectedUser",
+				"content": "self:has(p span[title=\"yes\"]) {\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"id": "fNPIm5Lo03-J35n_2T9VZ"
+			},
+			{
+				"name": "isFollowed",
+				"content": "self:has(p span[title=\"true\"]) {\n\tdisplay: flex;\n}\n\nself:has(p span[title=\"false\"]) {\n\tdisplay: none; \n}",
+				"parentId": null,
+				"id": "JClEEBmeLdW24I-lO3tlY"
+			},
+			{
+				"id": "nzKk3AIB3TPP1IJy8NIE4",
+				"name": "isUnfollowed",
+				"content": "self:has(p span[title=\"true\"]) {\n\tdisplay: none;\n}\n\nself:has(p span[title=\"false\"]) {\n\tdisplay: flex; \n}",
+				"parentId": null,
+				"children": {}
+			},
+			{
+				"name": "containImage",
+				"content": "self:has(p span[title=\"false\"]){\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"id": "4KzSnJdjDTOWgNUmFlvpO"
+			},
+			{
+				"name": "containMediaUrl",
+				"content": "self:has(p span[title=\"false\"]){\n\tdisplay: none !important;\n}",
+				"parentId": null,
+				"id": "O1bJnaDZUWZ8FaEe02F0a"
+			}
+		],
+		"states": [
+			{
+				"label": "Base",
+				"id": "root"
+			},
+			{
+				"label": "darkMode",
+				"id": "pubjhf9Y1oCxNkkHVAApbt",
+				"conditions": {
+					"id": "fEyGArKtg3KxMJT9beZuZm",
+					"type": "datasource",
+					"name": "condition",
+					"value": "dark",
+					"valueType": "hardCoded",
+					"path": "Shared:displayMode",
+					"dsType": "string",
+					"op": "eq"
+				}
+			}
+		]
+	},
+	"components": {
+		"ROOT": {
+			"type": {
+				"resolvedName": "Container"
+			},
+			"isCanvas": true,
+			"props": {
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "ptNSM3oeif5QAuDTfVw1bp",
+						"events": [
+							"oninit"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "viewPost",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "string",
+							"set": {
+								"value": "posts",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"oninit"
+						],
+						"id": "p6DbEAKSWTVf3H9F2A2CJW",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						},
+						"disabled": false
+					}
+				],
+				"airyMode": false,
+				"className": "bg-white h-full w-full px-6",
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"paddingRight": "12px",
+					"paddingBottom": "12px",
+					"paddingTop": "12px",
+					"paddingLeft": "12px",
+					"backgroundColor": "#f7f8fa"
+				}
+			},
+			"displayName": "Page",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#181818"
+					}
+				}
+			},
+			"parent": "",
+			"hidden": false,
+			"nodes": [
+				"Lv3Tl8YYN3",
+				"DX2al5OdIj",
+				"JqJNls2D9j",
+				"kpSRInxQMK",
+				"SlKImaUkbp"
+			],
+			"linkedNodes": {}
+		},
+		"Lv3Tl8YYN3": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"justifyContent": "space-between",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"marginBottom": "9px",
+					"alignItems": "center",
+					"height": "48px",
+					"minHeight": "48px",
+					"gap": "24px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "ROOT",
+			"hidden": false,
+			"nodes": [
+				"ADiC8dR0Br",
+				"XyfAnrVb2Y"
+			],
+			"linkedNodes": {}
+		},
+		"uLuBzOcOGA": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Feed (",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:postsFeed.length",
+								"children": [
+									{
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false,
+										"text": "nbr"
+									}
+								],
+								"dsType": "long",
+								"format": "0"
+							},
+							{
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false,
+								"text": ")"
+							}
+						]
+					}
+				],
+				"datasource": "Posts:postsFeed.length",
+				"style": {
+					"minWidth": "fit-content",
+					"width": "fit-content",
+					"fontWeight": "500",
+					"color": "#050505"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "ADiC8dR0Br",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"XyfAnrVb2Y": {
+			"type": {
+				"resolvedName": "SelectInput"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"placeholder": "placeholder",
+				"label": "label",
+				"labelPosition": "left",
+				"style": {
+					"width": "200px",
+					"fontSize": "14px"
+				}
+			},
+			"displayName": "Select input",
+			"custom": {},
+			"parent": "Lv3Tl8YYN3",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"label": "02MRlB3e-X",
+				"select": "TqAKwo_cxB"
+			}
+		},
+		"02MRlB3e-X": {
+			"type": {
+				"resolvedName": "Label"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"moveable": false,
+				"text": "Sort By:",
+				"style": {
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"height": "35px",
+					"display": "flex",
+					"alignItems": "center"
+				},
+				"deletable": true
+			},
+			"displayName": "Label",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "XyfAnrVb2Y",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"TqAKwo_cxB": {
+			"type": {
+				"resolvedName": "Select"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onchange"
+						],
+						"id": "8UBoCjagrxvrWpBHKMcxGR",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "b6kfta9QWXAeGwuoSKTfhe"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						}
+					}
+				],
+				"deletable": false,
+				"className": "fd-select",
+				"moveable": false,
+				"options": [
+					{
+						"label": "Most Recent",
+						"value": "recent",
+						"id": "7WWvmVKZzgn7yw56Na7JaJ"
+					},
+					{
+						"label": "Viewed By Me",
+						"value": "viewed",
+						"id": "kfEkG1v26ksyMVYve5rJ2z"
+					}
+				],
+				"style": {
+					"height": "35px",
+					"borderRadius": "12px",
+					"textAlign": "start"
+				},
+				"datasource": "filter",
+				"showEmptyOption": false
+			},
+			"displayName": "Select",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#3a3b3c",
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "XyfAnrVb2Y",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"DX2al5OdIj": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"classNames": [
+					"flexGrow"
+				],
+				"serverSideRef": "postsSB",
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "ROOT",
+			"hidden": false,
+			"nodes": [
+				"ZvLhNPZldz"
+			],
+			"linkedNodes": {}
+		},
+		"JqJNls2D9j": {
+			"type": {
+				"resolvedName": "Dialog"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"overlay": true,
+				"serverSideRef": "postReactions",
+				"closable": true,
+				"animated": true,
+				"style": {
+					"borderRadius": "12px",
+					"paddingRight": "6px",
+					"paddingBottom": "6px",
+					"paddingTop": "6px",
+					"paddingLeft": "6px"
+				}
+			},
+			"displayName": "Dialog",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#242526",
+						"paddingRight": "6px",
+						"paddingBottom": "6px",
+						"paddingTop": "6px",
+						"paddingLeft": "6px"
+					}
+				}
+			},
+			"parent": "ROOT",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"Dialog": "NYbDkfsOFm",
+				"close": "Xep-P4U0ca"
+			}
+		},
+		"NYbDkfsOFm": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"className": "h-full flex-1",
+				"style": {
+					"paddingLeft": "24px",
+					"paddingRight": "24px",
+					"paddingTop": "0px",
+					"paddingBottom": "6px",
+					"display": "flex",
+					"flexDirection": "column",
+					"gap": "12px",
+					"justifyContent": "flex-start",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "JqJNls2D9j",
+			"hidden": false,
+			"nodes": [
+				"nXYDa3U56C",
+				"8HYlsqrz4g"
+			],
+			"linkedNodes": {}
+		},
+		"Xep-P4U0ca": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-times",
+				"style": {
+					"width": "30px",
+					"height": "30px",
+					"minWidth": "30px",
+					"minHeight": "30px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"borderRadius": "50%",
+					"fontSize": "22px"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff",
+						"backgroundColor": "#ffffff33"
+					},
+					"icon": "fa-solid fa-xmark"
+				}
+			},
+			"parent": "JqJNls2D9j",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"8HYlsqrz4g": {
+			"type": {
+				"resolvedName": "Matrix"
+			},
+			"isCanvas": false,
+			"props": {
+				"orientation": "vertical",
+				"iterable": true,
+				"classNames": [
+					"matrixStyle"
+				],
+				"events": [],
+				"style": {
+					"height": "300px",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:selectedPost.reactions",
+				"gridProps": {
+					"styleboxWidth": 1,
+					"styleboxHeight": 56,
+					"styleboxPercentWidth": "100%",
+					"enableMosaic": false
+				}
+			},
+			"displayName": "Matrix",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 56,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": false
+					}
+				}
+			},
+			"parent": "NYbDkfsOFm",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"container": "1RM_suCroE"
+			}
+		},
+		"1RM_suCroE": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"minHeight": "40px",
+					"display": "flex",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "8HYlsqrz4g",
+			"hidden": false,
+			"nodes": [
+				"jKr6Q2wO-O",
+				"48yXt4esfp"
+			],
+			"linkedNodes": {}
+		},
+		"LH_52ENmED": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"width": "fit-content",
+					"position": "static",
+					"bottom": "0px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "jKr6Q2wO-O",
+			"hidden": false,
+			"nodes": [
+				"7zr2jdQXiY",
+				"a3sXY6BE_X",
+				"Bl9GdjrrfS",
+				"oUh5FgUYhs"
+			],
+			"linkedNodes": {}
+		},
+		"7zr2jdQXiY": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"borderRadius": "50%",
+					"backgroundColor": "#3b82f67f",
+					"borderColor": "#ffffffff",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxHeight": "40px",
+					"maxWidth": "40px",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:$This.user.avatar",
+				"defaultImgSrc": "/$shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"borderColor": "#000000ff"
+					}
+				}
+			},
+			"parent": "LH_52ENmED",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"a3sXY6BE_X": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "10px",
+					"height": "10px",
+					"minWidth": "10px",
+					"minHeight": "10px",
+					"maxWidth": "10px",
+					"maxHeight": "10px",
+					"display": "none",
+					"position": "absolute",
+					"borderColor": "#ffffffff",
+					"borderStyle": "none",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"fontSize": "14px",
+					"bottom": "0px",
+					"left": "25px"
+				},
+				"serverSideRef": "userLike",
+				"classNames": [
+					"userLike"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"borderColor": "#000000ff"
+					}
+				},
+				"states:ttLQMcLkVnBXfoTPk4Dm8g": {
+					"style": {
+						"color": "",
+						"backgroundColor": "rgb(66, 183, 42)"
+					}
+				},
+				"states:f5exacm29v5kgXZombeVvk": {
+					"style": {
+						"backgroundColor": "#F7F5FA"
+					}
+				},
+				"states:ex8PnGMWabFHAHmEv2Bi1v": {
+					"style": {
+						"backgroundColor": "#e4e4e4ff",
+						"borderColor": "rgb(66, 183, 42)",
+						"color": ""
+					}
+				}
+			},
+			"parent": "LH_52ENmED",
+			"hidden": false,
+			"nodes": [
+				"pQ4-jj7WpH",
+				"oC61Znnjmn"
+			],
+			"linkedNodes": {}
+		},
+		"jKr6Q2wO-O": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "6px",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "100%"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "1RM_suCroE",
+			"hidden": false,
+			"nodes": [
+				"LH_52ENmED",
+				"ZDlwMcBQBJ"
+			],
+			"linkedNodes": {}
+		},
+		"ZDlwMcBQBJ": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "dialog",
+						"id": "tuKtiUJNKthxAU3BDxRkkY",
+						"events": [
+							"onclick"
+						],
+						"actionType": "close",
+						"targetDialog": "postReactions"
+					},
+					{
+						"type": "simple-action",
+						"id": "fNMLiu5EJeDzkunS3uZ4j5",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$This.user",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedUser",
+							"targetNamespace": "Users",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "ee5XTuQcSWSQkpFcBKHp51",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "seeProfile",
+						"isHardCoded": true
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.user.fullName",
+								"children": [
+									{
+										"text": "FullName"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.user.fullName",
+				"style": {
+					"textTransform": "capitalize",
+					"fontSize": "14px",
+					"cursor": "pointer"
+				},
+				"classNames": [
+					"fontWeight600"
+				]
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "jKr6Q2wO-O",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"pQ4-jj7WpH": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "20px",
+					"height": "20px",
+					"position": "static",
+					"minWidth": "20px",
+					"maxWidth": "20px",
+					"minHeight": "20px",
+					"maxHeight": "20px",
+					"borderRadius": "50%"
+				},
+				"imgSrc": "/$shared/logos/like.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "a3sXY6BE_X",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"oC61Znnjmn": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.reactionType",
+								"children": [
+									{
+										"text": "r",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.reactionType",
+				"serverSideRef": "reactionInText"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "a3sXY6BE_X",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"oUh5FgUYhs": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "10px",
+					"height": "10px",
+					"minWidth": "10px",
+					"minHeight": "10px",
+					"maxWidth": "10px",
+					"maxHeight": "10px",
+					"display": "none",
+					"position": "absolute",
+					"borderColor": "#ffffffff",
+					"borderStyle": "none",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"fontSize": "14px",
+					"left": "25px",
+					"bottom": "0px"
+				},
+				"serverSideRef": "userHaha",
+				"classNames": [
+					"userHaha"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"borderColor": "#000000ff"
+					}
+				},
+				"states:ttLQMcLkVnBXfoTPk4Dm8g": {
+					"style": {
+						"color": "",
+						"backgroundColor": "rgb(66, 183, 42)"
+					}
+				},
+				"states:f5exacm29v5kgXZombeVvk": {
+					"style": {
+						"backgroundColor": "#F7F5FA"
+					}
+				},
+				"states:ex8PnGMWabFHAHmEv2Bi1v": {
+					"style": {
+						"backgroundColor": "#e4e4e4ff",
+						"borderColor": "rgb(66, 183, 42)",
+						"color": ""
+					}
+				}
+			},
+			"parent": "LH_52ENmED",
+			"hidden": false,
+			"nodes": [
+				"demZ6xs5fz",
+				"_l-34mpBJO"
+			],
+			"linkedNodes": {}
+		},
+		"demZ6xs5fz": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "20px",
+					"height": "20px",
+					"position": "static",
+					"minWidth": "20px",
+					"maxWidth": "20px",
+					"minHeight": "20px",
+					"maxHeight": "20px",
+					"borderRadius": "50%"
+				},
+				"imgSrc": "/$shared/logos/haha.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "oUh5FgUYhs",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"_l-34mpBJO": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.reactionType",
+								"children": [
+									{
+										"text": "r",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.reactionType",
+				"serverSideRef": "reactionInText"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "oUh5FgUYhs",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Bl9GdjrrfS": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "10px",
+					"height": "10px",
+					"minWidth": "10px",
+					"minHeight": "10px",
+					"maxWidth": "10px",
+					"maxHeight": "10px",
+					"display": "none",
+					"position": "absolute",
+					"borderColor": "#ffffffff",
+					"borderStyle": "none",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"fontSize": "14px",
+					"bottom": "0px",
+					"left": "25px"
+				},
+				"serverSideRef": "userLove",
+				"classNames": [
+					"userLove"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"borderColor": "#000000ff"
+					}
+				},
+				"states:ttLQMcLkVnBXfoTPk4Dm8g": {
+					"style": {
+						"color": "",
+						"backgroundColor": "rgb(66, 183, 42)"
+					}
+				},
+				"states:f5exacm29v5kgXZombeVvk": {
+					"style": {
+						"backgroundColor": "#F7F5FA"
+					}
+				},
+				"states:ex8PnGMWabFHAHmEv2Bi1v": {
+					"style": {
+						"backgroundColor": "#e4e4e4ff",
+						"borderColor": "rgb(66, 183, 42)",
+						"color": ""
+					}
+				}
+			},
+			"parent": "LH_52ENmED",
+			"hidden": false,
+			"nodes": [
+				"3otxAubslM",
+				"Q_Csh9-_lM"
+			],
+			"linkedNodes": {}
+		},
+		"3otxAubslM": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "20px",
+					"height": "20px",
+					"position": "static",
+					"minWidth": "20px",
+					"maxWidth": "20px",
+					"minHeight": "20px",
+					"maxHeight": "20px",
+					"borderRadius": "50%"
+				},
+				"imgSrc": "/$shared/logos/heart.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "Bl9GdjrrfS",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Q_Csh9-_lM": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.reactionType",
+								"children": [
+									{
+										"text": "r",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.reactionType",
+				"serverSideRef": "reactionInText"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "Bl9GdjrrfS",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"nXYDa3U56C": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "All Reactions :",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"classNames": [
+					"fontWeight600"
+				],
+				"style": {
+					"fontSize": "18px",
+					"color": "#2078f4",
+					"textDecorationLine": " ",
+					"borderBottomWidth": "2px",
+					"borderBottomColor": "#2078f4",
+					"minWidth": "fit-content",
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#4599ff"
+					}
+				}
+			},
+			"parent": "NYbDkfsOFm",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"kpSRInxQMK": {
+			"type": {
+				"resolvedName": "Dialog"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"overlay": true,
+				"serverSideRef": "postViewers",
+				"closable": true,
+				"animated": true,
+				"style": {
+					"borderRadius": "12px",
+					"paddingRight": "6px",
+					"paddingBottom": "6px",
+					"paddingTop": "6px",
+					"paddingLeft": "6px"
+				}
+			},
+			"displayName": "Dialog",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#242526"
+					}
+				}
+			},
+			"parent": "ROOT",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"Dialog": "sUm_haNeav",
+				"close": "my37iqE4Kp"
+			}
+		},
+		"sUm_haNeav": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"className": "h-full flex-1",
+				"style": {
+					"paddingLeft": "24px",
+					"paddingRight": "24px",
+					"paddingTop": "0px",
+					"paddingBottom": "6px",
+					"display": "flex",
+					"flexDirection": "column",
+					"gap": "12px",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "kpSRInxQMK",
+			"hidden": false,
+			"nodes": [
+				"4l3yam7Gj4",
+				"Smfu12jMGF"
+			],
+			"linkedNodes": {}
+		},
+		"4l3yam7Gj4": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Post Seen By : (",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.userViews.length",
+								"children": [
+									{
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false,
+										"text": "0"
+									}
+								],
+								"dsType": "number",
+								"format": "0"
+							},
+							{
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false,
+								"text": ")"
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.userViews.length",
+				"classNames": [
+					"fontWeight600"
+				],
+				"style": {
+					"fontSize": "18px",
+					"color": "#2078f4",
+					"textDecorationLine": " ",
+					"borderBottomWidth": "2px",
+					"borderBottomColor": "#2078f4",
+					"minWidth": "fit-content",
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#4599ff"
+					}
+				}
+			},
+			"parent": "sUm_haNeav",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Smfu12jMGF": {
+			"type": {
+				"resolvedName": "Matrix"
+			},
+			"isCanvas": false,
+			"props": {
+				"orientation": "vertical",
+				"iterable": true,
+				"classNames": [
+					"matrixStyle"
+				],
+				"events": [],
+				"style": {
+					"height": "300px",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:selectedPost.userViews",
+				"gridProps": {
+					"styleboxWidth": 1,
+					"styleboxHeight": 56,
+					"styleboxPercentWidth": "100%",
+					"enableMosaic": false
+				}
+			},
+			"displayName": "Matrix",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 56,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": false
+					}
+				}
+			},
+			"parent": "sUm_haNeav",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"container": "AHCe5_0ygH"
+			}
+		},
+		"AHCe5_0ygH": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"minHeight": "40px",
+					"display": "flex",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "Smfu12jMGF",
+			"hidden": false,
+			"nodes": [
+				"at14OWe49S",
+				"SUFZzrSx0A"
+			],
+			"linkedNodes": {}
+		},
+		"at14OWe49S": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "6px",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "100%"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "AHCe5_0ygH",
+			"hidden": false,
+			"nodes": [
+				"bMc-EYOIIK",
+				"kNXjd8I-oH"
+			],
+			"linkedNodes": {}
+		},
+		"bMc-EYOIIK": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"width": "fit-content",
+					"position": "static",
+					"bottom": "0px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "at14OWe49S",
+			"hidden": false,
+			"nodes": [
+				"O7Tu66cy0b"
+			],
+			"linkedNodes": {}
+		},
+		"O7Tu66cy0b": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"borderRadius": "50%",
+					"backgroundColor": "#3b82f67f",
+					"borderColor": "#ffffffff",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxHeight": "40px",
+					"maxWidth": "40px",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:$This.user.avatar",
+				"defaultImgSrc": "/$shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"borderColor": "#000000ff"
+					}
+				}
+			},
+			"parent": "bMc-EYOIIK",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"kNXjd8I-oH": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "dialog",
+						"id": "sJcxw6dVKqC2xs5EoTWrVt",
+						"events": [
+							"onclick"
+						],
+						"actionType": "close",
+						"targetDialog": "postViewers"
+					},
+					{
+						"type": "simple-action",
+						"id": "5PtJpAPULMu6GDWvc5bLT1",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$This.user",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedUser",
+							"targetNamespace": "Users",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "3Pf7BKdrrG2nbJg2YJnXUo",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "seeProfile",
+						"isHardCoded": true
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.user.fullName",
+								"children": [
+									{
+										"text": "FullName"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.user.fullName",
+				"style": {
+					"textTransform": "capitalize",
+					"fontSize": "14px",
+					"cursor": "pointer"
+				},
+				"classNames": [
+					"fontWeight600"
+				]
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "at14OWe49S",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"my37iqE4Kp": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-times",
+				"style": {
+					"width": "30px",
+					"height": "30px",
+					"minWidth": "30px",
+					"minHeight": "30px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"fontSize": "22px",
+					"borderRadius": "50%"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff",
+						"backgroundColor": "#ffffff33"
+					}
+				}
+			},
+			"parent": "kpSRInxQMK",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"SlKImaUkbp": {
+			"type": {
+				"resolvedName": "Dialog"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "1sa1UWgvB6Wxt3USZPUTc3",
+						"events": [
+							"onloaded"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newComment",
+							"type": "entity",
+							"namespace": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "dFFoos6kE4VmSoyTHyyj4z",
+						"events": [
+							"onloaded"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newComment.user",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "t2Z67A5j6gsGBBLwxwNk1c",
+						"events": [
+							"onloaded"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newComment.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "kXByPAM4r48TtBdsCP6Ude",
+						"events": [
+							"onloaded"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"from": "posts",
+							"type": "entity",
+							"namespace": "Posts",
+							"target": "newComment.post",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					}
+				],
+				"overlay": true,
+				"serverSideRef": "newComment",
+				"closable": true,
+				"animated": true,
+				"style": {
+					"paddingRight": "6px",
+					"paddingBottom": "6px",
+					"paddingTop": "6px",
+					"paddingLeft": "6px",
+					"borderRadius": "12px"
+				}
+			},
+			"displayName": "Dialog",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#242526"
+					}
+				}
+			},
+			"parent": "ROOT",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"Dialog": "CvZ_po4HcR",
+				"close": "QdLcr7NQov"
+			}
+		},
+		"CvZ_po4HcR": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"className": "h-full flex-1",
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"justifyContent": "flex-start",
+					"alignItems": "center",
+					"gap": "12px",
+					"paddingRight": "24px",
+					"paddingBottom": "6px",
+					"paddingTop": "0px",
+					"paddingLeft": "24px"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "SlKImaUkbp",
+			"hidden": false,
+			"nodes": [
+				"aGnX9f4GUL",
+				"Z5tRUsZjLq",
+				"bXh8i3Kwua",
+				"dcV11UaQIg",
+				"KNMpxubX6M",
+				"TJ_e9KoUkC",
+				"Y7cY6saSaI"
+			],
+			"linkedNodes": {}
+		},
+		"aGnX9f4GUL": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "New Comment On This Post :",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"classNames": [
+					"fontWeight600"
+				],
+				"style": {
+					"fontSize": "18px",
+					"color": "#2078f4",
+					"textDecorationLine": " ",
+					"borderBottomWidth": "2px",
+					"borderBottomColor": "#2078f4",
+					"minWidth": "fit-content",
+					"width": "fit-content",
+					"textAlign": "center"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#4599ff"
+					}
+				}
+			},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Z5tRUsZjLq": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "12px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [
+				"3MX7llCOFC",
+				"mxnqoS2gt7",
+				"y4KrTbUoJh"
+			],
+			"linkedNodes": {}
+		},
+		"3MX7llCOFC": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [
+					{
+						"type": "navigation",
+						"id": "bnJpB4zjbxaNhk41PyLF9P",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "seeProfile",
+						"isHardCoded": true
+					}
+				],
+				"icon": "fa-solid fa-angle-left",
+				"style": {
+					"display": "none",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"cursor": "pointer",
+					"color": "#050505"
+				},
+				"serverSideRef": "goToSeeProfile"
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:2LiKZAMELSfjBEc61EzBcB": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:crRkw1Y9MK4jH36Ux9Esc2": {
+					"style": {
+						"display": "flex"
+					}
+				}
+			},
+			"parent": "Z5tRUsZjLq",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"mxnqoS2gt7": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"borderRadius": "50%",
+					"backgroundColor": "#3b82f67f",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxWidth": "40px",
+					"maxHeight": "40px",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:selectedPost.user.avatar",
+				"imgSrc": "",
+				"defaultImgSrc": "/$shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "Z5tRUsZjLq",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"y4KrTbUoJh": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "Z5tRUsZjLq",
+			"hidden": false,
+			"nodes": [
+				"3tIw9Rrah7",
+				"0MfoWYZYzE"
+			],
+			"linkedNodes": {}
+		},
+		"3tIw9Rrah7": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "6px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "y4KrTbUoJh",
+			"hidden": false,
+			"nodes": [
+				"010UbO8ss8",
+				"PkQJ3vnOFA"
+			],
+			"linkedNodes": {}
+		},
+		"PkQJ3vnOFA": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "6px"
+				},
+				"classNames": [
+					"WallOrGroup"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:8iFkupSk6JcH89XE2JsDE1": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "3tIw9Rrah7",
+			"hidden": false,
+			"nodes": [
+				"SwjF78deTm",
+				"sOwm5nnDGs",
+				"Stt8fFrFMt"
+			],
+			"linkedNodes": {}
+		},
+		"SwjF78deTm": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-angle-right",
+				"style": {
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"fontSize": "14px",
+					"color": "#65676b"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#c2c2c2ff"
+					}
+				}
+			},
+			"parent": "PkQJ3vnOFA",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"sOwm5nnDGs": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.WallOrGroup",
+								"children": [
+									{
+										"text": "WallOrGroup",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.WallOrGroup",
+				"serverSideRef": "WallOrGroup"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "PkQJ3vnOFA",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"0MfoWYZYzE": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"color": "#65676b"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.createdAt",
+								"children": [
+									{
+										"text": "datePost",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "date",
+								"format": "Date long"
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.createdAt"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "y4KrTbUoJh",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"dcV11UaQIg": {
+			"type": {
+				"resolvedName": "TextEditor"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"iterableChild": true,
+				"readOnly": true,
+				"style": {
+					"borderColor": "inherit",
+					"borderStyle": "none",
+					"borderWidth": "1px",
+					"width": "100%",
+					"overflow": "auto"
+				},
+				"datasource": "Posts:selectedPost.content"
+			},
+			"displayName": "TextEditor",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Y7cY6saSaI": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "6px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [
+				"DcMeLCa03r",
+				"rhPx6XjES5",
+				"DSG8wbNe9q"
+			],
+			"linkedNodes": {}
+		},
+		"DcMeLCa03r": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"justifyContent": "space-between",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "Y7cY6saSaI",
+			"hidden": false,
+			"nodes": [
+				"DUnhcYdWkc"
+			],
+			"linkedNodes": {}
+		},
+		"DUnhcYdWkc": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Write A Comment:",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"fontSize": "14px",
+					"color": "#050505",
+					"fontStyle": " italic"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:8iFkupSk6JcH89XE2JsDE1": {
+					"style": {}
+				},
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "DcMeLCa03r",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"rhPx6XjES5": {
+			"type": {
+				"resolvedName": "TextEditor"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"iterableChild": true,
+				"readOnly": false,
+				"style": {
+					"borderWidth": "1px",
+					"borderRadius": "12px",
+					"borderColor": "inherit"
+				},
+				"datasource": "newComment.content"
+			},
+			"displayName": "TextEditor",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff",
+						"backgroundColor": "#3a3b3c"
+					}
+				}
+			},
+			"parent": "Y7cY6saSaI",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"DSG8wbNe9q": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Create",
+				"classNames": [],
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "CommentEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "2YKycDWvpcj54Yp4q3Cjjh",
+						"method": "newComment.createComment",
+						"params": [],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "kjwPQY5LtbGSEt1cagKdCK",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						},
+						"disabled": false
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"width": "100%",
+					"fontSize": "0.8vw",
+					"fontWeight": "500",
+					"height": "35px",
+					"backgroundColor": "#1b74e4",
+					"borderRadius": "12px"
+				}
+			},
+			"displayName": "Button",
+			"custom": {},
+			"parent": "Y7cY6saSaI",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "nZsM3hUPCU"
+			}
+		},
+		"nZsM3hUPCU": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-paper-plane",
+				"style": {
+					"fontSize": "0.75vw",
+					"marginRight": "12px"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "DSG8wbNe9q",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"QdLcr7NQov": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-times",
+				"style": {
+					"width": "30px",
+					"height": "30px",
+					"minWidth": "30px",
+					"minHeight": "30px",
+					"display": "flex",
+					"alignItems": "center",
+					"justifyContent": "center",
+					"borderRadius": "50%",
+					"fontSize": "22px"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff",
+						"backgroundColor": "#ffffff33"
+					}
+				}
+			},
+			"parent": "SlKImaUkbp",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"ADiC8dR0Br": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "fit-content",
+					"display": "flex",
+					"gap": "12px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"height": "fit-content",
+					"fontSize": "20px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "Lv3Tl8YYN3",
+			"hidden": false,
+			"nodes": [
+				"ZyZoXGvr_M",
+				"uLuBzOcOGA"
+			],
+			"linkedNodes": {}
+		},
+		"ZyZoXGvr_M": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-newspaper",
+				"style": {
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"backgroundColor": "#3b82f6ff",
+					"color": "#ffffffff",
+					"borderRadius": "6px",
+					"paddingRight": "5px",
+					"paddingBottom": "5px",
+					"paddingTop": "5px",
+					"paddingLeft": "5px",
+					"width": "35px",
+					"height": "30px",
+					"minWidth": "35px",
+					"maxWidth": "35px",
+					"minHeight": "30px",
+					"maxHeight": "30px"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "ADiC8dR0Br",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"48yXt4esfp": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "6px",
+					"justifyContent": "flex-end",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"alignItems": "center",
+					"width": "fit-content",
+					"minWidth": "fit-content"
+				},
+				"serverSideRef": "buttonsFollow",
+				"classNames": [
+					"isByConnectedUser"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "1RM_suCroE",
+			"hidden": false,
+			"nodes": [
+				"Trec4T9lXq",
+				"ghguQHWAqZ",
+				"N4UhDyTq5u"
+			],
+			"linkedNodes": {}
+		},
+		"Trec4T9lXq": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.isByConnUser",
+								"children": [
+									{
+										"text": "IsByConnUser",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.isByConnUser",
+				"style": {
+					"fontSize": "10px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "48yXt4esfp",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"ghguQHWAqZ": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"isUnfollowed"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "48yXt4esfp",
+			"hidden": false,
+			"nodes": [
+				"UiXFGlfwur",
+				"cO0a-G01dY"
+			],
+			"linkedNodes": {}
+		},
+		"UiXFGlfwur": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Follow",
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "dzZt5DLPjYEdZksg1wydfe",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newFriendship",
+							"type": "entity",
+							"namespace": ""
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "pVRzubqtENd5EwTeUprxDZ",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newFriendship.user1",
+							"targetNamespace": "",
+							"targetType": "entity"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "kHSApp4aN55XPdMgUF4x2W",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$This",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedReaction",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "4UtaJAgK9LAT1vxp7i6edE",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedReaction.user",
+							"type": "entity",
+							"namespace": "",
+							"target": "newFriendship.user2",
+							"targetNamespace": "",
+							"targetType": "entity",
+							"from": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sX4SDSVyNV59boexfG9ALC",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"from": "",
+							"type": "scalar",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newFriendship.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "juWjM59yUwg64aYCGckDn5",
+						"events": [
+							"onclick"
+						],
+						"action": "save",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newFriendship",
+							"type": "entity",
+							"namespace": ""
+						},
+						"feedback": {
+							"enabled": true,
+							"messages": {
+								"onSuccess": "User Followed!"
+							}
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "vmjuqRyQT6UFxfiLoCGCr2",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"type": "entity",
+							"from": "posts",
+							"namespace": "Posts"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "g8dojPJvQYpHyE5ptL36tR",
+						"method": "selectedUser.reloadUser",
+						"params": [],
+						"namespace": "Users",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "8nT2T69ETt7kTeFMPyKAXY",
+						"method": "currentUser.reloadUser",
+						"params": [],
+						"namespace": "Shared",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"borderRadius": "12px",
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"backgroundColor": "#e4e6eb",
+					"color": "#1c1e21"
+				}
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "rgb(228, 230, 235)",
+						"backgroundColor": "#FFFFFF33"
+					}
+				}
+			},
+			"parent": "ghguQHWAqZ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "JEIWQJez78"
+			}
+		},
+		"JEIWQJez78": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-user-plus"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "UiXFGlfwur",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"cO0a-G01dY": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.isFollowedByConnUser",
+								"children": [
+									{
+										"text": "isFollowed",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.isFollowedByConnUser",
+				"style": {
+					"fontSize": "10px",
+					"textAlign": "end",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "ghguQHWAqZ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"N4UhDyTq5u": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"isFollowed"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "48yXt4esfp",
+			"hidden": false,
+			"nodes": [
+				"BVwKiFA0ZN",
+				"T27NX2F5G0"
+			],
+			"linkedNodes": {}
+		},
+		"BVwKiFA0ZN": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Unfollow",
+				"classNames": [],
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "Friendship",
+						"events": [
+							"onclick"
+						],
+						"id": "pdxbdMKzTrjZ4zNzDWtn7s",
+						"method": "ds.Friendship.dropFriendship",
+						"params": [
+							{
+								"name": "friend",
+								"type": "cs.UserEntity",
+								"datasource": "Posts:$This.user",
+								"id": "ixWzjRwXKSB7P7pTvpJ7aP"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "simple-action",
+						"id": "iNbwvGsvDf2wXZBWqUziGd",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"type": "entity",
+							"from": "posts",
+							"namespace": "Posts"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "iDWgdTgCorPeruFqDSwyYr",
+						"method": "selectedUser.reloadUser",
+						"params": [],
+						"namespace": "Users",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "iaEKyx7yaQwezDfTeGfVNp",
+						"method": "currentUser.reloadUser",
+						"params": [],
+						"namespace": "Shared",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"borderRadius": "12px",
+					"fontWeight": "500",
+					"fontSize": "14px",
+					"color": "#1c1e21",
+					"backgroundColor": "#e4e6eb"
+				}
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "rgb(228, 230, 235)",
+						"backgroundColor": "#FFFFFF33"
+					}
+				}
+			},
+			"parent": "N4UhDyTq5u",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "pES0wYbVIA"
+			}
+		},
+		"pES0wYbVIA": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-eye-slash"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "BVwKiFA0ZN",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"T27NX2F5G0": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.isFollowedByConnUser",
+								"children": [
+									{
+										"text": "isFollowed",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.isFollowedByConnUser",
+				"style": {
+					"fontSize": "10px",
+					"textAlign": "end",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "N4UhDyTq5u",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"SUFZzrSx0A": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "6px",
+					"justifyContent": "flex-end",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"alignItems": "center",
+					"width": "fit-content",
+					"minWidth": "fit-content"
+				},
+				"serverSideRef": "buttonsFollow",
+				"classNames": [
+					"isByConnectedUser"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "AHCe5_0ygH",
+			"hidden": false,
+			"nodes": [
+				"G20QDEqd6N",
+				"_Oaq76vJoD",
+				"XGi0x2Cl-F"
+			],
+			"linkedNodes": {}
+		},
+		"G20QDEqd6N": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.isByConnUser",
+								"children": [
+									{
+										"text": "IsByConnUser",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.isByConnUser",
+				"style": {
+					"fontSize": "10px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "SUFZzrSx0A",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"_Oaq76vJoD": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"isUnfollowed"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "SUFZzrSx0A",
+			"hidden": false,
+			"nodes": [
+				"EfUyUB5kFr",
+				"8kZOeRzeJ_"
+			],
+			"linkedNodes": {}
+		},
+		"EfUyUB5kFr": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Follow",
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "dzZt5DLPjYEdZksg1wydfe",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newFriendship",
+							"type": "entity",
+							"namespace": ""
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "pVRzubqtENd5EwTeUprxDZ",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newFriendship.user1",
+							"targetNamespace": "",
+							"targetType": "entity"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "u7oUqGyeFZEmCK9y54YWU4",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$This",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedViewer",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "kHSApp4aN55XPdMgUF4x2W",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedViewer.user",
+							"type": "entity",
+							"namespace": "",
+							"target": "newFriendship.user2",
+							"targetNamespace": "",
+							"targetType": "entity",
+							"from": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sX4SDSVyNV59boexfG9ALC",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"from": "",
+							"type": "scalar",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newFriendship.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "juWjM59yUwg64aYCGckDn5",
+						"events": [
+							"onclick"
+						],
+						"action": "save",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newFriendship",
+							"type": "entity",
+							"namespace": ""
+						},
+						"feedback": {
+							"enabled": true,
+							"messages": {
+								"onSuccess": "User Followed!"
+							}
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "hxcWZ5ZjaDTMfNgUDYC2wS",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"type": "entity",
+							"from": "posts",
+							"namespace": "Posts"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "g8dojPJvQYpHyE5ptL36tR",
+						"method": "selectedUser.reloadUser",
+						"params": [],
+						"namespace": "Users",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "8nT2T69ETt7kTeFMPyKAXY",
+						"method": "currentUser.reloadUser",
+						"params": [],
+						"namespace": "Shared",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"borderRadius": "12px",
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"backgroundColor": "#e4e6eb",
+					"color": "#1c1e21"
+				}
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#FFFFFF33",
+						"color": "rgb(228, 230, 235)"
+					}
+				}
+			},
+			"parent": "_Oaq76vJoD",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "_sdlfNF71h"
+			}
+		},
+		"_sdlfNF71h": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-user-plus"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "EfUyUB5kFr",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"8kZOeRzeJ_": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.isFollowedByConnUser",
+								"children": [
+									{
+										"text": "isFollowed",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.isFollowedByConnUser",
+				"style": {
+					"fontSize": "10px",
+					"textAlign": "end",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "_Oaq76vJoD",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"XGi0x2Cl-F": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"isFollowed"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "SUFZzrSx0A",
+			"hidden": false,
+			"nodes": [
+				"36j8gRsvPP",
+				"Ms9FLZSUlO"
+			],
+			"linkedNodes": {}
+		},
+		"36j8gRsvPP": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "Unfollow",
+				"classNames": [],
+				"events": [
+					{
+						"type": "method",
+						"dataclass": "Friendship",
+						"events": [
+							"onclick"
+						],
+						"id": "pdxbdMKzTrjZ4zNzDWtn7s",
+						"method": "ds.Friendship.dropFriendship",
+						"params": [
+							{
+								"name": "friend",
+								"type": "cs.UserEntity",
+								"datasource": "Posts:$This.user",
+								"id": "ixWzjRwXKSB7P7pTvpJ7aP"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "simple-action",
+						"id": "dAeJzh98SH8U1Qfj1GtKFh",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"type": "entity",
+							"from": "posts",
+							"namespace": "Posts"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "iDWgdTgCorPeruFqDSwyYr",
+						"method": "selectedUser.reloadUser",
+						"params": [],
+						"namespace": "Users",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "iaEKyx7yaQwezDfTeGfVNp",
+						"method": "currentUser.reloadUser",
+						"params": [],
+						"namespace": "Shared",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"borderRadius": "12px",
+					"fontWeight": "500",
+					"fontSize": "14px",
+					"color": "#1c1e21",
+					"backgroundColor": "#e4e6eb"
+				}
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#FFFFFF33",
+						"color": "rgb(228, 230, 235)"
+					}
+				}
+			},
+			"parent": "XGi0x2Cl-F",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "HwwrYWJIaw"
+			}
+		},
+		"HwwrYWJIaw": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-eye-slash"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "36j8gRsvPP",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Ms9FLZSUlO": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$This.isFollowedByConnUser",
+								"children": [
+									{
+										"text": "isFollowed",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$This.isFollowedByConnUser",
+				"style": {
+					"fontSize": "10px",
+					"textAlign": "end",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "XGi0x2Cl-F",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"ZvLhNPZldz": {
+			"type": {
+				"resolvedName": "Virtualizer"
+			},
+			"isCanvas": false,
+			"props": {
+				"iterable": true,
+				"orientation": "vertical",
+				"classNames": [
+					"virtualizerCSS"
+				],
+				"events": [],
+				"style": {
+					"height": "100%",
+					"width": "100%",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:postsFeed",
+				"currentElement": "Posts:selectedPost",
+				"iterator": "$post"
+			},
+			"displayName": "Virtualizer",
+			"custom": {},
+			"parent": "DX2al5OdIj",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"element": "pNycaW48Eb"
+			}
+		},
+		"pNycaW48Eb": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"width": "100%"
+				},
+				"role": "element",
+				"deletable": false,
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "ZvLhNPZldz",
+			"hidden": false,
+			"nodes": [
+				"xD9eNJQlFj"
+			],
+			"linkedNodes": {}
+		},
+		"xD9eNJQlFj": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"backgroundColor": "#ffffffff",
+					"borderRadius": "12px",
+					"height": "100%",
+					"width": "100%",
+					"boxShadow": "0px 0px 2px 0px #000000ff"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#242526"
+					}
+				}
+			},
+			"parent": "pNycaW48Eb",
+			"hidden": false,
+			"nodes": [
+				"lwlkVwIL-P"
+			],
+			"linkedNodes": {}
+		},
+		"lwlkVwIL-P": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"height": "100%",
+					"display": "flex",
+					"flexDirection": "column",
+					"gap": "12px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "xD9eNJQlFj",
+			"hidden": false,
+			"nodes": [
+				"kxPTyKe0W6",
+				"fL3N4sqKha",
+				"IGmIYGfAB6",
+				"w94tP7UtXk",
+				"IZnhmBiK_B"
+			],
+			"linkedNodes": {}
+		},
+		"kxPTyKe0W6": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "12px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "lwlkVwIL-P",
+			"hidden": false,
+			"nodes": [
+				"k9McqW4x7r",
+				"bPsYrp32y8"
+			],
+			"linkedNodes": {}
+		},
+		"k9McqW4x7r": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"borderRadius": "50%",
+					"backgroundColor": "#3b82f67f",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxWidth": "40px",
+					"maxHeight": "40px",
+					"borderStyle": "none"
+				},
+				"datasource": "Posts:$post.user.avatar",
+				"defaultImgSrc": "/$shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "kxPTyKe0W6",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"bPsYrp32y8": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "kxPTyKe0W6",
+			"hidden": false,
+			"nodes": [
+				"SPCKM08Gpu",
+				"bvLwpRC_gI"
+			],
+			"linkedNodes": {}
+		},
+		"SPCKM08Gpu": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "6px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "bPsYrp32y8",
+			"hidden": false,
+			"nodes": [
+				"M9BJm-4RAP",
+				"QHmxepfPpL"
+			],
+			"linkedNodes": {}
+		},
+		"M9BJm-4RAP": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "hDfrd1wqEAbHbYRLjvBeQx",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post.user",
+							"type": "entity",
+							"from": "",
+							"namespace": "",
+							"target": "selectedUser",
+							"targetNamespace": "Users",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "grx8VS2eEPmZNjgi8nsYMT",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "seeProfile",
+						"isHardCoded": true
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "16px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"color": "#050505",
+					"textTransform": "capitalize",
+					"cursor": "pointer"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.user.fullName",
+								"children": [
+									{
+										"text": "UserFullName"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.user.fullName"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "SPCKM08Gpu",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"bvLwpRC_gI": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"color": "#65676b"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.createdAt",
+								"children": [
+									{
+										"text": "datePost",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "date",
+								"format": "Date long"
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.createdAt"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "bPsYrp32y8",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"HGWHi8xrtQ": {
+			"type": {
+				"resolvedName": "TextEditor"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"iterableChild": true,
+				"readOnly": true,
+				"style": {
+					"borderWidth": "1px",
+					"borderRadius": "0px",
+					"borderColor": "inherit",
+					"borderStyle": "none",
+					"maxHeight": "170px",
+					"cursor": "auto",
+					"fontSize": "14px"
+				},
+				"datasource": "Posts:$post.content"
+			},
+			"displayName": "TextEditor",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "fL3N4sqKha",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"fL3N4sqKha": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "bPS6x4HfZEmHuUTVSFXqsf",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newViewPost",
+							"type": "entity",
+							"namespace": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "xooaq7Ywzd2Te34oTNqyU8",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newViewPost.user",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "21XHUvNc5vnyNsD1UQpdAj",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"namespace": "",
+							"from": "",
+							"type": "entity",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "xb3SKWGWAyyTfcmUS6zDU9",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"namespace": "Posts",
+							"from": "posts",
+							"type": "entity",
+							"target": "newViewPost.post",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "n9akoCcVaBSyhYp1UA8hUf",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newViewPost.viewedAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserViewEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "9Sp1XjCztgXVd8ebCoeesd",
+						"method": "newViewPost.checkIfViewed",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "wqCFe68QLZiasMCZkkX3mH"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "5bvnHVf1zaAsFDfnD5ZJhU"
+							}
+						],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"gap": "6px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"cursor": "auto"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "lwlkVwIL-P",
+			"hidden": false,
+			"nodes": [
+				"0DsxvXi1nC",
+				"HGWHi8xrtQ",
+				"-Qd9xw6n84",
+				"Brwx6X97-t"
+			],
+			"linkedNodes": {}
+		},
+		"TJ_e9KoUkC": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"serverSideRef": "postImageSB",
+				"classNames": [
+					"containImage"
+				],
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "12px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [
+				"OU2m_11fCS",
+				"NXCkawQ3k_"
+			],
+			"linkedNodes": {}
+		},
+		"OU2m_11fCS": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"height": "200px",
+					"width": "fit-content",
+					"borderRadius": "12px"
+				},
+				"datasource": "Posts:selectedPost.image"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "TJ_e9KoUkC",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"NXCkawQ3k_": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.containImage",
+								"children": [
+									{
+										"text": "containImageValue",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.containImage",
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "TJ_e9KoUkC",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"0DsxvXi1nC": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "navigation",
+						"id": "5E81HvLpXidW8cSnPLNVA4",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "viewPost",
+						"isHardCoded": true
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.title",
+								"children": [
+									{
+										"text": "PostTitle",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.title",
+				"style": {
+					"fontSize": "16px",
+					"fontWeight": "500",
+					"cursor": "pointer"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "fL3N4sqKha",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"F8bBIyvmWM": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "jSp3o5tLiAbGibUGkv8AqU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post.mediaUrl",
+							"from": "",
+							"type": "string",
+							"namespace": "Posts",
+							"target": "mediaURL",
+							"targetNamespace": "",
+							"targetType": "string"
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "sFszx9G1D7ANKYYGT12H4C",
+						"events": [
+							"onclick"
+						],
+						"externalLink": true,
+						"parent": "new-tab",
+						"isHardCoded": false,
+						"target": "mediaURL"
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.mediaUrl",
+								"children": [
+									{
+										"text": "link",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.mediaUrl",
+				"style": {
+					"color": "#3b82f6ff",
+					"textDecorationLine": " underline",
+					"fontSize": "14px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"cursor": "pointer",
+					"height": "fit-content",
+					"minHeight": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "-Qd9xw6n84",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"FNaoRkJAoP": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-angle-right",
+				"style": {
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"fontSize": "16px",
+					"color": "#65676b"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#c2c2c2ff"
+					}
+				}
+			},
+			"parent": "QHmxepfPpL",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"NzPL50Qz1a": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "aFg4wpEBRxRNRDAShLG6vh",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post.group",
+							"type": "entity",
+							"from": "",
+							"namespace": "",
+							"target": "selectedGroup",
+							"targetNamespace": "Groups",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "1aKYpzm4XuD7bKpSRQ78v4",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "groupDetails",
+						"isHardCoded": true
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "16px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"color": "#050505",
+					"cursor": "pointer"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.group.name",
+								"children": [
+									{
+										"text": "Group Name",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.group.name"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "QHmxepfPpL",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"yH4oB-gUNf": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.WallOrGroup",
+								"children": [
+									{
+										"text": "WallOrGroup",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.WallOrGroup",
+				"serverSideRef": "WallOrGroup"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "QHmxepfPpL",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"QHmxepfPpL": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "6px"
+				},
+				"classNames": [
+					"WallOrGroup"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:aECtjW49jWNXGnpd8SEFkR": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "SPCKM08Gpu",
+			"hidden": false,
+			"nodes": [
+				"FNaoRkJAoP",
+				"NzPL50Qz1a",
+				"yH4oB-gUNf"
+			],
+			"linkedNodes": {}
+		},
+		"T8S5J1ri7I": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"height": "300px",
+					"width": "fit-content",
+					"borderRadius": "12px"
+				},
+				"datasource": "Posts:$post.image"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "Brwx6X97-t",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"3TaS5fblPB": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.containImage",
+								"children": [
+									{
+										"text": "containImageValue",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.containImage",
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "Brwx6X97-t",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Brwx6X97-t": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"serverSideRef": "postImageSB",
+				"classNames": [
+					"containImage"
+				],
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"gap": "12px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "fL3N4sqKha",
+			"hidden": false,
+			"nodes": [
+				"T8S5J1ri7I",
+				"3TaS5fblPB"
+			],
+			"linkedNodes": {}
+		},
+		"rGU7Mx-xqO": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.enableComments",
+								"children": [
+									{
+										"text": "IsEnabledComments",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.enableComments",
+				"serverSideRef": "isEnabledCom",
+				"style": {
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "MiDygVKSIV",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"17hS2G6kZ0": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-comment-slash",
+				"style": {
+					"fontSize": "18px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "MiDygVKSIV",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"P9ygZIdrNx": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Comments are disabled in this post!"
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"fontStyle": " italic",
+					"textAlign": "center",
+					"fontSize": "14px"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "MiDygVKSIV",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"MiDygVKSIV": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"classNames": [
+					"disabledComments"
+				],
+				"style": {
+					"backgroundColor": "#f2f2f2ff",
+					"display": "flex",
+					"flexDirection": "row",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"gap": "12px",
+					"borderBottomRightRadius": "12px",
+					"borderBottomLeftRadius": "12px"
+				},
+				"serverSideRef": "disabledComments"
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#3a3b3c",
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "IZnhmBiK_B",
+			"hidden": false,
+			"nodes": [
+				"rGU7Mx-xqO",
+				"17hS2G6kZ0",
+				"P9ygZIdrNx"
+			],
+			"linkedNodes": {}
+		},
+		"IZnhmBiK_B": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "lwlkVwIL-P",
+			"hidden": false,
+			"nodes": [
+				"MiDygVKSIV"
+			],
+			"linkedNodes": {}
+		},
+		"uY296rcR8F": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.hasLike",
+								"children": [
+									{
+										"text": "hasLike",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.hasLike",
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "6WdXH-QzkS",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"XWQE_kvejP": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "25px",
+					"height": "25px",
+					"minWidth": "25px",
+					"minHeight": "25px",
+					"maxWidth": "25px",
+					"maxHeight": "25px",
+					"borderRadius": "50%"
+				},
+				"imgSrc": "/$shared/logos/like.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "6WdXH-QzkS",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"6WdXH-QzkS": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"alignItems": "center"
+				},
+				"serverSideRef": "hasLike",
+				"classNames": [
+					"hasReaction"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "wiwQHw3x8C",
+			"hidden": false,
+			"nodes": [
+				"uY296rcR8F",
+				"XWQE_kvejP"
+			],
+			"linkedNodes": {}
+		},
+		"kHxoFZ41Je": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.hasLove",
+								"children": [
+									{
+										"text": "hasLove",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.hasLove",
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "viK5aTX_Ag",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"BMfk-V5340": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "25px",
+					"height": "25px",
+					"minWidth": "25px",
+					"minHeight": "25px",
+					"maxWidth": "25px",
+					"maxHeight": "25px",
+					"borderRadius": "50%"
+				},
+				"imgSrc": "/$shared/logos/heart.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "viK5aTX_Ag",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"viK5aTX_Ag": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"alignItems": "center"
+				},
+				"serverSideRef": "hasLove",
+				"classNames": [
+					"hasReaction"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "wiwQHw3x8C",
+			"hidden": false,
+			"nodes": [
+				"kHxoFZ41Je",
+				"BMfk-V5340"
+			],
+			"linkedNodes": {}
+		},
+		"pIYw3l9i-E": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.hasHaha",
+								"children": [
+									{
+										"text": "hasHaha",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.hasHaha",
+				"style": {
+					"fontSize": "12px",
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "EcvLgQA8A2",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"MZayeB6adG": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "25px",
+					"height": "25px",
+					"minWidth": "25px",
+					"minHeight": "25px",
+					"maxWidth": "25px",
+					"maxHeight": "25px",
+					"borderRadius": "50%"
+				},
+				"imgSrc": "/$shared/logos/haha.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "EcvLgQA8A2",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"EcvLgQA8A2": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"alignItems": "center"
+				},
+				"serverSideRef": "hasHaha",
+				"classNames": [
+					"hasReaction"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "wiwQHw3x8C",
+			"hidden": false,
+			"nodes": [
+				"pIYw3l9i-E",
+				"MZayeB6adG"
+			],
+			"linkedNodes": {}
+		},
+		"wiwQHw3x8C": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"justifyContent": "flex-end",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "fit-content",
+					"alignItems": "center"
+				},
+				"serverSideRef": "",
+				"classNames": []
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "_d6wsxzbNh",
+			"hidden": false,
+			"nodes": [
+				"6WdXH-QzkS",
+				"viK5aTX_Ag",
+				"EcvLgQA8A2"
+			],
+			"linkedNodes": {}
+		},
+		"FBIH377gRs": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "dialog",
+						"id": "qgaW2PNbyR6BGUMgGGc1xZ",
+						"events": [
+							"onclick"
+						],
+						"actionType": "open",
+						"targetDialog": "postReactions"
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"minWidth": "fit-content",
+					"color": "#65676b",
+					"cursor": "pointer"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.reactions.length",
+								"children": [
+									{
+										"text": "nbrReactions",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"format": "0"
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.reactions.length"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "_d6wsxzbNh",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Cl9zPsN-uw": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"fontWeight": "400",
+					"minWidth": "fit-content",
+					"color": "#65676b",
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.hasReactions",
+								"children": [
+									{
+										"text": "hasReactions",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.hasReactions",
+				"serverSideRef": "hasReactions"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "_d6wsxzbNh",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"_d6wsxzbNh": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"width": "fit-content",
+					"display": "flex",
+					"alignItems": "center",
+					"gap": "6px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"isReacted"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "IGmIYGfAB6",
+			"hidden": false,
+			"nodes": [
+				"wiwQHw3x8C",
+				"FBIH377gRs",
+				"Cl9zPsN-uw"
+			],
+			"linkedNodes": {}
+		},
+		"Uo6AHO9IcW": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-comment-dots",
+				"style": {
+					"fontSize": "14px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"color": "#65676b"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "jt4KcoJn_W",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"amg3bcvv3i": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"minWidth": "fit-content",
+					"color": "#65676b"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.comments.length",
+								"children": [
+									{
+										"text": "nbrComments",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"format": "0"
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.comments.length"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "jt4KcoJn_W",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"tV2-ytwAVB": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"fontWeight": "400",
+					"minWidth": "fit-content",
+					"color": "#65676b",
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.hasComments",
+								"children": [
+									{
+										"text": "hasComments",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.hasComments",
+				"serverSideRef": "hasComments"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "jt4KcoJn_W",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"jt4KcoJn_W": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"gap": "6px",
+					"justifyContent": "flex-end",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "fit-content",
+					"alignItems": "center"
+				},
+				"serverSideRef": "",
+				"classNames": [
+					"hasComments"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "OFEIlIov6M",
+			"hidden": false,
+			"nodes": [
+				"Uo6AHO9IcW",
+				"amg3bcvv3i",
+				"tV2-ytwAVB"
+			],
+			"linkedNodes": {}
+		},
+		"jBNgYujOYb": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "12px",
+					"fontWeight": "400",
+					"minWidth": "fit-content",
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.isViewed",
+								"children": [
+									{
+										"text": "isViewed",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.isViewed",
+				"serverSideRef": "isViewed"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "3yBXY0On0e",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"C610YuICIZ": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-eye",
+				"style": {
+					"fontSize": "14px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"color": "#65676b"
+				}
+			},
+			"displayName": "Icon",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "3yBXY0On0e",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"tpFP3y0O5s": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"minWidth": "fit-content",
+					"color": "#65676b"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Seen By:"
+							}
+						]
+					}
+				],
+				"datasource": ""
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "3yBXY0On0e",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"_4Is17S4JB": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"minWidth": "fit-content",
+					"color": "#65676b"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.userViews.length",
+								"children": [
+									{
+										"text": "nbrViews",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"format": "0"
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.userViews.length"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "3yBXY0On0e",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"3yBXY0On0e": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "dialog",
+						"id": "2uexcqzLTomNvvWCqbu7NX",
+						"events": [
+							"onclick"
+						],
+						"actionType": "open",
+						"targetDialog": "postViewers"
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"gap": "6px",
+					"justifyContent": "flex-end",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "fit-content",
+					"alignItems": "center",
+					"cursor": "pointer"
+				},
+				"serverSideRef": "",
+				"classNames": [
+					"isViewed"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "OFEIlIov6M",
+			"hidden": false,
+			"nodes": [
+				"jBNgYujOYb",
+				"C610YuICIZ",
+				"tpFP3y0O5s",
+				"_4Is17S4JB"
+			],
+			"linkedNodes": {}
+		},
+		"OFEIlIov6M": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "12px",
+					"justifyContent": "flex-end",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "100%"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "IGmIYGfAB6",
+			"hidden": false,
+			"nodes": [
+				"jt4KcoJn_W",
+				"3yBXY0On0e"
+			],
+			"linkedNodes": {}
+		},
+		"IGmIYGfAB6": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "row",
+					"justifyContent": "space-between",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "100%"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "lwlkVwIL-P",
+			"hidden": false,
+			"nodes": [
+				"_d6wsxzbNh",
+				"OFEIlIov6M"
+			],
+			"linkedNodes": {}
+		},
+		"eThK0Midcl": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-thumbs-up"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "OZBAhDttPL",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"e3hhRXVDg5": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Like"
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"display": "flex"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "OZBAhDttPL",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"H9mnhb76Gi": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.reactionConnUser",
+								"children": [
+									{
+										"text": "Like",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.reactionConnUser",
+				"style": {
+					"display": "none"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "OZBAhDttPL",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"OZBAhDttPL": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "rBofwK4JpRfaqnTWxQMHMV",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction",
+							"type": "entity",
+							"namespace": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "6BRBhWKiBSq9FRK9D5EPww",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newReaction.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "tXQgnMUedFAqBYNs9qqecT",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"namespace": "Posts",
+							"from": "",
+							"type": "entity",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "akHzi5J5fsMqQwJ7vii73S",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"namespace": "Posts",
+							"from": "posts",
+							"type": "entity",
+							"target": "newReaction.post",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "jHXAzYPfAJVU6VfGBegEFx",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"namespace": "Shared",
+							"type": "entity",
+							"target": "newReaction.user",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "mqPZsDsD92J9fpaFf32z5o",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction.reactionType",
+							"type": "string",
+							"namespace": "",
+							"from": "",
+							"set": {
+								"value": "Like",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "ReactionEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "jjTHmzeQRofFU4pVuEm18G",
+						"method": "newReaction.newPostReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "1ddBQdffqAaQ3QDyy6Mgqw"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "dHCSxJZfxkZ8k5RMAWqc2Q"
+							}
+						],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "4r7u4YuozyR28YkW9V6y1j",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						},
+						"disabled": false
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "12px",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"fontSize": "16px",
+					"fontWeight": "500",
+					"color": "#65676b",
+					"height": "100%",
+					"cursor": "pointer",
+					"width": "fit-content"
+				},
+				"serverSideRef": "buttonLike",
+				"classNames": [
+					"postNotReacted"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8",
+						"cursor": "pointer"
+					}
+				}
+			},
+			"parent": "YhDJ6DhvGV",
+			"hidden": false,
+			"nodes": [
+				"eThK0Midcl",
+				"e3hhRXVDg5",
+				"H9mnhb76Gi"
+			],
+			"linkedNodes": {}
+		},
+		"BYVw7rs6kc": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "30px",
+					"height": "30px",
+					"minWidth": "30px",
+					"minHeight": "30px",
+					"maxWidth": "30px",
+					"maxHeight": "30px",
+					"borderRadius": "50%",
+					"cursor": "pointer"
+				},
+				"imgSrc": "/$shared/logos/like.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "8RjESe1WUQ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"ZqjgUBCNMY": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.reactionConnUser",
+								"children": [
+									{
+										"text": "Liked",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.reactionConnUser",
+				"style": {
+					"fontWeight": "700",
+					"fontSize": "18px"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "8RjESe1WUQ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"8RjESe1WUQ": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "ojfztAJr2Re3PM6K8VBmDV",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Reaction",
+						"events": [
+							"onclick"
+						],
+						"id": "rfJMtuRP4VVgbnfycsvee4",
+						"method": "ds.Reaction.dropReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "ozdaESAMNF5cAwrbgSNeob"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "hwvvAcYmZf9u8bjGqNqoMP"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "boolean"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "fkGAQXXi7pAjmMsjH3fN7L",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						},
+						"disabled": false
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "none",
+					"gap": "12px",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"color": "#0583fd",
+					"cursor": "pointer",
+					"height": "100%"
+				},
+				"serverSideRef": "postLiked",
+				"classNames": [
+					"postLiked"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "YhDJ6DhvGV",
+			"hidden": false,
+			"nodes": [
+				"BYVw7rs6kc",
+				"ZqjgUBCNMY"
+			],
+			"linkedNodes": {}
+		},
+		"TFVmb_8Z3F": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "30px",
+					"height": "30px",
+					"minWidth": "30px",
+					"minHeight": "30px",
+					"maxWidth": "30px",
+					"maxHeight": "30px",
+					"borderRadius": "50%",
+					"cursor": "pointer"
+				},
+				"imgSrc": "/$shared/logos/heart.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "bmLv9lRzUO",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"gi3ygvv2_k": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.reactionConnUser",
+								"children": [
+									{
+										"text": "Loved",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.reactionConnUser",
+				"style": {
+					"fontWeight": "700",
+					"fontSize": "18px"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "bmLv9lRzUO",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"bmLv9lRzUO": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "cg1kd7W3cYjRVu4bBETPG8",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Reaction",
+						"events": [
+							"onclick"
+						],
+						"id": "bpWnZB8NCrw4KTUcMs4f38",
+						"method": "ds.Reaction.dropReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "ozdaESAMNF5cAwrbgSNeob"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "hwvvAcYmZf9u8bjGqNqoMP"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "boolean"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "jrZdTMz5uo4fgXgjV9QJkE",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						},
+						"disabled": false
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "none",
+					"gap": "12px",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"color": "#ff0004ff",
+					"cursor": "pointer",
+					"height": "100%"
+				},
+				"serverSideRef": "postLoved",
+				"classNames": [
+					"postLoved"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "YhDJ6DhvGV",
+			"hidden": false,
+			"nodes": [
+				"TFVmb_8Z3F",
+				"gi3ygvv2_k"
+			],
+			"linkedNodes": {}
+		},
+		"GZaIsf3Dlx": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "30px",
+					"height": "30px",
+					"minWidth": "30px",
+					"minHeight": "30px",
+					"maxWidth": "30px",
+					"maxHeight": "30px",
+					"borderRadius": "50%",
+					"cursor": "pointer"
+				},
+				"imgSrc": "/$shared/logos/haha.png"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "QiadBLoc8m",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"FgCk4j85XT": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.reactionConnUser",
+								"children": [
+									{
+										"text": "Laughed",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.reactionConnUser",
+				"style": {
+					"fontWeight": "700",
+					"fontSize": "18px",
+					"color": "#ffae42ff"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "QiadBLoc8m",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"QiadBLoc8m": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "aa1XLawmge9hcyAZRTmaXq",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Reaction",
+						"events": [
+							"onclick"
+						],
+						"id": "rsGtcw8HRjuDbqRC1Ezz8Q",
+						"method": "ds.Reaction.dropReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "ozdaESAMNF5cAwrbgSNeob"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "hwvvAcYmZf9u8bjGqNqoMP"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "boolean"
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "2MnttU58wPYpJggSMDLAKq",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:postsFeed"
+						},
+						"disabled": false
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "none",
+					"gap": "12px",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"color": "#4b71bcff",
+					"cursor": "pointer",
+					"height": "100%"
+				},
+				"serverSideRef": "postLaughed",
+				"classNames": [
+					"postHaha"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "YhDJ6DhvGV",
+			"hidden": false,
+			"nodes": [
+				"GZaIsf3Dlx",
+				"FgCk4j85XT"
+			],
+			"linkedNodes": {}
+		},
+		"YhDJ6DhvGV": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"display": "flex",
+					"alignItems": "center",
+					"gap": "12px",
+					"justifyContent": "center",
+					"flexDirection": "row",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"height": "40px",
+					"width": "fit-content"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "Ut9n-7FoCn",
+			"hidden": false,
+			"nodes": [
+				"OZBAhDttPL",
+				"8RjESe1WUQ",
+				"bmLv9lRzUO",
+				"QiadBLoc8m"
+			],
+			"linkedNodes": {}
+		},
+		"7p9NbMM7cS": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [
+					"scaleZoomCSS"
+				],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "svSYewpogL615wJ9rFCfru",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction",
+							"type": "entity",
+							"namespace": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "3MfmgA6gMUko3gqTHXKA81",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newReaction.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "msVNCu7rbgA3NGXrWrEgTU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"namespace": "Posts",
+							"from": "",
+							"type": "entity",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "2g93DPwAVEjH2vCHxKh9iA",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"namespace": "Posts",
+							"from": "posts",
+							"type": "entity",
+							"target": "newReaction.post",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "4GTzhKKGAgXXDUdH2fbVdQ",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"namespace": "Shared",
+							"type": "entity",
+							"target": "newReaction.user",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sWthNywUtrzozQxHDVD9pY",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction.reactionType",
+							"type": "string",
+							"namespace": "",
+							"from": "",
+							"set": {
+								"value": "Like",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "ReactionEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "9QCH4bVDQRgYfR2iSHq9Z4",
+						"method": "newReaction.newPostReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "1ddBQdffqAaQ3QDyy6Mgqw"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "dHCSxJZfxkZ8k5RMAWqc2Q"
+							}
+						],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "8GMgbRasGer8N2RESZK4jf",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:posts"
+						},
+						"disabled": false
+					}
+				],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxWidth": "40px",
+					"maxHeight": "40px",
+					"borderRadius": "50%",
+					"cursor": "pointer"
+				},
+				"imgSrc": "/$shared/logos/likeGIF.gif"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "IAaBLw03GR",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"IAaBLw03GR": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "fit-content",
+					"height": "fit-content"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "EI0szyoqM7",
+			"hidden": false,
+			"nodes": [
+				"7p9NbMM7cS"
+			],
+			"linkedNodes": {}
+		},
+		"6xUe0o-DzO": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Like"
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "12px",
+					"textAlign": "center",
+					"borderRadius": "50px",
+					"paddingLeft": "3px",
+					"paddingRight": "3px",
+					"color": "#ffffffff",
+					"backgroundColor": "#000000ff"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "tnCvkBXJ4D",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"tnCvkBXJ4D": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"height": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "3px",
+					"paddingTop": "3px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "EI0szyoqM7",
+			"hidden": false,
+			"nodes": [
+				"6xUe0o-DzO"
+			],
+			"linkedNodes": {}
+		},
+		"EI0szyoqM7": {
+			"type": {
+				"resolvedName": "Popover"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"position": "top-center",
+				"isShown": true,
+				"action": "hover",
+				"style": {
+					"minWidth": "fit-content",
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Popover",
+			"custom": {},
+			"parent": "TKKykBRExi",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"PopoverTrigger": "IAaBLw03GR",
+				"PopoverContent": "tnCvkBXJ4D"
+			}
+		},
+		"7PeIyAVT5O": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [
+					"scaleZoomCSS"
+				],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "svSYewpogL615wJ9rFCfru",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction",
+							"type": "entity",
+							"namespace": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "aBP2cpsGgTUKaX8BZG2p3A",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newReaction.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "i8vWcJ33X3fzzdBskjog6v",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"namespace": "Posts",
+							"from": "",
+							"type": "entity",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "msVNCu7rbgA3NGXrWrEgTU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"namespace": "Posts",
+							"from": "posts",
+							"type": "entity",
+							"target": "newReaction.post",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "4GTzhKKGAgXXDUdH2fbVdQ",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"namespace": "Shared",
+							"type": "entity",
+							"target": "newReaction.user",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sWthNywUtrzozQxHDVD9pY",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction.reactionType",
+							"type": "string",
+							"namespace": "",
+							"from": "",
+							"set": {
+								"value": "Love",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "ReactionEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "hhS3a1PQoChqb7txSzop9G",
+						"method": "newReaction.newPostReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "1ddBQdffqAaQ3QDyy6Mgqw"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "dHCSxJZfxkZ8k5RMAWqc2Q"
+							}
+						],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "uDGDjhfPohQwMMAzGCFZhT",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:posts"
+						},
+						"disabled": false
+					}
+				],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxWidth": "40px",
+					"maxHeight": "40px",
+					"borderRadius": "50%",
+					"cursor": "pointer"
+				},
+				"imgSrc": "/$shared/logos/heartGIF.gif"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "QURuKaKfT-",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"QURuKaKfT-": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "fit-content",
+					"height": "fit-content"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "sIvPJ1rBa9",
+			"hidden": false,
+			"nodes": [
+				"7PeIyAVT5O"
+			],
+			"linkedNodes": {}
+		},
+		"hmWwwT0uSJ": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Love"
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "12px",
+					"textAlign": "center",
+					"borderRadius": "50px",
+					"paddingLeft": "3px",
+					"paddingRight": "3px",
+					"color": "#ffffffff",
+					"backgroundColor": "#000000ff"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "uGm6KW_Tkj",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"uGm6KW_Tkj": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"height": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "3px",
+					"paddingTop": "3px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "sIvPJ1rBa9",
+			"hidden": false,
+			"nodes": [
+				"hmWwwT0uSJ"
+			],
+			"linkedNodes": {}
+		},
+		"sIvPJ1rBa9": {
+			"type": {
+				"resolvedName": "Popover"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"position": "top-center",
+				"isShown": true,
+				"action": "hover",
+				"style": {
+					"minWidth": "fit-content",
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Popover",
+			"custom": {},
+			"parent": "TKKykBRExi",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"PopoverTrigger": "QURuKaKfT-",
+				"PopoverContent": "uGm6KW_Tkj"
+			}
+		},
+		"pSioFhAGb-": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [
+					"scaleZoomCSS"
+				],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "svSYewpogL615wJ9rFCfru",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction",
+							"type": "entity",
+							"namespace": ""
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sciMaeBpRb9SC6nXDw5ibY",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newReaction.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "9Ssb2bP4s7hFWzyUEBLAYq",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"namespace": "Posts",
+							"from": "",
+							"type": "entity",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "msVNCu7rbgA3NGXrWrEgTU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"namespace": "Posts",
+							"from": "posts",
+							"type": "entity",
+							"target": "newReaction.post",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "4GTzhKKGAgXXDUdH2fbVdQ",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"namespace": "Shared",
+							"type": "entity",
+							"target": "newReaction.user",
+							"targetNamespace": "",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "sWthNywUtrzozQxHDVD9pY",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction.reactionType",
+							"type": "string",
+							"namespace": "",
+							"from": "",
+							"set": {
+								"value": "Haha",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "ReactionEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "f5kidXjwX7nfrGdZQYnbGM",
+						"method": "newReaction.newPostReaction",
+						"params": [
+							{
+								"name": "user",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "1ddBQdffqAaQ3QDyy6Mgqw"
+							},
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "Posts:selectedPost",
+								"id": "dHCSxJZfxkZ8k5RMAWqc2Q"
+							}
+						],
+						"namespace": "",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						},
+						"feedback": true
+					},
+					{
+						"type": "method",
+						"dataclass": "Post",
+						"events": [
+							"onclick"
+						],
+						"id": "jzaa13jx2r87qQFcFf4iN2",
+						"method": "ds.Post.showPosts",
+						"params": [
+							{
+								"name": "sort",
+								"type": "string",
+								"datasource": "filter",
+								"id": "bykbPNqb9kHTv4ivuE9ZN1"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.PostSelection",
+							"datasource": "Posts:posts"
+						},
+						"disabled": false
+					}
+				],
+				"style": {
+					"width": "40px",
+					"height": "40px",
+					"minWidth": "40px",
+					"minHeight": "40px",
+					"maxWidth": "40px",
+					"maxHeight": "40px",
+					"borderRadius": "50%",
+					"cursor": "pointer"
+				},
+				"imgSrc": "/$shared/logos/hahaGIF.gif"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "dw297os0g-",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"dw297os0g-": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"width": "fit-content",
+					"height": "fit-content"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "nP8h5Yy1zH",
+			"hidden": false,
+			"nodes": [
+				"pSioFhAGb-"
+			],
+			"linkedNodes": {}
+		},
+		"R_N8VzbpO1": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Haha"
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "12px",
+					"textAlign": "center",
+					"borderRadius": "50px",
+					"paddingLeft": "3px",
+					"paddingRight": "3px",
+					"color": "#ffffffff",
+					"backgroundColor": "#000000ff"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "xeIGB1USE2",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"xeIGB1USE2": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"height": "fit-content",
+					"paddingRight": "0px",
+					"paddingBottom": "3px",
+					"paddingTop": "3px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "nP8h5Yy1zH",
+			"hidden": false,
+			"nodes": [
+				"R_N8VzbpO1"
+			],
+			"linkedNodes": {}
+		},
+		"nP8h5Yy1zH": {
+			"type": {
+				"resolvedName": "Popover"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"position": "top-center",
+				"isShown": true,
+				"action": "hover",
+				"style": {
+					"minWidth": "fit-content",
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Popover",
+			"custom": {},
+			"parent": "TKKykBRExi",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"PopoverTrigger": "dw297os0g-",
+				"PopoverContent": "xeIGB1USE2"
+			}
+		},
+		"TKKykBRExi": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"boxShadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+					"display": "flex",
+					"gap": "12px",
+					"borderRadius": "50px",
+					"paddingLeft": "15px",
+					"paddingRight": "15px",
+					"backgroundColor": "#ffffffff"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"backgroundColor": "#242526",
+						"borderColor": "#b3b3b3ff",
+						"borderWidth": "1px"
+					}
+				}
+			},
+			"parent": "Ut9n-7FoCn",
+			"hidden": false,
+			"nodes": [
+				"EI0szyoqM7",
+				"sIvPJ1rBa9",
+				"nP8h5Yy1zH"
+			],
+			"linkedNodes": {}
+		},
+		"Ut9n-7FoCn": {
+			"type": {
+				"resolvedName": "Popover"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"position": "top-center",
+				"isShown": false,
+				"action": "hover",
+				"style": {
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Popover",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"isShown": false
+				}
+			},
+			"parent": "w94tP7UtXk",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"PopoverTrigger": "YhDJ6DhvGV",
+				"PopoverContent": "TKKykBRExi"
+			}
+		},
+		"GTnBaURWbL": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-regular fa-comment"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "j4O91CqGkm",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"4SAcED0jSk": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Comment"
+							}
+						]
+					}
+				],
+				"datasource": ""
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "j4O91CqGkm",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"7hoD4cfo3u": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"fontSize": "14px",
+					"fontWeight": "500",
+					"minWidth": "fit-content",
+					"color": "#65676b",
+					"display": "none"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:$post.enableComments",
+								"children": [
+									{
+										"text": "isEnabledCom"
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:$post.enableComments",
+				"serverSideRef": "isEnabledCom"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "j4O91CqGkm",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"j4O91CqGkm": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "q9d3cGhQiawZCr2p4K8Hn1",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post",
+							"type": "entity",
+							"from": "",
+							"namespace": "",
+							"target": "selectedPost",
+							"targetNamespace": "Posts",
+							"targetType": "entity"
+						}
+					},
+					{
+						"type": "dialog",
+						"id": "8QPyHqTVRQ4sPCu5ZyXJUG",
+						"events": [
+							"onclick"
+						],
+						"actionType": "open",
+						"targetDialog": "newComment"
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "12px",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"fontSize": "16px",
+					"fontWeight": "500",
+					"color": "#65676b",
+					"height": "40px",
+					"cursor": "pointer",
+					"width": "fit-content"
+				},
+				"serverSideRef": "buttonComment",
+				"classNames": [
+					"enabledComments"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#b0b3b8"
+					}
+				}
+			},
+			"parent": "w94tP7UtXk",
+			"hidden": false,
+			"nodes": [
+				"GTnBaURWbL",
+				"4SAcED0jSk",
+				"7hoD4cfo3u"
+			],
+			"linkedNodes": {}
+		},
+		"w94tP7UtXk": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"paddingLeft": "0px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"borderTopWidth": "0.5px",
+					"borderTopColor": "#b3b3b3ff",
+					"borderBottomWidth": "0.5px",
+					"borderBottomColor": "#b3b3b3ff",
+					"justifyContent": "space-around"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "lwlkVwIL-P",
+			"hidden": false,
+			"nodes": [
+				"Ut9n-7FoCn",
+				"j4O91CqGkm"
+			],
+			"linkedNodes": {}
+		},
+		"010UbO8ss8": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "uT7BZ84LQV3eWXLQQnZZbJ",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost.user",
+							"type": "entity",
+							"from": "",
+							"namespace": "Posts",
+							"target": "selectedUser",
+							"targetNamespace": "Users",
+							"targetType": "entity"
+						},
+						"state": {}
+					},
+					{
+						"type": "navigation",
+						"id": "uCL2aoBYdoZJdbqujxQFPn",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "seeProfile",
+						"isHardCoded": true
+					},
+					{
+						"type": "dialog",
+						"id": "ooKG5ViTY52x1DPXcNrS5B",
+						"events": [
+							"onclick"
+						],
+						"actionType": "close",
+						"targetDialog": "newComment"
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "14px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"color": "#050505",
+					"textTransform": "capitalize",
+					"cursor": "pointer"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.user.fullName",
+								"children": [
+									{
+										"text": "UserFullName"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.user.fullName"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				},
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "3tIw9Rrah7",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"Stt8fFrFMt": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "qMyy8mFAZCCNZL3UWaZBuj",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost.group",
+							"type": "entity",
+							"namespace": "Posts",
+							"from": "",
+							"target": "selectedGroup",
+							"targetNamespace": "Groups",
+							"targetType": "entity"
+						},
+						"state": {}
+					},
+					{
+						"type": "navigation",
+						"id": "g7XC4Y25eT7vstBziDbmK8",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "groupDetails",
+						"isHardCoded": true
+					},
+					{
+						"type": "dialog",
+						"id": "hRQ7JwAXaZmTtBuG2PqyEL",
+						"events": [
+							"onclick"
+						],
+						"actionType": "close",
+						"targetDialog": "newComment"
+					}
+				],
+				"iterableChild": true,
+				"style": {
+					"fontWeight": "500",
+					"fontSize": "14px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"color": "#050505",
+					"cursor": "pointer"
+				},
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.group.name",
+								"children": [
+									{
+										"text": "Group Name",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.group.name"
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				},
+				"states:nmGq4eEfAgTXrtoRaiBatc": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "PkQJ3vnOFA",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"-Qd9xw6n84": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "6px",
+					"paddingTop": "0px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"containMediaUrl"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "fL3N4sqKha",
+			"hidden": false,
+			"nodes": [
+				"F8bBIyvmWM",
+				"D68Wx8wKO-"
+			],
+			"linkedNodes": {}
+		},
+		"D68Wx8wKO-": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "jSp3o5tLiAbGibUGkv8AqU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "$post.mediaUrl",
+							"from": "",
+							"type": "string",
+							"namespace": "Posts",
+							"target": "mediaURL",
+							"targetNamespace": "",
+							"targetType": "string"
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "sFszx9G1D7ANKYYGT12H4C",
+						"events": [
+							"onclick"
+						],
+						"externalLink": true,
+						"parent": "new-tab",
+						"isHardCoded": false,
+						"target": "mediaURL"
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "$post.containMediaURL",
+								"children": [
+									{
+										"text": "containMediaUrl"
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "$post.containMediaURL",
+				"style": {
+					"color": "#000000ff",
+					"fontSize": "14px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"cursor": "pointer",
+					"height": "fit-content",
+					"minHeight": "fit-content",
+					"display": "none"
+				},
+				"serverSideRef": "containMediaUrl"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "-Qd9xw6n84",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"bXh8i3Kwua": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "navigation",
+						"id": "5E81HvLpXidW8cSnPLNVA4",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "",
+						"parent": "webform-loader-self",
+						"target": "viewPost",
+						"isHardCoded": true
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.title",
+								"children": [
+									{
+										"text": "PostTitle",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.title",
+				"style": {
+					"fontSize": "16px",
+					"fontWeight": "500",
+					"cursor": "pointer",
+					"width": "100%",
+					"minWidth": "100%"
+				}
+			},
+			"displayName": "Text",
+			"custom": {
+				"states:pubjhf9Y1oCxNkkHVAApbt": {
+					"style": {
+						"color": "#ffffffff"
+					}
+				}
+			},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"KNMpxubX6M": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"gap": "6px",
+					"paddingTop": "0px",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingLeft": "0px"
+				},
+				"classNames": [
+					"containMediaUrl"
+				]
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "CvZ_po4HcR",
+			"hidden": false,
+			"nodes": [
+				"L6Prn4Bvjq",
+				"HncwoabMEO"
+			],
+			"linkedNodes": {}
+		},
+		"L6Prn4Bvjq": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "jSp3o5tLiAbGibUGkv8AqU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost.mediaUrl",
+							"type": "string",
+							"namespace": "Posts",
+							"target": "mediaURL",
+							"targetNamespace": "",
+							"targetType": "string",
+							"from": "",
+							"set": {
+								"value": "",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "sFszx9G1D7ANKYYGT12H4C",
+						"events": [
+							"onclick"
+						],
+						"externalLink": true,
+						"parent": "new-tab",
+						"isHardCoded": false,
+						"target": "mediaURL"
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.mediaUrl",
+								"children": [
+									{
+										"text": "link",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.mediaUrl",
+				"style": {
+					"color": "#3b82f6ff",
+					"textDecorationLine": " underline",
+					"fontSize": "14px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"cursor": "pointer",
+					"height": "fit-content",
+					"minHeight": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "KNMpxubX6M",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"HncwoabMEO": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "jSp3o5tLiAbGibUGkv8AqU",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost.mediaUrl",
+							"type": "string",
+							"namespace": "Posts",
+							"target": "mediaURL",
+							"targetNamespace": "",
+							"targetType": "string",
+							"from": "",
+							"set": {
+								"value": "",
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "navigation",
+						"id": "sFszx9G1D7ANKYYGT12H4C",
+						"events": [
+							"onclick"
+						],
+						"externalLink": true,
+						"parent": "new-tab",
+						"isHardCoded": false,
+						"target": "mediaURL"
+					}
+				],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Posts:selectedPost.containMediaURL",
+								"children": [
+									{
+										"text": "containMediaUrl"
+									}
+								],
+								"dsType": "bool",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Posts:selectedPost.containMediaURL",
+				"style": {
+					"color": "#000000ff",
+					"fontSize": "14px",
+					"width": "fit-content",
+					"minWidth": "fit-content",
+					"cursor": "pointer",
+					"height": "fit-content",
+					"minHeight": "fit-content",
+					"display": "none"
+				},
+				"serverSideRef": "containMediaUrl"
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "KNMpxubX6M",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		}
+	}
+}

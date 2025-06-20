@@ -1,0 +1,13 @@
+{
+	"conditions": [
+		{
+			"id": "613U1KnyfBcM1jfxKHgVHG",
+			"type": "datasource",
+			"name": "condition",
+			"path": "Shared:displayMode",
+			"dsType": "string",
+			"op": "eq",
+			"value": "dark"
+		}
+	]
+}

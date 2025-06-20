@@ -1,0 +1,156 @@
+{
+	"classes": [
+		{
+			"name": "flexGrow",
+			"content": "self {\n flex-grow: 1;\n}",
+			"parentId": null,
+			"id": "yySe5J_Deu0Xj4Mp3ukB3"
+		},
+		{
+			"name": "tab-style",
+			"content": "self button[role=\"tab\"] {\n\t/* font-size: 0.8vw !important; */\n\tcolor: #65676b;\n\tpadding: 12px;\n\tborder-radius: 6px;\n}\n\nself button[role=\"tab\"][aria-selected=\"true\"] {\n\tcolor:#216fdb;\n}\n\nself button[role=\"tab\"]:hover {\n\tbackground-color: #dedede !important;\n}",
+			"parentId": null,
+			"id": "V2sUqH2M0f1GKqTutWS2_"
+		},
+		{
+			"name": "tab-style-dark",
+			"content": "self button[role=\"tab\"] {\n\tfont-size: 0.8vw !important;\n\tcolor: #b0b3b8;\n\tpadding: 12px;\n\tborder-radius: 6px;\n}\n\nself button[role=\"tab\"][aria-selected=\"true\"] {\n\tcolor:#4599ff;\n}\n\nself button[role=\"tab\"]:hover {\n\tbackground-color: #3a3a3a !important;\n}",
+			"parentId": null,
+			"id": "JJcEtdz5qGpoaVvMkRBGx"
+		},
+		{
+			"name": "WallOrGroup",
+			"content": "self:has(p span[title=\"wall\"]){\n\tdisplay: none !important;\n}",
+			"parentId": null,
+			"id": "nQQBEGGf9uwh2d1bHpOyW"
+		},
+		{
+			"name": "isViewed",
+			"content": "self:has(p span[title=\"false\"]){\n\tdisplay: none !important;\n}",
+			"parentId": null,
+			"id": "1zJIR_9BQ5gO6z5uYfkja"
+		},
+		{
+			"name": "isEnabledComments",
+			"content": "self:has(p span[title=\"true\"]){\n\tdisplay: none !important;\n}",
+			"parentId": null,
+			"id": "Zb-ysNzSjgc0MwmGGbw7U"
+		},
+		{
+			"name": "hasReaction",
+			"content": "self:has(p span[title=\"no\"]){\n\tdisplay: none !important;\n}",
+			"parentId": null,
+			"id": "jFVJVmQpBmNyWN-daEqS4"
+		},
+		{
+			"name": "userLike",
+			"content": "self:has(p span[title=\"Like\"]){\n\tdisplay: flex !important;\n}",
+			"parentId": null,
+			"id": "n6dMWGlrmzAkDa--C3_2D"
+		},
+		{
+			"id": "p224CfgR-jfSJYpWLTGX6",
+			"name": "userLove",
+			"content": "self:has(p span[title=\"Love\"]){\n\tdisplay: flex !important;\n}",
+			"parentId": null,
+			"children": {}
+		},
+		{
+			"id": "jKZ9qALRlTpGeQmmNSyxE",
+			"name": "userHaha",
+			"content": "self:has(p span[title=\"Haha\"]){\n\tdisplay: flex !important;\n}",
+			"parentId": null,
+			"children": {}
+		},
+		{
+			"name": "fontWeight600",
+			"content": "self {\n\tfont-weight: 600 !important;\n}",
+			"parentId": null,
+			"id": "DJz8AQpgLTkod_kgXBEs4"
+		},
+		{
+			"name": "ellipsis",
+			"content": "self {\n\tdisplay: -webkit-box;\n    -webkit-box-orient: vertical;\n    overflow: hidden;\n    -webkit-line-clamp: 1;\n\ttext-overflow: ellipsis;\n    max-width: 100%;\n}",
+			"parentId": null,
+			"id": "65RkSujbvRSHDh3y9iIwa"
+		},
+		{
+			"name": "matrixStyle",
+			"content": "self .innerScrollContainer > div:hover {\n\tbackground-color: transparent;\n}\nself .innerScrollContainer > div.selected{\n\tbackground-color: transparent;\n\n}",
+			"parentId": null,
+			"id": "IOpsdeY2Wx7NZ0xO4kLub"
+		},
+		{
+			"name": "textEllipsis",
+			"content": "self {\n\tdisplay: -webkit-box;\n    -webkit-box-orient: vertical;\n    overflow: hidden;\n    -webkit-line-clamp: 1;\n\ttext-overflow: ellipsis;\n    max-width: 100%;\n}",
+			"parentId": null,
+			"id": "FgGP2T34wI42BZYipkPUR"
+		},
+		{
+			"name": "pinIconStyle",
+			"content": "self {\n\ttransform: rotate(30deg);\n}",
+			"parentId": null,
+			"id": "_u9MgfDDYv5SFH4k4frwB"
+		},
+		{
+			"name": "pinUnpinButton",
+			"content": "self:has(p span[title=\"true\"]) {\n\tcolor:#e4e6eb !important;\n\tbackground-color: #1c1e21 !important;\n\tborder: 1px solid #e4e6eb;\n}",
+			"parentId": null,
+			"id": "AOdl4QXOatmto24fJghaF"
+		},
+		{
+			"name": "pinButton",
+			"content": "self:has(p span[title=\"true\"]) {\n\tdisplay: none !important;\n}",
+			"parentId": null,
+			"id": "tT6SFroM3BVD6Otf9D3pL"
+		},
+		{
+			"name": "unpinButton",
+			"content": "self:has(p span[title=\"false\"]) {\n\tdisplay: none !important;\n\t}",
+			"parentId": null,
+			"id": "n5bvgXO98LIby5_-WYlZM"
+		},
+		{
+			"name": "scaleZoomCSS",
+			"content": "self{\n\ttransition: transform .2s;\n}\n\nself:hover {\n  \ttransform: scale(1.2);\n}",
+			"parentId": null,
+			"id": "X3y5VX3mAkR3vGj1nrpnU"
+		},
+		{
+			"name": "groupTypeIcon",
+			"content": "self:has(p span[title=\"Public\"])::before {\n\tcontent: \"\\f0b1\";\n\tfont-family: FontAwesome;\n\tfont-weight: 500 !important;\n\tmargin-right: 4px;\n}\n\nself:has(p span[title=\"Private\"])::before {\n\tcontent: \"\\f023\";\n\tfont-family: FontAwesome;\n\tfont-weight: 500 !important;\n\tmargin-right: 4px;\n}\n\nself:has(p span[title=\"Chat\"])::before {\n\tcontent: \"\\f27a\";\n\tfont-family: FontAwesome;\n\tfont-weight: 500 !important;\n\tmargin-right: 4px;\n}",
+			"parentId": null,
+			"id": "eQzM5NHyzuo06Ymis3ZDK"
+		},
+		{
+			"name": "virtualizerCSS",
+			"content": "/*to eliminate the purple background when selecting an item*/\nself .virtualizer-list .virtualizer-item.selected {\n\tbackground-color: transparent;\n}",
+			"parentId": null,
+			"id": "mas-lsagt7gSRubFn9jqH"
+		},
+		{
+			"name": "noText",
+			"content": "self:has(p span:empty)::before {\n\tcontent: \"\\f068\";\n\t font-family: FontAwesome;\n    font-style: normal;\n    font-weight: normal;\n}",
+			"parentId": null,
+			"id": "LxhQ0eab5nqhb4PXVqQ9N"
+		},
+		{
+			"name": "emptyText",
+			"content": "self:has(p > span[title=\"\"]){\ndisplay: none !important;\n}",
+			"parentId": null,
+			"id": "KqTEfdspo7ABIir2YGaQ1"
+		},
+		{
+			"name": "activeButton",
+			"content": "self:active{\nbackground-color: #f0f2f5 !important;\n}",
+			"parentId": null,
+			"id": "CtinZ16DiTP0NhaaQbJyc"
+		},
+		{
+			"name": "hoverOpacityDark",
+			"content": "self:hover {\n\tbackground-color: #4f5051 !important;\n}",
+			"parentId": null,
+			"id": "lhUO8O6hHOk0WXN8Ycz0g"
+		}
+	]
+}

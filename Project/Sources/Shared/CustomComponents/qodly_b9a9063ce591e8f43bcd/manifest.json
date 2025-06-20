@@ -1,0 +1,12 @@
+{
+  "name": "emoji-picker",
+  "version": "0.1.0",
+  "scope": "qodly_b9a9063ce591e8f43bcd",
+  "author": {
+    "name": "Qodly Team",
+    "email": "contact@qodly.com",
+    "url": "https://qodly.com"
+  },
+  "module": "components",
+  "remoteEntryFileName": "components.js"
+}

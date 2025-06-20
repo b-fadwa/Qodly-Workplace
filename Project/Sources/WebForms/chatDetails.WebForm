@@ -1,0 +1,1616 @@
+{
+	"metadata": {
+		"v": "1.0",
+		"datasources": [
+			{
+				"id": "newMessage",
+				"type": "entity",
+				"dataclass": "Message",
+				"initialValue": "",
+				"depth": null
+			}
+		],
+		"styles": [],
+		"states": [
+			{
+				"label": "Base",
+				"id": "root"
+			},
+			{
+				"label": "darkMode",
+				"id": "uGPcKEaXrnWByYmR4Mjtmo",
+				"conditions": {
+					"id": "cHPpx6ysy35Zhaep1W1Hk3",
+					"type": "datasource",
+					"name": "condition",
+					"value": "dark",
+					"valueType": "hardCoded",
+					"path": "Shared:displayMode",
+					"dsType": "string",
+					"op": "eq"
+				}
+			},
+			{
+				"label": "groupReceiver",
+				"id": "2zFEQ4znBrca6fhzxwqk1B",
+				"conditions": {
+					"id": "aVwkNwZXxQW6G1uuZw1PPm",
+					"type": "datasource",
+					"name": "condition",
+					"value": "",
+					"valueType": "hardCoded",
+					"path": "Shared:selectedMessage.receiverGroup",
+					"dsType": "entity",
+					"op": "notnull"
+				}
+			},
+			{
+				"label": "userReceiver",
+				"id": "uN3wgX4d6R2BwCXRY5muuz",
+				"conditions": {
+					"id": "mTkDQd8E7oyVrh7nvsLVbS",
+					"type": "datasource",
+					"name": "condition",
+					"value": "",
+					"valueType": "hardCoded",
+					"path": "Shared:selectedMessage.receiver",
+					"dsType": "entity",
+					"op": "notnull"
+				}
+			}
+		]
+	},
+	"components": {
+		"ROOT": {
+			"type": {
+				"resolvedName": "Container"
+			},
+			"isCanvas": true,
+			"props": {
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "rQH8acRwHGA2H7qV9PuzgJ",
+						"events": [
+							"oninit"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage",
+							"type": "entity",
+							"namespace": ""
+						},
+						"state": {}
+					}
+				],
+				"airyMode": false,
+				"className": "bg-white h-full w-full px-6",
+				"style": {
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"backgroundColor": "#f0f2f5",
+					"display": "flex",
+					"flexDirection": "column"
+				}
+			},
+			"displayName": "Page",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"backgroundColor": "#18191a",
+						"color": "#e4e6eb"
+					}
+				}
+			},
+			"parent": "",
+			"hidden": false,
+			"nodes": [
+				"dy16w1MZw1"
+			],
+			"linkedNodes": {}
+		},
+		"tFzZmMkUGj": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"justifyContent": "center",
+					"alignItems": "center"
+				},
+				"serverSideRef": "singleReceiver"
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:2zFEQ4znBrca6fhzxwqk1B": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "dy16w1MZw1",
+			"hidden": false,
+			"nodes": [
+				"IVPYbk-Egt",
+				"lanlONbU28",
+				"ll_gu32U1x"
+			],
+			"linkedNodes": {}
+		},
+		"IVPYbk-Egt": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "60px",
+					"height": "60px",
+					"borderRadius": "100%"
+				},
+				"id": "image",
+				"datasource": "Shared:selectedMessage.sender.avatar",
+				"defaultImgSrc": "/$Shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "tFzZmMkUGj",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"lanlONbU28": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"id": "text",
+				"datasource": "Shared:selectedMessage.sender.fullName",
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Shared:selectedMessage.sender.fullName",
+								"children": [
+									{
+										"text": "selectedRecipient.fullName"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": " "
+							}
+						]
+					}
+				],
+				"style": {
+					"width": "fit-content"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "tFzZmMkUGj",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"ll_gu32U1x": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Works at 4D",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "tFzZmMkUGj",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"dy16w1MZw1": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"classNames": [
+					"flexGrow"
+				],
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"justifyContent": "space-between"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"display": "none"
+					}
+				},
+				"states:6hugYMoyU95r8cxrmMgm3Z": {
+					"style": {
+						"display": "flex"
+					}
+				}
+			},
+			"parent": "ROOT",
+			"hidden": false,
+			"nodes": [
+				"tFzZmMkUGj",
+				"mcsYw4_e55",
+				"R2OPvBNJSa",
+				"1NUdFgrr3P",
+				"Xatdb9h6Y9"
+			],
+			"linkedNodes": {}
+		},
+		"Xatdb9h6Y9": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"alignItems": "center",
+					"justifyContent": "space-between"
+				},
+				"serverSideRef": ""
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "dy16w1MZw1",
+			"hidden": false,
+			"nodes": [
+				"ZBGr4S-lDG",
+				"-2OHBPZv12",
+				"7OpdHXeE_r"
+			],
+			"linkedNodes": {}
+		},
+		"ZBGr4S-lDG": {
+			"type": {
+				"resolvedName": "TextEditor"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"iterableChild": true,
+				"readOnly": false,
+				"style": {
+					"borderWidth": "1px",
+					"borderRadius": "6px",
+					"borderColor": "inherit",
+					"width": "100%"
+				},
+				"datasource": "newMessage.content"
+			},
+			"displayName": "TextEditor",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"backgroundColor": "#3a3b3c"
+					}
+				}
+			},
+			"parent": "Xatdb9h6Y9",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"R2OPvBNJSa": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"height": "55%",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"display": "flex"
+				},
+				"serverSideRef": "singleReceiver"
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:2zFEQ4znBrca6fhzxwqk1B": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "dy16w1MZw1",
+			"hidden": false,
+			"nodes": [
+				"fK_toF3OoD"
+			],
+			"linkedNodes": {}
+		},
+		"-2OHBPZv12": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "",
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "5D9aU8QrXwZRSnuX6AtBZ8",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage.type",
+							"type": "string",
+							"namespace": "",
+							"from": "",
+							"set": {
+								"value": "Direct",
+								"type": "string"
+							}
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "hp5DJFGocvDudVNpbw1MAM",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newMessage.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "dGjYuFszW4Nb4raXQBhC2Z",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedMessage.sender",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newMessage.receiver",
+							"targetNamespace": "",
+							"targetType": "entity",
+							"from": ""
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "ryckvnhESAKq4WCcxuAV4o",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newMessage.sender",
+							"targetNamespace": "",
+							"targetType": "entity"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "fHgjKBHX23bDQgwuszKeyM",
+						"events": [
+							"onclick"
+						],
+						"action": "save",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage",
+							"type": "entity",
+							"namespace": ""
+						},
+						"feedback": {
+							"enabled": true,
+							"messages": {
+								"onSuccess": "Message sent!",
+								"onFail": "Error!"
+							}
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "nrdZVqUc96UymPaScTJCyh",
+						"events": [
+							"onclick"
+						],
+						"action": "query",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "receivedMessages",
+							"from": "",
+							"namespace": "Users",
+							"type": "entitysel"
+						},
+						"query": {
+							"query": "(receiver.ID = :1 and sender.ID = :2) or (receiver.ID = :2 and sender.ID = :1)  and isDraft=false",
+							"params": [
+								{
+									"id": "mMEr4KBuncMjmumYh5MTFf",
+									"datasource": "Shared:selectedMessage.sender.ID"
+								},
+								{
+									"id": "qKtANXFH6PjwtLANvFD3Wu",
+									"datasource": "Shared:currentUser.ID"
+								},
+								{
+									"id": "gJJR7cNLQD1RujXkQXHvTL",
+									"datasource": "Shared:currentDate"
+								}
+							]
+						},
+						"state": {}
+					},
+					{
+						"type": "method",
+						"dataclass": "Notification",
+						"events": [
+							"onclick"
+						],
+						"id": "gETWNZ7r5Qo2RKyraZGrCF",
+						"method": "ds.Notification.createNotif",
+						"params": [
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "",
+								"id": "8ra8hSPQRduHRbAZseJNXC"
+							},
+							{
+								"name": "notifType",
+								"type": "string",
+								"datasource": "",
+								"id": "wg8x5rF7rpoFBapd2U7d9v",
+								"isHardCoded": true,
+								"hardCodedType": "string",
+								"hardCodedValue": "New message!"
+							},
+							{
+								"name": "recievingUser",
+								"type": "cs.UserEntity",
+								"datasource": "newMessage.receiver",
+								"id": "kGNhWxwfR4ZeyruyRG885J"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "iFGYy8ftCsqZT9YMprJCcw",
+						"events": [
+							"onclick"
+						],
+						"action": "query",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "receivedMessages",
+							"type": "entitysel",
+							"from": "",
+							"namespace": "Users"
+						},
+						"query": {
+							"query": "(sender.ID = :1 and receiver.ID = :2)  or (sender.ID = :2 and receiver.ID = :1) and (isDraft=false or isDraft = null)",
+							"params": [
+								{
+									"id": "oJUGts2PfVuhG99wqdF2vT",
+									"datasource": "Shared:selectedMessage.sender.ID"
+								},
+								{
+									"id": "w1cp5XN87rEHDaqEn8f8iu",
+									"datasource": "Shared:currentUser.ID"
+								}
+							]
+						},
+						"disabled": false
+					},
+					{
+						"type": "simple-action",
+						"id": "48nzkjgMbBd6NPMMpqvE8V",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage",
+							"type": "entity",
+							"namespace": ""
+						},
+						"state": {}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "2qoT6h6Mehm8HviLEN8yFH",
+						"method": "currentUser.groupMessage",
+						"params": [],
+						"namespace": "Shared",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.MessageSelection",
+							"datasource": "Users:groupMessages"
+						},
+						"disabled": true
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"backgroundColor": "transparent",
+					"color": "#1c1e21"
+				},
+				"serverSideRef": "single"
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"color": "#3a3b3c",
+						"borderColor": "#3a3b3c",
+						"borderWidth": "1px"
+					}
+				},
+				"states:2zFEQ4znBrca6fhzxwqk1B": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "Xatdb9h6Y9",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "qywcctiY2H"
+			}
+		},
+		"qywcctiY2H": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-paper-plane"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "-2OHBPZv12",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"fK_toF3OoD": {
+			"type": {
+				"resolvedName": "Matrix"
+			},
+			"isCanvas": false,
+			"props": {
+				"orientation": "vertical",
+				"iterable": true,
+				"classNames": [
+					"matrixStyle"
+				],
+				"events": [],
+				"style": {
+					"height": "100%"
+				},
+				"datasource": "Users:receivedMessages",
+				"gridProps": {
+					"styleboxWidth": 1,
+					"styleboxHeight": 66,
+					"styleboxPercentWidth": "100%",
+					"enableMosaic": true
+				}
+			},
+			"displayName": "Matrix",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 66,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				},
+				"states:6hugYMoyU95r8cxrmMgm3Z": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 66,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				},
+				"states:2zFEQ4znBrca6fhzxwqk1B": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 66,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				},
+				"states:uN3wgX4d6R2BwCXRY5muuz": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 65,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				}
+			},
+			"parent": "R2OPvBNJSa",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"container": "sYV3Uy0uLQ"
+			}
+		},
+		"sYV3Uy0uLQ": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"minHeight": "40px",
+					"display": "flex",
+					"alignItems": "center",
+					"gap": "5px"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "fK_toF3OoD",
+			"hidden": false,
+			"nodes": [
+				"Ab9HtiiElN",
+				"g6qtsOW9d0",
+				"SXEZeVD-0I"
+			],
+			"linkedNodes": {}
+		},
+		"Ab9HtiiElN": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "50px",
+					"height": "50px",
+					"borderRadius": "50%"
+				},
+				"datasource": "Users:$This.sender.avatar",
+				"defaultImgSrc": "/$Shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "sYV3Uy0uLQ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"g6qtsOW9d0": {
+			"type": {
+				"resolvedName": "TextEditor"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"iterableChild": true,
+				"readOnly": true,
+				"style": {
+					"borderWidth": "1px",
+					"borderRadius": "6px",
+					"borderColor": "inherit",
+					"width": "100%"
+				},
+				"datasource": "Users:$This.content"
+			},
+			"displayName": "TextEditor",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"backgroundColor": "#3a3b3c"
+					}
+				}
+			},
+			"parent": "sYV3Uy0uLQ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"mcsYw4_e55": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"flexDirection": "column",
+					"justifyContent": "center",
+					"alignItems": "center"
+				},
+				"serverSideRef": "groupReceiver"
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:uN3wgX4d6R2BwCXRY5muuz": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "dy16w1MZw1",
+			"hidden": false,
+			"nodes": [
+				"lgpgUhqqI2",
+				"adTro6T7cY",
+				"5O5AsrCfbt"
+			],
+			"linkedNodes": {}
+		},
+		"adTro6T7cY": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"id": "text",
+				"datasource": "Shared:selectedMessage.receiverGroup.name",
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Shared:selectedMessage.receiverGroup.name",
+								"children": [
+									{
+										"text": "groupReceiver"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": " "
+							}
+						]
+					}
+				],
+				"style": {
+					"width": "fit-content"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "mcsYw4_e55",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"5O5AsrCfbt": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "Works at 4D",
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false
+							}
+						]
+					}
+				],
+				"datasource": "",
+				"style": {
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "mcsYw4_e55",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"lgpgUhqqI2": {
+			"type": {
+				"resolvedName": "AvatarGroup"
+			},
+			"isCanvas": false,
+			"props": {
+				"iterable": true,
+				"classNames": [],
+				"events": [],
+				"maxLength": 10,
+				"iterableChild": true,
+				"datasource": "Shared:selectedMessage.receiverGroup.groupMembers",
+				"image": "user.avatar",
+				"title": "user.firstName"
+			},
+			"displayName": "Avatar Group",
+			"custom": {},
+			"parent": "mcsYw4_e55",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"1NUdFgrr3P": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"height": "55%",
+					"paddingRight": "0px",
+					"paddingBottom": "0px",
+					"paddingTop": "0px",
+					"paddingLeft": "0px",
+					"display": "flex",
+					"flexDirection": "column"
+				},
+				"serverSideRef": "groupReceiver"
+			},
+			"displayName": "Stylebox",
+			"custom": {
+				"states:uN3wgX4d6R2BwCXRY5muuz": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "dy16w1MZw1",
+			"hidden": false,
+			"nodes": [
+				"950nPQBSFH",
+				"3PC_OWqMEH"
+			],
+			"linkedNodes": {}
+		},
+		"3PC_OWqMEH": {
+			"type": {
+				"resolvedName": "Matrix"
+			},
+			"isCanvas": false,
+			"props": {
+				"orientation": "vertical",
+				"iterable": true,
+				"classNames": [
+					"matrixStyle"
+				],
+				"events": [],
+				"style": {
+					"height": "100%"
+				},
+				"datasource": "Shared:selectedMessage.receiverGroup.messages",
+				"gridProps": {
+					"styleboxWidth": 1,
+					"styleboxHeight": 66,
+					"styleboxPercentWidth": "100%",
+					"enableMosaic": true
+				}
+			},
+			"displayName": "Matrix",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 66,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				},
+				"states:6hugYMoyU95r8cxrmMgm3Z": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 66,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				},
+				"states:2zFEQ4znBrca6fhzxwqk1B": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 65,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				},
+				"states:uN3wgX4d6R2BwCXRY5muuz": {
+					"gridProps": {
+						"styleboxWidth": 1,
+						"styleboxHeight": 66,
+						"styleboxPercentWidth": "100%",
+						"enableMosaic": true
+					}
+				}
+			},
+			"parent": "1NUdFgrr3P",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"container": "9r3VmP-M4M"
+			}
+		},
+		"9r3VmP-M4M": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"style": {
+					"minHeight": "40px",
+					"display": "flex",
+					"alignItems": "center",
+					"gap": "5px"
+				},
+				"iterableChild": true
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "3PC_OWqMEH",
+			"hidden": false,
+			"nodes": [
+				"3Kczq27tyS",
+				"7zpnW7ynkG"
+			],
+			"linkedNodes": {}
+		},
+		"3Kczq27tyS": {
+			"type": {
+				"resolvedName": "Image"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"style": {
+					"width": "50px",
+					"height": "50px",
+					"borderRadius": "50%"
+				},
+				"datasource": "Shared:$This.sender.avatar",
+				"defaultImgSrc": "/$Shared/visuals/user.jpg"
+			},
+			"displayName": "Image",
+			"custom": {},
+			"parent": "9r3VmP-M4M",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"7zpnW7ynkG": {
+			"type": {
+				"resolvedName": "TextEditor"
+			},
+			"isCanvas": false,
+			"props": {
+				"name": "",
+				"classNames": [],
+				"events": [],
+				"iterableChild": true,
+				"readOnly": true,
+				"style": {
+					"borderWidth": "1px",
+					"borderRadius": "6px",
+					"borderColor": "inherit",
+					"width": "100%"
+				},
+				"datasource": "Shared:$This.content"
+			},
+			"displayName": "TextEditor",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"backgroundColor": "#3a3b3c"
+					}
+				}
+			},
+			"parent": "9r3VmP-M4M",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"7OpdHXeE_r": {
+			"type": {
+				"resolvedName": "Button"
+			},
+			"isCanvas": false,
+			"props": {
+				"text": "",
+				"classNames": [],
+				"events": [
+					{
+						"type": "simple-action",
+						"id": "5D9aU8QrXwZRSnuX6AtBZ8",
+						"events": [
+							"onclick"
+						],
+						"action": "set",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage.type",
+							"type": "string",
+							"namespace": "",
+							"from": "",
+							"set": {
+								"value": "Group",
+								"type": "string"
+							}
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "hp5DJFGocvDudVNpbw1MAM",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentDate",
+							"type": "scalar",
+							"from": "",
+							"namespace": "Shared",
+							"dataType": "date",
+							"target": "newMessage.createdAt",
+							"targetNamespace": "",
+							"targetType": "date"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "dGjYuFszW4Nb4raXQBhC2Z",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedMessage.receiverGroup",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newMessage.receiverGroup",
+							"targetNamespace": "",
+							"targetType": "entity",
+							"from": ""
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "ryckvnhESAKq4WCcxuAV4o",
+						"events": [
+							"onclick"
+						],
+						"action": "copy",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "currentUser",
+							"type": "entity",
+							"namespace": "Shared",
+							"target": "newMessage.sender",
+							"targetNamespace": "",
+							"targetType": "entity"
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "fHgjKBHX23bDQgwuszKeyM",
+						"events": [
+							"onclick"
+						],
+						"action": "save",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage",
+							"type": "entity",
+							"namespace": ""
+						},
+						"feedback": {
+							"enabled": true,
+							"messages": {
+								"onSuccess": "Message sent!",
+								"onFail": "Error!"
+							}
+						},
+						"state": {}
+					},
+					{
+						"type": "simple-action",
+						"id": "nrdZVqUc96UymPaScTJCyh",
+						"events": [
+							"onclick"
+						],
+						"action": "query",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "receivedMessages",
+							"from": "",
+							"namespace": "Users",
+							"type": "entitysel"
+						},
+						"query": {
+							"query": "(receiver.ID = :1 and sender.ID = :2) or (receiver.ID = :2 and sender.ID = :1)  and isDraft=false",
+							"params": [
+								{
+									"id": "mMEr4KBuncMjmumYh5MTFf",
+									"datasource": "Shared:selectedMessage.sender.ID"
+								},
+								{
+									"id": "qKtANXFH6PjwtLANvFD3Wu",
+									"datasource": "Shared:currentUser.ID"
+								},
+								{
+									"id": "gJJR7cNLQD1RujXkQXHvTL",
+									"datasource": "Shared:currentDate"
+								}
+							]
+						},
+						"state": {}
+					},
+					{
+						"type": "method",
+						"dataclass": "Notification",
+						"events": [
+							"onclick"
+						],
+						"id": "gETWNZ7r5Qo2RKyraZGrCF",
+						"method": "ds.Notification.createNotif",
+						"params": [
+							{
+								"name": "post",
+								"type": "cs.PostEntity",
+								"datasource": "",
+								"id": "8ra8hSPQRduHRbAZseJNXC"
+							},
+							{
+								"name": "notifType",
+								"type": "string",
+								"datasource": "",
+								"id": "wg8x5rF7rpoFBapd2U7d9v",
+								"isHardCoded": true,
+								"hardCodedType": "string",
+								"hardCodedValue": "New message!"
+							},
+							{
+								"name": "recievingUser",
+								"type": "cs.UserEntity",
+								"datasource": "newMessage.receiver",
+								"id": "kGNhWxwfR4ZeyruyRG885J"
+							}
+						],
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "Variable"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "48nzkjgMbBd6NPMMpqvE8V",
+						"events": [
+							"onclick"
+						],
+						"action": "create",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newMessage",
+							"type": "entity",
+							"namespace": ""
+						},
+						"state": {}
+					},
+					{
+						"type": "method",
+						"dataclass": "UserEntity",
+						"events": [
+							"onclick"
+						],
+						"id": "2qoT6h6Mehm8HviLEN8yFH",
+						"method": "currentUser.groupMessage",
+						"params": [],
+						"namespace": "Shared",
+						"datasource": "",
+						"returns": {
+							"name": "result",
+							"type": "cs.MessageSelection",
+							"datasource": "Users:groupMessages"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "tHtvspvoKGprmeRhkpguMa",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedMessage.receiverGroup.messages",
+							"type": "entitysel",
+							"namespace": "Shared",
+							"from": ""
+						}
+					}
+				],
+				"iconPosition": "left",
+				"style": {
+					"display": "flex",
+					"backgroundColor": "transparent",
+					"color": "#1c1e21"
+				},
+				"serverSideRef": "group"
+			},
+			"displayName": "Button",
+			"custom": {
+				"states:uGPcKEaXrnWByYmR4Mjtmo": {
+					"style": {
+						"color": "#3a3b3c",
+						"borderColor": "#3a3b3c",
+						"borderWidth": "1px"
+					}
+				},
+				"states:uN3wgX4d6R2BwCXRY5muuz": {
+					"style": {
+						"display": "none"
+					}
+				}
+			},
+			"parent": "Xatdb9h6Y9",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {
+				"icon": "2Mw__9hlkB"
+			}
+		},
+		"2Mw__9hlkB": {
+			"type": {
+				"resolvedName": "Icon"
+			},
+			"isCanvas": false,
+			"props": {
+				"classNames": [],
+				"events": [],
+				"icon": "fa-solid fa-paper-plane"
+			},
+			"displayName": "Icon",
+			"custom": {},
+			"parent": "7OpdHXeE_r",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"SXEZeVD-0I": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Users:$This.atHour",
+								"children": [
+									{
+										"text": "hour",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "duration",
+								"format": "Without seconds"
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Users:$This.atHour",
+				"style": {
+					"minWidth": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "sYV3Uy0uLQ",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"6qhJz65Cdp": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": ""
+							},
+							{
+								"type": "datasource",
+								"datasource": "Shared:currentDate",
+								"children": [
+									{
+										"text": "currentDate",
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false
+									}
+								],
+								"dsType": "date",
+								"format": "Date short"
+							},
+							{
+								"bold": false,
+								"italic": false,
+								"underlined": false,
+								"strikethrough": false,
+								"text": " , "
+							},
+							{
+								"type": "datasource",
+								"datasource": "Shared:currentTime",
+								"children": [
+									{
+										"bold": false,
+										"italic": false,
+										"underlined": false,
+										"strikethrough": false,
+										"text": "currentHour"
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ""
+							}
+						]
+					}
+				],
+				"datasource": "Shared:currentDate,Shared:currentTime",
+				"style": {
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "950nPQBSFH",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		},
+		"950nPQBSFH": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"justifyContent": "center",
+					"alignItems": "center",
+					"flexDirection": "column",
+					"color": "#65676b"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "1NUdFgrr3P",
+			"hidden": false,
+			"nodes": [
+				"6qhJz65Cdp",
+				"Z6EGd4nrR1"
+			],
+			"linkedNodes": {}
+		},
+		"Z6EGd4nrR1": {
+			"type": {
+				"resolvedName": "Text"
+			},
+			"isCanvas": false,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"doc": [
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "This chat is part of the new "
+							},
+							{
+								"type": "datasource",
+								"datasource": "Shared:selectedMessage.receiverGroup.name",
+								"children": [
+									{
+										"text": "group "
+									}
+								],
+								"dsType": "string",
+								"format": ""
+							},
+							{
+								"text": ". Say hi!."
+							}
+						]
+					},
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"text": "You joined the group on the "
+							},
+							{
+								"type": "datasource",
+								"datasource": "Shared:selectedMessage.receiverGroup.createdAt",
+								"children": [
+									{
+										"text": "createdAt "
+									}
+								],
+								"dsType": "date",
+								"format": "Date short"
+							},
+							{
+								"text": "."
+							}
+						]
+					}
+				],
+				"datasource": "Shared:selectedMessage.receiverGroup.name,Shared:selectedMessage.receiverGroup.createdAt",
+				"style": {
+					"width": "fit-content"
+				}
+			},
+			"displayName": "Text",
+			"custom": {},
+			"parent": "950nPQBSFH",
+			"hidden": false,
+			"nodes": [],
+			"linkedNodes": {}
+		}
+	}
+}

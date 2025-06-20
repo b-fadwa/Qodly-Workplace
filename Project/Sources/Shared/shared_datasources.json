@@ -1,0 +1,344 @@
+{
+	"Shared": [
+		{
+			"id": "currentUser",
+			"type": "entity",
+			"dataclass": "User",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "displayMode",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": "light"
+		},
+		{
+			"id": "currentDate",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "date",
+			"initialValue": "05/11/2024"
+		},
+		{
+			"id": "currentTime",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": ""
+		},
+		{
+			"id": "managedGroups",
+			"type": "entitysel",
+			"dataclass": "Group",
+			"from": "currentUser.managedGroups",
+			"namespace": "Shared",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "landingPage",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": ""
+		},
+		{
+			"id": "navVisibilty",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": ""
+		},
+		{
+			"id": "viewPost",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": "seeProfile"
+		},
+		{
+			"id": "selectedNav",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": ""
+		},
+		{
+			"id": "searchNotif",
+			"type": "scalar",
+			"namespace": "Shared",
+			"dataType": "string",
+			"initialValue": ""
+		},
+		{
+			"id": "selectedNotification",
+			"type": "entity",
+			"dataclass": "Notification",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "mygroups",
+			"type": "entitysel",
+			"dataclass": "Group",
+			"from": "currentUser.myGroups",
+			"namespace": "Shared",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "notifications",
+			"type": "entitysel",
+			"dataclass": "Notification",
+			"from": "currentUser.notifications",
+			"namespace": "Shared",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "userView",
+			"type": "entity",
+			"dataclass": "UserView",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "selectedMessage",
+			"type": "entity",
+			"dataclass": "Message",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "newMessage",
+			"type": "entity",
+			"dataclass": "Message",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "selectedNote",
+			"type": "entity",
+			"dataclass": "Note",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "test",
+			"type": "entitysel",
+			"dataclass": "Group",
+			"namespace": "Shared",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		}
+	],
+	"Groups": [
+		{
+			"id": "newGroup",
+			"type": "entity",
+			"dataclass": "Group",
+			"namespace": "Groups",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "selectedGroup",
+			"type": "entity",
+			"dataclass": "Group",
+			"namespace": "Groups",
+			"initialValue": "",
+			"depth": null,
+			"events": []
+		},
+		{
+			"id": "people",
+			"type": "entitysel",
+			"dataclass": "User",
+			"namespace": "Groups",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "friends",
+			"type": "entitysel",
+			"dataclass": "Friendship",
+			"namespace": "Groups",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "pinnedGroups",
+			"type": "entitysel",
+			"dataclass": "Group",
+			"namespace": "Groups",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "groups",
+			"type": "entitysel",
+			"dataclass": "Group",
+			"namespace": "Groups",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "suggestedGroups",
+			"type": "entitysel",
+			"dataclass": "Group",
+			"namespace": "Groups",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "selectedFriend",
+			"type": "entity",
+			"dataclass": "Friendship",
+			"from": "friends",
+			"namespace": "Groups",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "currentGroupMember",
+			"type": "entity",
+			"dataclass": "GroupMember",
+			"namespace": "Groups",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "membersNotAdmin",
+			"type": "entitysel",
+			"dataclass": "GroupMember",
+			"namespace": "Groups",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		}
+	],
+	"Posts": [
+		{
+			"id": "posts",
+			"type": "entitysel",
+			"dataclass": "Post",
+			"namespace": "Posts",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 10
+		},
+		{
+			"id": "selectedPost",
+			"type": "entity",
+			"dataclass": "Post",
+			"namespace": "Posts",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "postsFeed",
+			"type": "entitysel",
+			"dataclass": "Post",
+			"namespace": "Posts",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		}
+	],
+	"Users": [
+		{
+			"id": "allUsers",
+			"type": "entitysel",
+			"dataclass": "User",
+			"namespace": "Users",
+			"initialValue": "all",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "selectedUser",
+			"type": "entity",
+			"dataclass": "User",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "receivedMessages",
+			"type": "entitysel",
+			"dataclass": "Message",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "selectedRecipient",
+			"type": "entity",
+			"dataclass": "User",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null,
+			"events": []
+		},
+		{
+			"id": "groupMessages",
+			"type": "entitysel",
+			"dataclass": "Message",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "selectedChatGroup",
+			"type": "entity",
+			"dataclass": "Group",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "events",
+			"type": "entitysel",
+			"dataclass": "Event",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		},
+		{
+			"id": "newEvent",
+			"type": "entity",
+			"dataclass": "Event",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null
+		},
+		{
+			"id": "selectedEvent",
+			"type": "entity",
+			"dataclass": "Event",
+			"namespace": "Users",
+			"initialValue": "",
+			"depth": null
+		}
+	]
+}

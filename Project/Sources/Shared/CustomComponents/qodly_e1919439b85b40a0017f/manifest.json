@@ -1,0 +1,12 @@
+{
+  "name": "qodly-stepper",
+  "version": "0.1.0",
+  "scope": "qodly_e1919439b85b40a0017f",
+  "author": {
+    "name": "Qodly Team",
+    "email": "contact@qodly.com",
+    "url": "https://qodly.com"
+  },
+  "module": "components",
+  "remoteEntryFileName": "components.js"
+}

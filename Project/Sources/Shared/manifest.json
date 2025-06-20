@@ -1,0 +1,19 @@
+{
+  "applicationName": "Blank app",
+  "description": "Start from an empty project",
+  "visuals": [
+    {
+      "description": "Empty example",
+      "path": "/$shared/visuals/Empty.png"
+    }
+  ],
+  "logo": {
+    "small": "logo_small_path",
+    "large": "/$shared/logos/Q-2.svg"
+  },
+  "qodlyVersion": "all",
+  "author": {
+    "name": "Qodly",
+    "url": "https://4d.com/"
+  }
+}

@@ -1,0 +1,9 @@
+extends EntitySelection
+
+exposed function create(contributors:cs.UserSelection , note:cs.NoteEntity)
+	var contributor:cs.UserEntity
+	var newContribution:cs.ContributionEntity
+	forEach(contributor,contributors)
+		newContribution=ds.Contribution.new()
+
+	end
