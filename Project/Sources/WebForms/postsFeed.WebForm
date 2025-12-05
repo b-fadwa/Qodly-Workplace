@@ -379,9 +379,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Sort By:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Sort By:",
 				"style": {
 					"width": "fit-content",
 					"minWidth": "fit-content",
@@ -6300,6 +6301,20 @@
 							"datasource": "Posts:postsFeed"
 						},
 						"disabled": false
+					},
+					{
+						"type": "simple-action",
+						"id": "qDaf9jvH17rxseHNCvzfot",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedPost",
+							"type": "entity",
+							"namespace": "Posts"
+						}
 					}
 				],
 				"iterableChild": true,

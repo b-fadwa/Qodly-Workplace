@@ -76,7 +76,7 @@
 		},
 		{
 			"name": "matrixStyle",
-			"content": "self .innerScrollContainer > div:hover {\n\tbackground-color: transparent;\n}\nself .innerScrollContainer > div.selected{\n\tbackground-color: transparent;\n\n}",
+			"content": "self .innerScrollContainer > div:hover {\n\tbackground-color: transparent !important;\n}\nself .innerScrollContainer > div.selected{\n\tbackground-color: transparent !important;\n\n}",
 			"parentId": null,
 			"id": "IOpsdeY2Wx7NZ0xO4kLub"
 		},

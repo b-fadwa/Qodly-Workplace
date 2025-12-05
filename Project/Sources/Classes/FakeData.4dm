@@ -72,7 +72,7 @@ Function generateFakeUsers()
 		$newUser.jobTitle:=$jobTitles.at(Random:C100%($jobTitles.length))
 		$newUser.skills:=$skills.at(Random:C100%($skills.length))
 		$newUser.location:=$locations.at(Random:C100%($locations.length))
-		$newUser.password:=$user.firstName
+		$newUser.password:=Generate password hash:C1533($user.firstName)
 		$newUser.department:=$teams.at(Random:C100%($teams.length))
 		$newUser.save()
 	End for each 

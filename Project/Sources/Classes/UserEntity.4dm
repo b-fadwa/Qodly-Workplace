@@ -3,29 +3,9 @@ Class extends Entity
 exposed Alias myGroups groupMembers.group
 exposed Alias userTeams teamMembers.team
 
-//local Function $aws()->$aws : Object
-//var $userCS : cs.Qodly.Users
-//$userCS:=cs.Qodly.Users.me
-//If (Session.storage.users=Null)
-//Use (Session.storage)
-//Session.storage.currentUser:=New shared object("ID"; This.ID)
-//Session.storage.users:=$userCS.allUsers().copy(16)
-//End use 
-//End if 
-//If (Session.storage.users#Null)
-//$aws:=Session.storage.users.query("email = :1"; This.email).at(0)
-//End if 
-
 exposed Function get fullName()->$fullName : Text
 	$fullName:=(This:C1470.firstName && This:C1470.lastName) ? (This:C1470.firstName+" "+Uppercase:C13(This:C1470.lastName)) : (Uppercase:C13(This:C1470.lastName) || This:C1470.firstName) || ""
 	
-exposed Function get role()->$role : Text
-	var $aws : Object
-	$role:=""
-	$aws:=This:C1470.aws()
-	If ($aws#Null:C1517)
-		$role:=$aws.role
-	End if 
 	
 exposed Function get managedGroups()->$managedGroups : cs:C1710.GroupSelection  //used in groupsPage
 	If (This:C1470.groupMembers.query("isAdmin = :1"; True:C214).length#0)
@@ -121,7 +101,6 @@ exposed Function getHierarchy() : Object  //used
 	var $colleagues : Collection:=[]
 	var $test : Object:={}
 	This:C1470.reload()
-	TRACE:C157
 	If (This:C1470.teamMembers.length#0)
 		For each ($team; This:C1470.teamMembers.team)
 			// $team = this.teamMembers.first().team

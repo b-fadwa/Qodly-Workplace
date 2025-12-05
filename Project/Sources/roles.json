@@ -1,8 +1,47 @@
 {
+	"forceLogin": true,
+	"restrictedByDefault": false,
 	"permissions": {
-		"allowed": []
+		"allowed": [
+			{
+				"applyTo": "User",
+				"type": "dataclass",
+				"read": [
+					"guestPromoted",
+					"login"
+				],
+				"execute": [
+					"login"
+				]
+			},
+			{
+				"applyTo": "ds.generateData",
+				"type": "method",
+				"execute": [
+					"guest"
+				]
+			},
+			{
+				"applyTo": "ds.getManifestObject",
+				"type": "method",
+				"execute": [
+					"guest"
+				]
+			}
+		]
 	},
-	"privileges": [],
+	"privileges": [
+		{
+			"id": "mPWkyPsQJgGoxZQoDf9aHu",
+			"privilege": "guestPromoted",
+			"includes": []
+		},
+		{
+			"id": "naoSvw5YQYbheWaMock5mP",
+			"privilege": "login",
+			"includes": []
+		}
+	],
 	"roles": [
 		{
 			"id": "r1yDEEfH6xvN6t9d3eFCA2",

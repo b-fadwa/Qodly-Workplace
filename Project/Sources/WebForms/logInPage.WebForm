@@ -64,7 +64,8 @@
 					"width": "55%",
 					"justifyContent": "space-between",
 					"alignItems": "center",
-					"height": "60%"
+					"height": "60%",
+					"minHeight": "fit-content"
 				},
 				"classNames": []
 			},
@@ -75,8 +76,7 @@
 			"nodes": [
 				"kxPxO-bn-X",
 				"5PRMzEWMaw",
-				"E6UH2_cU5V",
-				"xfuXFCWHYu"
+				"E6UH2_cU5V"
 			],
 			"linkedNodes": {}
 		},
@@ -151,10 +151,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Email",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"deletable": true,
-				"text": "Email"
+				"deletable": true
 			},
 			"displayName": "Label",
 			"custom": {},
@@ -189,7 +190,9 @@
 				"datasource": "email",
 				"dataType": "string",
 				"classNames": [],
-				"revealPassword": true
+				"revealPassword": true,
+				"twentyFourHours": true,
+				"eyePosition": "right"
 			},
 			"displayName": "Input",
 			"custom": {},
@@ -230,10 +233,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Password",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"deletable": true,
-				"text": "Password"
+				"deletable": true
 			},
 			"displayName": "Label",
 			"custom": {},
@@ -268,7 +272,9 @@
 				"datasource": "password",
 				"dataType": "string",
 				"classNames": [],
-				"revealPassword": true
+				"revealPassword": true,
+				"twentyFourHours": true,
+				"eyePosition": "right"
 			},
 			"displayName": "Input",
 			"custom": {},
@@ -288,31 +294,32 @@
 				"events": [
 					{
 						"type": "method",
-						"dataclass": "User",
+						"dataclass": "DataStore",
 						"events": [
 							"onclick"
 						],
-						"id": "aQZmqcVN4rPwia6EQM6vpp",
-						"method": "ds.User.logIn",
+						"id": "pHuvmhC1Dz6W6GfunxndXY",
+						"method": "ds.authentify",
 						"params": [
 							{
 								"name": "email",
-								"type": "string",
+								"type": "Text",
 								"datasource": "email",
-								"id": "ucbmWnGeEKwaSm3pRkfCHY"
+								"id": "9wod9CinEiWZpFYefnS3DD"
 							},
 							{
-								"name": "pwd",
-								"type": "string",
+								"name": "password",
+								"type": "Text",
 								"datasource": "password",
-								"id": "2sP6LVeHDmDL4HgUio16Ho"
+								"id": "ajsT9pdg6GrCxjcLGAnuNK"
 							}
 						],
 						"datasource": "",
+						"allowedOnHTTPGET": false,
 						"returns": {
 							"name": "result",
-							"type": "string",
-							"datasource": "Shared:landingPage"
+							"type": "Boolean",
+							"datasource": ""
 						},
 						"feedback": true
 					}
@@ -386,158 +393,6 @@
 				"skEPFltH_z",
 				"rVVSnhwOwa"
 			],
-			"linkedNodes": {}
-		},
-		"xfuXFCWHYu": {
-			"type": {
-				"resolvedName": "StyleBox"
-			},
-			"isCanvas": true,
-			"props": {
-				"events": [],
-				"iterableChild": true,
-				"style": {
-					"display": "flex",
-					"alignItems": "start",
-					"justifyContent": "flex-start",
-					"flexDirection": "column"
-				}
-			},
-			"displayName": "Stylebox",
-			"custom": {},
-			"parent": "KwLisEi5Mp",
-			"hidden": false,
-			"nodes": [
-				"7qe3OhM_zZ",
-				"zlvk8T2dOX"
-			],
-			"linkedNodes": {}
-		},
-		"7qe3OhM_zZ": {
-			"type": {
-				"resolvedName": "Text"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [
-					{
-						"type": "simple-action",
-						"id": "kNZZtvVh8UVMF4kzHhrZRK",
-						"events": [
-							"onclick"
-						],
-						"action": "set",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "landingPage",
-							"type": "scalar",
-							"from": "",
-							"namespace": "Shared",
-							"dataType": "string",
-							"target": "",
-							"targetNamespace": "",
-							"targetType": "unknown",
-							"set": {
-								"value": "resetPwdPage",
-								"type": "string"
-							}
-						}
-					}
-				],
-				"iterableChild": true,
-				"doc": [
-					{
-						"type": "paragraph",
-						"children": [
-							{
-								"bold": false,
-								"italic": false,
-								"underlined": true,
-								"strikethrough": false,
-								"text": "Forgot password?"
-							}
-						]
-					}
-				],
-				"datasource": "",
-				"style": {
-					"cursor": "pointer",
-					"width": "fit-content",
-					"color": "#0E418E"
-				}
-			},
-			"displayName": "Text",
-			"custom": {},
-			"parent": "xfuXFCWHYu",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"zlvk8T2dOX": {
-			"type": {
-				"resolvedName": "Text"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [
-					{
-						"type": "simple-action",
-						"id": "kNZZtvVh8UVMF4kzHhrZRK",
-						"events": [
-							"onclick"
-						],
-						"action": "set",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "landingPage",
-							"type": "scalar",
-							"from": "",
-							"namespace": "Shared",
-							"dataType": "string",
-							"target": "",
-							"targetNamespace": "",
-							"targetType": "unknown",
-							"set": {
-								"value": "signUpPage",
-								"type": "string"
-							}
-						}
-					}
-				],
-				"iterableChild": true,
-				"doc": [
-					{
-						"type": "paragraph",
-						"children": [
-							{
-								"text": "First time landing here? ",
-								"bold": false,
-								"italic": false,
-								"underlined": false,
-								"strikethrough": false
-							},
-							{
-								"bold": false,
-								"italic": false,
-								"underlined": true,
-								"strikethrough": false,
-								"text": "Sign up now!"
-							}
-						]
-					}
-				],
-				"datasource": "",
-				"style": {
-					"cursor": "pointer",
-					"width": "fit-content",
-					"color": "#0E418E"
-				}
-			},
-			"displayName": "Text",
-			"custom": {},
-			"parent": "xfuXFCWHYu",
-			"hidden": false,
-			"nodes": [],
 			"linkedNodes": {}
 		}
 	}
