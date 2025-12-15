@@ -41,7 +41,6 @@ exposed Function get isByConnUser()->$result : Text  // used
 	
 exposed Function setConnectionStatus($choosenStatus : Object; $doNotDisturb : Boolean)  //used
 	var $isSaved : Object
-	TRACE:C157
 	If (($doNotDisturb) && ($choosenStatus.emoji=Null:C1517))
 		This:C1470.status:={emoji: "⛔"; label: "Do not disturb"}
 		$isSaved:=This:C1470.save()

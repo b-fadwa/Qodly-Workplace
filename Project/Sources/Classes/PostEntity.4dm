@@ -30,6 +30,9 @@ exposed Function get hasHaha()->$result : Text  // used in all posts matrix'
 exposed Function get hasComments()->$result : Boolean  // used in all posts matrix'
 	$result:=(This:C1470.comments.length=0) ? False:C215 : True:C214
 	
+exposed Function get nbReactions()->$result : Integer
+	return This:C1470.reactions.length
+	
 exposed Function get reactionConnUser()->$result : Text  // used in all posts matrix'
 	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $reaction : cs:C1710.ReactionEntity

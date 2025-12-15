@@ -5464,7 +5464,7 @@
 							},
 							{
 								"type": "datasource",
-								"datasource": "Posts:$post.reactions.length",
+								"datasource": "Posts:$post.nbReactions",
 								"children": [
 									{
 										"text": "nbrReactions",
@@ -5474,6 +5474,7 @@
 										"strikethrough": false
 									}
 								],
+								"dsType": "long",
 								"format": "0"
 							},
 							{
@@ -5482,7 +5483,7 @@
 						]
 					}
 				],
-				"datasource": "Posts:$post.reactions.length"
+				"datasource": "Posts:$post.nbReactions"
 			},
 			"displayName": "Text",
 			"custom": {
@@ -5490,6 +5491,9 @@
 					"style": {
 						"color": "#b0b3b8"
 					}
+				},
+				"__t": {
+					"doc": []
 				}
 			},
 			"parent": "_d6wsxzbNh",
@@ -6246,6 +6250,20 @@
 								"value": "Like",
 								"type": "string"
 							}
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "kFm2fNqCtr3fxNTuEK37Ch",
+						"events": [
+							"onclick"
+						],
+						"action": "save",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "newReaction",
+							"type": "entity",
+							"namespace": ""
 						}
 					},
 					{
