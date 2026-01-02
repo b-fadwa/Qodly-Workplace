@@ -1,29 +1,23 @@
 property currentUser : cs:C1710.UserEntity
 
 Class constructor($user : cs:C1710.UserEntity)
-	// trace
 	This:C1470.currentUser:=$user
-	TRACE:C157
-	// trace
 	
 	
 	//Defines a connection behavior =>send $users + $groups + $messages related to the connected user
 Function onOpen($ws : 4D:C1709.WebSocketConnection; $info : Object)
-	TRACE:C157
 	var $client; $data : Object
 	var $users : cs:C1710.UserSelection:=ds:C1482.User.all()
-	var $groups : cs:C1710.GroupSelection:=ds:C1482.Group.all().query("users.ID = :1"; This:C1470.currentUser.ID)  //grpups to which the $currentUser belongs
+	var $groups : cs:C1710.GroupSelection:=ds:C1482.Group.all().query("users.ID = :1"; This:C1470.currentUser.ID)
 	var $message : cs:C1710.MessageEntity
 	var $messages : cs:C1710.MessageSelection
 	var $encodedSenderImage; encodedReceiverImage : Text
 	var $senderBlobPic; receiverBlobPic : Blob
 	var $finalReceiver : cs:C1710.UserEntity
-	// log Event("New client connected: "+this.currentUser.fullName)
 	$messages:=ds:C1482.Message.query("sender.ID = :1 or receiver.ID = :1 "; This:C1470.currentUser.ID)
 	If ($messages.length#0)
 		For each ($message; $messages)
 			$finalReceiver:=$message.receiver#Null:C1517 ? $message.receiver : $message.receiverGroup
-			//encode picture [object Picture] won't work
 			If ($message.receiver#Null:C1517 && $message.receiver.avatar#Null:C1517 && Not:C34(Undefined:C82($message.receiver.avatar)))
 				PICTURE TO BLOB:C692($message.receiver.avatar; receiverBlobPic; "image/png")
 				BASE64 ENCODE:C895(receiverBlobPic; encodedReceiverImage)
@@ -42,27 +36,23 @@ Function onMessage($ws : Object; $info : Object)
 	var $data; $finalReceiver : Variant
 	var $sender; receiver : cs:C1710.UserEntity
 	var $receiverGroup : cs:C1710.GroupEntity
-	var $encodedSenderImage; $receiverLabel; $encodedReceiverImage : Text  //receiverLabel : selected and sent rom the FE
+	var $encodedSenderImage; $receiverLabel; $encodedReceiverImage : Text
 	var $senderBlobPic; $receiverBlobPic : Blob
 	var $messages : cs:C1710.MessageSelection
-	TRACE:C157
 	For each ($client; $ws.wss.connections)
 		Try
 			$data:=JSON Parse:C1218($info.data)
-		Catch  //if it's a string coming from postman
+		Catch
 			$data:={content: $info.data}
 		End try
-		TRACE:C157
-		//case if the connected user selected a user from his conversation list in FE
 		If ($data.receiver#Null:C1517)
 			$receiverLabel:=$data.receiver
 		Else 
-			$receiverLabel:=This:C1470.currentUser.fullName  //send to myself 
+			$receiverLabel:=This:C1470.currentUser.fullName
 		End if 
-		$sender:=ds:C1482.User.query("fullName = :1"; This:C1470.currentUser.fullName).first()  //This.currentUser (not working correctly for convoMemberships..)
-		//receiver is a group or a user
+		$sender:=ds:C1482.User.query("fullName = :1"; This:C1470.currentUser.fullName).first()
 		Case of 
-			: (ds:C1482.User.query("fullName = :1"; $receiverLabel).length#0)  //receiver = user
+			: (ds:C1482.User.query("fullName = :1"; $receiverLabel).length#0)
 				$receiver:=ds:C1482.User.query("fullName = :1"; $receiverLabel).first()
 				$messages:=ds:C1482.Message.query("(sender.ID = :1 and receiver.ID = :2) or (sender.ID = :2 and receiver.ID = :1) and sentAt = :3"; $sender.ID; receiver.ID; Current time:C178)
 			: (ds:C1482.Group.query("label = :1"; $receiverLabel).length#0)
@@ -71,12 +61,10 @@ Function onMessage($ws : Object; $info : Object)
 		End case 
 		If ($messages.length#0)
 			$message:=$messages.first()
-		Else   //create new $message
+		Else 
 			$message:=ds:C1482.Message.new()
 			$message.isRead:=False:C215
-			//$sender?
 			$message.sender:=$sender
-			//receiver ?
 			If ($receiver#Null:C1517)
 				$message.receiver:=$receiver
 				$finalReceiver:=$receiver
@@ -92,7 +80,6 @@ Function onMessage($ws : Object; $info : Object)
 				$status:=$message.save()
 			End if 
 		End if 
-		//send $message to the right $client only
 		If (($client.handler.currentUser.ID=$receiver.ID) || ($client.handler.currentUser.ID=$sender.ID))
 			If ($message.receiver#Null:C1517)
 				PICTURE TO BLOB:C692($message.receiver.avatar; $receiverBlobPic; "image/png")

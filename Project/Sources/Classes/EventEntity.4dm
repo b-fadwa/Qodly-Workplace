@@ -1,9 +1,8 @@
 Class extends Entity
 
-// exposed function get isToday()->$isToday:boolean // ~ joinBeforeHost
-// 	$isToday=(this.startDate = current Date()) && (this.startHour=current Time()) ? true: false
 
-exposed Function generateLink() : Text  //used
+//generates a meeting link using the zoom api
+exposed Function generateLink() : Text
 	var $clientID : Text
 	var $accountID : Text
 	var $clientSecret : Text
@@ -25,15 +24,9 @@ exposed Function generateLink() : Text  //used
 		
 		$tokenResponse:=$tokenRequest.wait()
 		If ($tokenResponse.response.status=200)
-			$accessToken:=$tokenResponse.response.body.access_token  // Extract the access token
-			//generate the $link
+			$accessToken:=$tokenResponse.response.body.access_token
 			$linkDetails:={topic: This:C1470.name; type: 2; start_time: String:C10(This:C1470.startDate; ISO date GMT:K1:10; Time:C179(This:C1470.startHour)); duration: Time:C179(This:C1470.endHour-This:C1470.startHour); timezone: "UTC"; settings: {host_video: True:C214; participant_video: True:C214; waiting_room: True:C214}}
-			// linkDetails = {topic: this.name; type: 2; start_time: text(this.startDate; ISO dateGMT; time(this.startHour)); duration: time(this.endHour-this.startHour); timezone: "UTC"; settings: {host_video: true; participant_video: true; join_before_host: ($isToday && not(not($isToday))); waiting_room: not($isToday)}}
-			// if ($isToday)
-			// 	linkDetails = {topic: this.name; type: 2; start_time: text(this.startDate; ISO dateGMT; time(this.startHour)); duration: time(this.endHour-this.startHour); timezone: "UTC"; settings: {host_video: true; participant_video: true; join_before_host: true}}
-			// else 
-			// linkDetails = {topic: this.name; type: 2; start_time: text(this.startDate; ISO dateGMT; time(this.startHour)); duration: time(this.endHour-this.startHour); timezone: "UTC"; settings: {host_video: true; participant_video: true; waiting_room: true}}
-			// end 
+			
 			$httpOptions:=cs:C1710.HttpOptions.new("POST"; New object:C1471("Authorization"; "Bearer "+$accessToken+""; "Content-Type"; "application/json"); $linkDetails)
 			$linkRequest:=4D:C1709.HTTPRequest.new("https://api.zoom.us/v2/users/me/meetings"; $httpOptions)
 			$linkResponse:=$linkRequest.wait()
@@ -48,9 +41,10 @@ exposed Function generateLink() : Text  //used
 		Web Form:C1735.setError("Set your zoom credentials in settings!")
 	End if 
 	
-	return $link  //"https://zoom.us/j/12345678"
+	return $link
 	
-exposed Function incrementNbOfVisits()  //used
+	//incrementing the number of visits
+exposed Function incrementNbOfVisits()
 	This:C1470.nbOfVisits:=This:C1470.nbOfVisits=Null:C1517 ? 0 : This:C1470.nbOfVisits
 	This:C1470.nbOfVisits+=1
 	This:C1470.save()

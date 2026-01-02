@@ -1,39 +1,39 @@
 Class extends Entity
 
-exposed function setTeam($auto : boolean; $currentUser : cs.UserEntity) : cs.TeamEntity  //used
-	var $status: object
-	var $teamMember: cs.TeamMemberEntity
-	if ((this.label # "") && (this.description # ""))
-		this.manager := $currentUser
-		if ($auto)
-			$teamMember := ds.TeamMember.new()
-			$teamMember.user := $currentUser
-			$teamMember.team := this
+exposed Function setTeam($auto : Boolean; $currentUser : cs:C1710.UserEntity) : cs:C1710.TeamEntity
+	var $status : Object
+	var $teamMember : cs:C1710.TeamMemberEntity
+	If ((This:C1470.label#"") && (This:C1470.description#""))
+		This:C1470.manager:=$currentUser
+		If ($auto)
+			$teamMember:=ds:C1482.TeamMember.new()
+			$teamMember.user:=$currentUser
+			$teamMember.team:=This:C1470
 			$teamMember.save()
-		end if 
-		$status := this.save()
-		if ($status.success)
-			web Form.setMessage("Team created successfully!")
-		else 
-			web Form.setError("Error!")
-		end if 
-		web Form["newTeam"].hide()
-	else 
-		web Form.setError("Fill the fields!")
-	end if 
-	return this
+		End if 
+		$status:=This:C1470.save()
+		If ($status.success)
+			Web Form:C1735.setMessage("Team created successfully!")
+		Else 
+			Web Form:C1735.setError("Error!")
+		End if 
+		Web Form:C1735["newTeam"].hide()
+	Else 
+		Web Form:C1735.setError("Fill the fields!")
+	End if 
+	return This:C1470
 	
-exposed function delete()  //used
-	var $saved: object
-	var $droppedSel: cs.TeamMemberSelection
-	$droppedSel := this.teamMembers.drop()
-	if ($droppedSel.length = 0)
-		$saved := this.drop()
-		if ($saved.success)
-			web Form.setMessage("Team removed sucessfully!")
-		else 
-			web Form.setError("Error")
-		end if 
-	else 
-		web Form.setError("Error")
-	end if
+exposed Function delete()
+	var $saved : Object
+	var $droppedSel : cs:C1710.TeamMemberSelection
+	$droppedSel:=This:C1470.teamMembers.drop()
+	If ($droppedSel.length=0)
+		$saved:=This:C1470.drop()
+		If ($saved.success)
+			Web Form:C1735.setMessage("Team removed sucessfully!")
+		Else 
+			Web Form:C1735.setError("Error")
+		End if 
+	Else 
+		Web Form:C1735.setError("Error")
+	End if 

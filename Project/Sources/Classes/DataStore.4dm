@@ -1,23 +1,18 @@
 Class extends DataStoreImplementation
 
-exposed Function returnCurrentDate() : Date  //used in index
+exposed Function returnCurrentDate() : Date
 	return Current date:C33()
 	
-exposed Function returnCurrentTime() : Text  //used in index
+exposed Function returnCurrentTime() : Text
 	return String:C10(Current time:C178(); HH MM SS:K7:1)
 	
-exposed Function returnLandingPage()  //used in index
-	If (Session:C1714.storage.payload.ID#Null:C1517)
-		return "index"
-	Else 
-		return "logInPage"
-	End if 
-	
-exposed Function doNotDisturb($doNotDisturb : Boolean) : Object  //used
+	//returns format when not disturb
+exposed Function doNotDisturb($doNotDisturb : Boolean) : Object
 	If ($doNotDisturb)
 		return {emoji: "⛔"; label: "Do not disturb"}
 	End if 
 	
+	// Authenticates a user and assigns role-based or guest privileges using session management
 exposed Function authentify($email : Text; $password : Text) : Boolean
 	If (($email="") && ($password=""))
 		return Session:C1714.setPrivileges(["guest"; "guestPromoted"])
@@ -38,6 +33,7 @@ exposed Function authentify($email : Text; $password : Text) : Boolean
 		return False:C215
 	End if 
 	
+	//used to get the manifest structure for the Home page
 exposed Function getManifestObject() : Object
 	var $manifestFile : 4D:C1709.File
 	var $manifestObject : Object
@@ -45,11 +41,9 @@ exposed Function getManifestObject() : Object
 	$manifestObject:=JSON Parse:C1218($manifestFile.getText())
 	return $manifestObject
 	
-	
+	//used to generate data
 exposed Function generateData()
 	var $newData : cs:C1710.FakeData:=cs:C1710.FakeData.new()
-	// drop DATA
 	$newData.dropData()
-	// init DATA
 	$newData.generateData()
 	Web Form:C1735.setMessage("Data generated!")

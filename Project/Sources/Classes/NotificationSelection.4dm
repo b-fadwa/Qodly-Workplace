@@ -1,9 +1,12 @@
 Class extends EntitySelection
 
-exposed function setRead()  //used in notis part
-	var $notif: cs.NotificationEntity
-	for Each ($notif; this)
-		$notif.isRead := true
+
+//read/unreads a group of notifications at once
+exposed Function setRead()
+	var $notif : cs:C1710.NotificationEntity
+	For each ($notif; This:C1470)
+		$notif.isRead:=True:C214
 		$notif.save()
-	end for each 
-	web Form.setMessage("Your notifications were marked as read!")
+	End for each 
+	Web Form:C1735.setMessage("Your notifications were marked as read!")
+	

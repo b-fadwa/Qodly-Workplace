@@ -1,15 +1,15 @@
 Class extends Entity
 
-exposed Alias postContent post.title  //used
+exposed Alias postContent post.title
 
-exposed Function checkIfViewed($user : cs:C1710.UserEntity; $post : cs:C1710.PostEntity)  // used in all posts matrix' (when clicking on its content)
+exposed Function checkIfViewed($user : cs:C1710.UserEntity; $post : cs:C1710.PostEntity)
 	var $userView : cs:C1710.UserViewEntity
 	$userView:=ds:C1482.UserView.query("user.ID = :1 AND post.ID = :2"; $user.ID; $post.ID).first()
 	If ($userView=Null:C1517)
 		This:C1470.save()
 	End if 
 	
-exposed Function get isFollowedByConnUser()->$result : Boolean  // used in dialog "postViewers"
+exposed Function get isFollowedByConnUser()->$result : Boolean
 	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $friendship : cs:C1710.FriendshipEntity
 	If (This:C1470.user.ID#$user.ID)
@@ -21,7 +21,7 @@ exposed Function get isFollowedByConnUser()->$result : Boolean  // used in dialo
 		End if 
 	End if 
 	
-exposed Function get isByConnUser()->$result : Text  // used in dialog "postViewers"
+exposed Function get isByConnUser()->$result : Text
 	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $friendship : cs:C1710.FriendshipEntity
 	If (This:C1470.user.ID=$user.ID)

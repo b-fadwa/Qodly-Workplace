@@ -1,7 +1,8 @@
 shared singleton Class constructor()
 	
+	
+	//sending mails using the sendgrid api
 shared Function send($email : Object)
-	// trace
 	var $token : cs:C1710.TokenEntity:=ds:C1482.Token.query("label = 'mailToken'").first()
 	var $password : Text:=Session:C1714.storage.mailingCredentials.password#Null:C1517 ? Session:C1714.storage.mailingCredentials.password : $token.token
 	var $from : Text:=Session:C1714.storage.mailingCredentials.userName#Null:C1517 ? Session:C1714.storage.mailingCredentials.userName : $token.userName
@@ -17,7 +18,6 @@ shared Function send($email : Object)
 	option.method:="POST"
 	option.body:=$email
 	$request:=4D:C1709.HTTPRequest.new("https://api.sendgrid.com/v3/mail/send"; option).wait()
-	// trace
 	If ($request.response#Null:C1517)
 		$result:=($request.response.status=202)
 		If ($request.response.status=202)

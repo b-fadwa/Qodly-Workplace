@@ -1,54 +1,55 @@
 Class extends Entity
 
-exposed function get isFollowedByConnUser()->$result : boolean  // used in dialogs: postReactions and commentReactions
-	var $user: cs.UserEntity := ds.User.getCurrentUser()
-	var $friendship: cs.FriendshipEntity
-	if (this.user.ID # $user.ID)
-		$friendship := ds.Friendship.query("user1.ID = :1 AND user2.ID = :2"; $user.ID; this.user.ID).first()
-		if ($friendship # null)
-			$result := true
-		else 
-			$result := false
-		end if 
-	end if 
+exposed Function get isFollowedByConnUser()->$result : Boolean
+	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
+	var $friendship : cs:C1710.FriendshipEntity
+	If (This:C1470.user.ID#$user.ID)
+		$friendship:=ds:C1482.Friendship.query("user1.ID = :1 AND user2.ID = :2"; $user.ID; This:C1470.user.ID).first()
+		If ($friendship#Null:C1517)
+			$result:=True:C214
+		Else 
+			$result:=False:C215
+		End if 
+	End if 
 	
-exposed function get isByConnUser()->$result : text  // used in dialogs: postReactions and commentReactions
-	var $user: cs.UserEntity := ds.User.getCurrentUser()
-	var $friendship: cs.FriendshipEntity
-	if (this.user.ID = $user.ID)
-		$result := "yes"
-	else 
-		$result := "no"
-	end if 
+exposed Function get isByConnUser()->$result : Text
+	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
+	var $friendship : cs:C1710.FriendshipEntity
+	If (This:C1470.user.ID=$user.ID)
+		$result:="yes"
+	Else 
+		$result:="no"
+	End if 
 	
-exposed function newPostReaction($user : cs.UserEntity; $post : cs.PostEntity)  // used in all posts matrix' and the page viewPost
-	var $result: boolean
-	$result := ds.Reaction.dropReaction($user; $post; null)
-	this.save()
-	if (this.reactionType = "Like")
-		web Form.setMessage("You have liked this $post!")
-	else 
-		if (this.reactionType = "Love")
-			web Form.setMessage("You have loved this $post!")
-		else 
-			if (this.reactionType = "Haha")
-				web Form.setMessage("You have laughed to this $post!")
-			end if 
-		end if 
-	end if 
+exposed Function newPostReaction($user : cs:C1710.UserEntity; $post : cs:C1710.PostEntity)
+	var $result : Boolean
+	var $status : Object
+	$result:=ds:C1482.Reaction.dropReaction($user; $post; Null:C1517)
+	$status:=This:C1470.save()
+	If (This:C1470.reactionType="Like")
+		Web Form:C1735.setMessage("You have liked this post!")
+	Else 
+		If (This:C1470.reactionType="Love")
+			Web Form:C1735.setMessage("You have loved this post!")
+		Else 
+			If (This:C1470.reactionType="Haha")
+				Web Form:C1735.setMessage("You have laughed to this post!")
+			End if 
+		End if 
+	End if 
 	
-exposed function newCommentReaction($user : cs.UserEntity; $comment : cs.CommentEntity)  // used in comments matrix' in the page viewPost
-	var $result: boolean
-	$result := ds.Reaction.dropReaction($user; null; $comment)
-	this.save()
-	if (this.reactionType = "Like")
-		web Form.setMessage("You have liked this comment!")
-	else 
-		if (this.reactionType = "Love")
-			web Form.setMessage("You have loved this comment!")
-		else 
-			if (this.reactionType = "Haha")
-				web Form.setMessage("You have laughed to this comment!")
-			end if 
-		end if 
-	end if
+exposed Function newCommentReaction($user : cs:C1710.UserEntity; $comment : cs:C1710.CommentEntity)
+	var $result : Boolean
+	$result:=ds:C1482.Reaction.dropReaction($user; Null:C1517; $comment)
+	This:C1470.save()
+	If (This:C1470.reactionType="Like")
+		Web Form:C1735.setMessage("You have liked this comment!")
+	Else 
+		If (This:C1470.reactionType="Love")
+			Web Form:C1735.setMessage("You have loved this comment!")
+		Else 
+			If (This:C1470.reactionType="Haha")
+				Web Form:C1735.setMessage("You have laughed to this comment!")
+			End if 
+		End if 
+	End if 
