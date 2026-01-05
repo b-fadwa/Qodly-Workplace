@@ -128,3 +128,6 @@ exposed Function setManager($user : cs:C1710.UserEntity)
 		Web Form:C1735.setError("This user does not belong to any team!")
 	End if 
 	
+exposed Function get messages()->$messages : cs:C1710.MessageSelection
+	return ds:C1482.Message.all().query("sender.ID = :1 || receiver.ID = :1"; This:C1470.ID)
+	

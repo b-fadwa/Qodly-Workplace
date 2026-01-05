@@ -178,7 +178,7 @@
 			"props": {
 				"events": [],
 				"id": "text",
-				"datasource": "Shared:selectedMessage.sender.fullName",
+				"datasource": "Shared:selectedMessage.receiver.fullName",
 				"doc": [
 					{
 						"type": "paragraph",
@@ -188,7 +188,7 @@
 							},
 							{
 								"type": "datasource",
-								"datasource": "Shared:selectedMessage.sender.fullName",
+								"datasource": "Shared:selectedMessage.receiver.fullName",
 								"children": [
 									{
 										"text": "selectedRecipient.fullName"
@@ -209,7 +209,11 @@
 				"iterableChild": true
 			},
 			"displayName": "Text",
-			"custom": {},
+			"custom": {
+				"__t": {
+					"doc": []
+				}
+			},
 			"parent": "tFzZmMkUGj",
 			"hidden": false,
 			"nodes": [],
@@ -490,37 +494,34 @@
 						"state": {}
 					},
 					{
-						"type": "simple-action",
-						"id": "nrdZVqUc96UymPaScTJCyh",
+						"type": "method",
+						"dataclass": "Message",
 						"events": [
 							"onclick"
 						],
-						"action": "query",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "receivedMessages",
-							"from": "",
-							"namespace": "Users",
-							"type": "entitysel"
-						},
-						"query": {
-							"query": "(receiver.ID = :1 and sender.ID = :2) or (receiver.ID = :2 and sender.ID = :1)  and isDraft=false",
-							"params": [
-								{
-									"id": "mMEr4KBuncMjmumYh5MTFf",
-									"datasource": "Shared:selectedMessage.sender.ID"
-								},
-								{
-									"id": "qKtANXFH6PjwtLANvFD3Wu",
-									"datasource": "Shared:currentUser.ID"
-								},
-								{
-									"id": "gJJR7cNLQD1RujXkQXHvTL",
-									"datasource": "Shared:currentDate"
-								}
-							]
-						},
-						"state": {}
+						"id": "5xxQvi74vntxFw2gbHYd9H",
+						"method": "ds.Message.getMessages",
+						"params": [
+							{
+								"name": "otherUser",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:selectedMessage.receiver",
+								"id": "i7seZiGk9kTNetqAkaNd76"
+							},
+							{
+								"name": "currentUser",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "nyjd91X8zDLiEFbRcFwtDo"
+							}
+						],
+						"datasource": "",
+						"allowedOnHTTPGET": false,
+						"returns": {
+							"name": "result",
+							"type": "cs.MessageSelection",
+							"datasource": "chat:conversation"
+						}
 					},
 					{
 						"type": "method",
@@ -561,35 +562,6 @@
 					},
 					{
 						"type": "simple-action",
-						"id": "iFGYy8ftCsqZT9YMprJCcw",
-						"events": [
-							"onclick"
-						],
-						"action": "query",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "receivedMessages",
-							"type": "entitysel",
-							"from": "",
-							"namespace": "Users"
-						},
-						"query": {
-							"query": "(sender.ID = :1 and receiver.ID = :2)  or (sender.ID = :2 and receiver.ID = :1) and (isDraft=false or isDraft = null)",
-							"params": [
-								{
-									"id": "oJUGts2PfVuhG99wqdF2vT",
-									"datasource": "Shared:selectedMessage.sender.ID"
-								},
-								{
-									"id": "w1cp5XN87rEHDaqEn8f8iu",
-									"datasource": "Shared:currentUser.ID"
-								}
-							]
-						},
-						"disabled": false
-					},
-					{
-						"type": "simple-action",
 						"id": "48nzkjgMbBd6NPMMpqvE8V",
 						"events": [
 							"onclick"
@@ -602,24 +574,6 @@
 							"namespace": ""
 						},
 						"state": {}
-					},
-					{
-						"type": "method",
-						"dataclass": "UserEntity",
-						"events": [
-							"onclick"
-						],
-						"id": "2qoT6h6Mehm8HviLEN8yFH",
-						"method": "currentUser.groupMessage",
-						"params": [],
-						"namespace": "Shared",
-						"datasource": "",
-						"returns": {
-							"name": "result",
-							"type": "cs.MessageSelection",
-							"datasource": "Users:groupMessages"
-						},
-						"disabled": true
 					}
 				],
 				"iconPosition": "left",
@@ -684,7 +638,7 @@
 				"style": {
 					"height": "100%"
 				},
-				"datasource": "Users:receivedMessages",
+				"datasource": "chat:conversation",
 				"gridProps": {
 					"styleboxWidth": 1,
 					"styleboxHeight": 66,
@@ -800,7 +754,7 @@
 					"borderColor": "inherit",
 					"width": "100%"
 				},
-				"datasource": "Users:$This.content"
+				"datasource": "chat:$This.content"
 			},
 			"displayName": "TextEditor",
 			"custom": {
@@ -1419,7 +1373,7 @@
 							},
 							{
 								"type": "datasource",
-								"datasource": "Users:$This.atHour",
+								"datasource": "chat:$This.atHour",
 								"children": [
 									{
 										"text": "hour",
@@ -1438,13 +1392,17 @@
 						]
 					}
 				],
-				"datasource": "Users:$This.atHour",
+				"datasource": "chat:$This.atHour",
 				"style": {
 					"minWidth": "fit-content"
 				}
 			},
 			"displayName": "Text",
-			"custom": {},
+			"custom": {
+				"__t": {
+					"doc": []
+				}
+			},
 			"parent": "sYV3Uy0uLQ",
 			"hidden": false,
 			"nodes": [],

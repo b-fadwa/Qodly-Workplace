@@ -405,5 +405,16 @@
 				]
 			}
 		}
+	],
+	"chat": [
+		{
+			"id": "conversation",
+			"type": "entitysel",
+			"dataclass": "Message",
+			"namespace": "chat",
+			"initialValue": "",
+			"depth": null,
+			"pageSize": 100
+		}
 	]
 }
