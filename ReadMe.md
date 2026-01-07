@@ -1,136 +1,118 @@
-# 🏢 Workplace  
-### A Complete Internal Social Network & Collaboration Platform Built with Qodly
+# 🏢 Workplace Application
 
-**Workplace** is a modern internal social platform that centralizes communication, collaboration, and employee engagement.  
-It provides a smooth and interactive space where employees can share updates, interact, and stay informed.
+This demo app is built with **4D Qodly Pro** and is designed to serve as a modern internal social network and collaboration platform.
 
----
+## Purpose of the application
 
-# 🎯 Purpose of the Application
-
-Communication inside companies often becomes scattered between emails, chats, and informal channels.  
-**Workplace** consolidates all of this into a single, organized platform.
+The **Workplace Application** consolidates internal company communication into one organized platform.  
+It helps teams stay connected, informed, and engaged without relying on scattered tools.
 
 The application aims to:
 
-- Enhance communication between teams  
-- Centralize announcements and updates  
-- Provide a unified social feed  
-- Strengthen company culture and collaboration  
-- Offer secure employee profiles, groups, posts, and messages  
+- Enhance communication between employees and teams
+- Centralize announcements and internal updates
+- Provide a unified social activity feed
+- Encourage collaboration and company culture
+- Offer secure profiles, groups, posts, and messaging
 
 ---
 
-# 🧩 What the App Covers
+## Main Features
 
-Workplace is divided into several modules that create a connected internal ecosystem.
+- **Activity Feed**: Company-wide posts, announcements, likes, and comments.
 
----
+  ![Posts page](Project/Sources/Shared/visuals/postsView.png)
 
-## 📰 1. Activity Feed
+- **Employee Profiles**: Structured employee directory with personal and professional details.
 
-A dynamic company-wide feed that displays:
+  ![Employee page](Project/Sources/Shared/visuals/directoryView.png)
 
-- Posts and announcements  
-- Team updates  
-- Likes, comments, and interactions  
+- **Groups & Teams**: Public and private collaboration spaces with dedicated feeds.
 
-![Posts page](Project/Sources/Shared/visuals/postsView.png)
+  ![Groups page](Project/Sources/Shared/visuals/groupsView.png)
 
----
+- **Messaging & Conversations**: One-to-one and group chats with real-time interaction.
 
-## 👤 2. Employee Profiles
+  ![Chat page](Project/Sources/Shared/visuals/ChatPanel.png)
 
-Structured profiles for each employee:
+- **Events & Calendar**: Internal events, meetings, and RSVP tracking.
 
-- Personal details, department, and contact info  
+  ![Events page](Project/Sources/Shared/visuals/eventsView.png)
 
-![Employee page](Project/Sources/Shared/visuals/directoryView.png)
+- **Settings & Credentials**: Centralized configuration and access control.
 
-
----
-
-## 👥 3. Groups & Teams
-
-Organize communication by topic or department:
-
-- Public or private groups  
-- Group-specific posts  
-- Team collaboration spaces  
-- Separate group feeds  
-
-![Groups page](Project/Sources/Shared/visuals/groupsView.png)
+  ![Settings page](Project/Sources/Shared/visuals/settingsPage.png)
 
 ---
 
-## 💬 4. Messaging & Conversations
+## How to Run
 
-Integrated communication features:
+### Pre-requisites (4D Software)
 
-- One-to-one messaging  
-- Group conversations  
-- Quick replies  
-- Notification-ready structure  
+- Download the latest Release version of 4D: [Product Download](https://us.4d.com/product-download/Feature-Release)
+- Or the latest Beta version: [Beta Program](https://discuss.4d.com/)
+- Follow activation steps: [Installation Guide](https://developer.4d.com/docs/GettingStarted/installation)
 
-![Chat page](Project/Sources/Shared/visuals/ChatPanel.png)
+### Steps to Run the Project
 
-
----
-
-## 📅 5. Events & Calendar
-
-Manage company and team events:
-
-- Internal events, meetings, and workshops  
-- RSVP and attendance tracking  
-- Calendar views  
-- Highlight upcoming events  
-
-![Events page](Project/Sources/Shared/visuals/eventsView.png)
-
+- Clone or download this repository to your local machine.
+- Open the project in 4D: **File > Open Project**
+- Open **Qodly Studio**: **Design > Qodly Studio**
+- Click **Run** to start the server and preview the app in your browser.
 
 ---
 
-# 🚀 How to Integrate and Use Workplace
+## Configuration & Credentials
 
----
+### Do I need to create external accounts?
 
-## 1. Clone or Import the Template
+- **Mailing & Meetings (optional)**: Required only if you want email notifications or external meeting integrations.
+  - Sendgrid api services can be used for mailing.
+  - Collaboration services (e.g., Zooms meetings) require their respective credentials.
 
-Download or clone the Workplace project into your **Qodly workspace** or 4D project folder.  
-Open it in **Qodly Studio**.
+### Where does the app read credentials?
 
----
-
-## 2. Launch the Application
-
-Run the application from **Qodly Studio**.
-
-Choose your starting page:
-
-- **Home** → Opens the application's presentation  
-- **StartPage** → Starts with authentication  
-
-Explore posts, groups, messages, and events.
-
-### 🔐 Required Credentials (Mailing & Teams Meetings)
-
-To enable all features in the Workplace application, credentials for external communication and collaboration services must be configured in the application’s settings page.
+- Credentials are configured via the **Settings** page inside the application.
+- External service keys and secrets are stored and accessed through the database.
 
 ![Settings page](Project/Sources/Shared/visuals/settingsPage.png)
 
----
+## Test Accounts and Sample Data
 
-## 3. Customize as Needed
-
-Workplace is built to be extensible. You can adjust:
-
-- The **data model** (users, posts, messages, events, etc.)  
-- UI pages with **QodlyPages**  
-- Business logic in project methods  
-- Branding, theme, and layout  
-- Permission rules and group structure  
-
-Use Workplace as a foundation and evolve it toward your organization’s needs.
+- Sample data can be generated via the UI or dedicated data generation method .
 
 ---
+
+## Where to Find the Code for Each Feature
+
+- **Generating data**
+
+  - Server: `FakeData.4dm` — Generated random data for the application's dataclasses.
+  - UI: `home.WebForm`
+
+- **Authentication & Profiles**
+  - Server: `User.4dm`, `UserEntity.4dm`
+  - UI: `Login.WebForm`, `Profile.WebForm`
+
+- **Custom UI components** used to enhance user experience, including:
+
+  - Virtualizer (in the postsFeed page and other pages)
+
+  - Calendar (in the userEvents and discoverEvents pages)
+
+  - Avatar group (in the workTeamsList page and other pages)
+
+  - Popover (in the index page and other pages)
+
+  - Map and stepper (in the newEvent page)
+
+  - Slate editor (in the newNote page and other pages)
+
+  - Date picker (in the updateIncident page and other pages)
+
+  - Query builder (in the usersList page)
+
+  - Accordion (in the index page)
+
+
+This structure allows you to easily customize, extend, or reuse **Workplace** as a foundation for your internal communication and collaboration solutions.

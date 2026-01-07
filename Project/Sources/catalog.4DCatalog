@@ -85,14 +85,14 @@
 		<field name="visibility" uuid="66350329EF854A0B8A64F5AA56B8DE18" type="10" id="6"/>
 		<field name="enableComments" uuid="915211ABB3EB4EFEA7BD1C68D0ACB7F4" type="1" id="7"/>
 		<field name="createdAt" uuid="BA7E152E5C2C4AC285603DFC0AB97FF9" type="8" id="8"/>
-		<field name="image" uuid="80C1D017D20C4C52985871FF4ABE4312" type="10" id="13"/>
+		<field name="image" uuid="80C1D017D20C4C52985871FF4ABE4312" type="12" id="13"/>
 		<field name="title" uuid="8A558E3936B6459EB6930D85E01F4A7C" type="10" id="14"/>
 		<field name="isKeyUpdate" uuid="E69573205B8D421FAB4F5F69C7DE93F5" type="1" id="15"/>
 		<primary_key field_name="ID" field_uuid="674B88A3626947E680C11E321DB56D7D"/>
 		<table_extra>
-			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+			<editor_table_info fields_ordering="1" displayable_fields_count="10">
 				<color red="59" green="130" blue="246" alpha="255"/>
-				<coordinates left="2256.3010253906" top="771.90869140625" width="200" height="167.33203125"/>
+				<coordinates left="2256.3010253906" top="771.90869140625" width="336" height="264.33203125"/>
 			</editor_table_info>
 		</table_extra>
 	</table>

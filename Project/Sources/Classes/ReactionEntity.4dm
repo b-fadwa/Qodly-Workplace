@@ -24,16 +24,18 @@ exposed Function get isByConnUser()->$result : Text
 exposed Function newPostReaction($user : cs:C1710.UserEntity; $post : cs:C1710.PostEntity)
 	var $result : Boolean
 	var $status : Object
-	$result:=ds:C1482.Reaction.dropReaction($user; $post; Null:C1517)
-	$status:=This:C1470.save()
-	If (This:C1470.reactionType="Like")
-		Web Form:C1735.setMessage("You have liked this post!")
-	Else 
-		If (This:C1470.reactionType="Love")
-			Web Form:C1735.setMessage("You have loved this post!")
+	If (($post#Null:C1517) && ($user#Null:C1517))
+		$result:=ds:C1482.Reaction.dropReaction($user; $post; Null:C1517)
+		$status:=This:C1470.save()
+		If (This:C1470.reactionType="Like")
+			Web Form:C1735.setMessage("You have liked this post!")
 		Else 
-			If (This:C1470.reactionType="Haha")
-				Web Form:C1735.setMessage("You have laughed to this post!")
+			If (This:C1470.reactionType="Love")
+				Web Form:C1735.setMessage("You have loved this post!")
+			Else 
+				If (This:C1470.reactionType="Haha")
+					Web Form:C1735.setMessage("You have laughed to this post!")
+				End if 
 			End if 
 		End if 
 	End if 
