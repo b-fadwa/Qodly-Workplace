@@ -10,7 +10,7 @@
 		<field name="birthDate" uuid="8104EC6EAF3A4CA28437CB8DE5BB7D76" type="8" id="5"/>
 		<field name="bio" uuid="BBBBB4CDEB204A02A3293196B7BA888F" type="10" id="6"/>
 		<field name="skills" uuid="CC5432B2E88240C495F3B6E5B21FD63F" type="10" id="7"/>
-		<field name="avatar" uuid="45D90ACE9E56473FAB24ACDCDD190809" type="10" id="8"/>
+		<field name="avatar" uuid="45D90ACE9E56473FAB24ACDCDD190809" type="12" id="8"/>
 		<field name="lastLogin" uuid="C9D1789300CC4DA3961E9E5E979A4272" type="9" id="9"/>
 		<field name="timeZone" uuid="67273BC1E62648A0B9FEBAFFA67AFE24" type="10" id="10"/>
 		<field name="personalPhone" uuid="A4E2583CF027442CA8EE8F86A74186E9" type="10" id="11"/>
@@ -52,12 +52,12 @@
 		<field name="type" uuid="88F2EC3D280543049A9211867DAD2D89" type="10" id="4"/>
 		<field name="createdBy_ID" uuid="3BDE5F1091DA4987AE14D727891AB77F" type="4" id="5"/>
 		<field name="createdAt" uuid="A721145F9F8C4CEBBB95E3CFB2415443" type="8" id="6"/>
-		<field name="cover" uuid="E42A7B480D87478B9A7A8DAB9D6F9746" type="10" id="9"/>
+		<field name="cover" uuid="E42A7B480D87478B9A7A8DAB9D6F9746" type="12" id="9"/>
 		<primary_key field_name="ID" field_uuid="E15C60ADCAB8454F8DE135D2D3FAC5B0"/>
 		<table_extra>
-			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+			<editor_table_info fields_ordering="1" displayable_fields_count="7">
 				<color red="41" green="219" blue="37" alpha="255"/>
-				<coordinates left="1344.5305175781" top="0" width="200" height="167.33203125"/>
+				<coordinates left="1344.5305175781" top="0" width="219" height="197.33203125"/>
 			</editor_table_info>
 		</table_extra>
 	</table>
@@ -85,14 +85,14 @@
 		<field name="visibility" uuid="66350329EF854A0B8A64F5AA56B8DE18" type="10" id="6"/>
 		<field name="enableComments" uuid="915211ABB3EB4EFEA7BD1C68D0ACB7F4" type="1" id="7"/>
 		<field name="createdAt" uuid="BA7E152E5C2C4AC285603DFC0AB97FF9" type="8" id="8"/>
-		<field name="image" uuid="80C1D017D20C4C52985871FF4ABE4312" type="10" id="13"/>
+		<field name="image" uuid="80C1D017D20C4C52985871FF4ABE4312" type="12" id="13"/>
 		<field name="title" uuid="8A558E3936B6459EB6930D85E01F4A7C" type="10" id="14"/>
 		<field name="isKeyUpdate" uuid="E69573205B8D421FAB4F5F69C7DE93F5" type="1" id="15"/>
 		<primary_key field_name="ID" field_uuid="674B88A3626947E680C11E321DB56D7D"/>
 		<table_extra>
-			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+			<editor_table_info fields_ordering="1" displayable_fields_count="10">
 				<color red="59" green="130" blue="246" alpha="255"/>
-				<coordinates left="2256.3010253906" top="771.90869140625" width="200" height="167.33203125"/>
+				<coordinates left="2256.3010253906" top="771.90869140625" width="336" height="264.33203125"/>
 			</editor_table_info>
 		</table_extra>
 	</table>
@@ -214,9 +214,9 @@
 		<field name="description" uuid="876910773E444BAB8E71A48252F8B7EF" type="10" id="4"/>
 		<primary_key field_name="ID" field_uuid="2ECEC992E6E341EDBFA7435E7A1E29F3"/>
 		<table_extra>
-			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+			<editor_table_info fields_ordering="1" displayable_fields_count="5">
 				<color red="41" green="219" blue="37" alpha="255"/>
-				<coordinates left="171.02954101562" top="1338.4794921875" width="223" height="177.33203125"/>
+				<coordinates left="171.02954101562" top="1338.4794921875" width="228" height="164.33203125"/>
 			</editor_table_info>
 		</table_extra>
 	</table>

@@ -1,10 +1,8 @@
 Class extends EntitySelection
 
-// used in the page "seeProfile" - tab "about" (dialog editYourTeams)
-exposed function addToTeam($option : cs.TeamEntity)->$selection : cs.TeamSelection
-	$selection := this.copy()
-	$selection := $selection.add($option)
+exposed Function addToTeam($option : cs:C1710.TeamEntity)->$selection : cs:C1710.TeamSelection
+	$selection:=This:C1470.copy()
+	$selection:=$selection.add($option)
 	
-// used in the page "seeProfile" - tab "about" (dialog editYourTeams)
-exposed function removeTeam($option : cs.TeamEntity)->$selection : cs.TeamSelection
-	$selection := this.minus($option)
+exposed Function removeTeam($option : cs:C1710.TeamEntity)->$selection : cs:C1710.TeamSelection
+	$selection:=This:C1470.minus($option)

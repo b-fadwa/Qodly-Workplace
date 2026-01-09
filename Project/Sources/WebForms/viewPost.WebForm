@@ -8533,9 +8533,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Audience:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Audience:",
 				"style": {
 					"width": "fit-content",
 					"minWidth": "fit-content",
@@ -14506,10 +14507,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Label",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"deletable": true,
-				"text": "Label"
+				"deletable": true
 			},
 			"displayName": "Label",
 			"custom": {},
@@ -14539,7 +14541,8 @@
 				"moveable": false,
 				"placeholder": "",
 				"revealPassword": true,
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -14588,10 +14591,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Media URL:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
 				"deletable": true,
-				"text": "Media URL:",
 				"style": {
 					"paddingRight": "0px",
 					"width": "75px",
@@ -14634,7 +14638,8 @@
 					"borderWidth": "1px"
 				},
 				"intervals": [],
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {

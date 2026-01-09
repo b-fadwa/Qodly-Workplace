@@ -1,36 +1,39 @@
 Class extends Entity
 
-exposed Function get WallOrGroup()->$result : Text  // used in all posts matrix'
+exposed Function get WallOrGroup()->$result : Text
 	$result:=(This:C1470.group=Null:C1517) ? "wall" : "group"
 	
-exposed Function get containImage()->$result : Boolean  // used in all posts matrix' after adding the attribute "image"
+exposed Function get containImage()->$result : Boolean
 	$result:=(This:C1470.image=Null:C1517) ? False:C215 : True:C214
 	
-exposed Function get containMediaURL()->$result : Boolean  // used in all posts matrix' after adding the attribute "mediaUrl"
+exposed Function get containMediaURL()->$result : Boolean
 	$result:=(This:C1470.mediaUrl=Null:C1517) ? False:C215 : True:C214
 	
-exposed Function get isViewed()->$result : Boolean  // used in all posts matrix'
+exposed Function get isViewed()->$result : Boolean
 	$result:=(This:C1470.userViews.length=0) ? False:C215 : True:C214
 	
-exposed Function get hasReactions()->$result : Boolean  // used in all posts matrix'
+exposed Function get hasReactions()->$result : Boolean
 	$result:=(This:C1470.reactions.length=0) ? False:C215 : True:C214
 	
-exposed Function get hasLike()->$result : Text  // used in all posts matrix'
+exposed Function get hasLike()->$result : Text
 	var $reactions : cs:C1710.ReactionSelection:=This:C1470.reactions.query("reactionType = 'Like'")
 	$result:=($reactions.length#0) ? "yes" : "no"
 	
-exposed Function get hasLove()->$result : Text  // used in all posts matrix'
+exposed Function get hasLove()->$result : Text
 	var $reactions : cs:C1710.ReactionSelection:=This:C1470.reactions.query("reactionType = 'Love'")
 	$result:=($reactions.length#0) ? "yes" : "no"
 	
-exposed Function get hasHaha()->$result : Text  // used in all posts matrix'
+exposed Function get hasHaha()->$result : Text
 	var $reactions : cs:C1710.ReactionSelection:=This:C1470.reactions.query("reactionType = 'Haha'")
 	$result:=($reactions.length#0) ? "yes" : "no"
 	
-exposed Function get hasComments()->$result : Boolean  // used in all posts matrix'
+exposed Function get hasComments()->$result : Boolean
 	$result:=(This:C1470.comments.length=0) ? False:C215 : True:C214
 	
-exposed Function get reactionConnUser()->$result : Text  // used in all posts matrix'
+exposed Function get nbReactions()->$result : Integer
+	return This:C1470.reactions.length
+	
+exposed Function get reactionConnUser()->$result : Text
 	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $reaction : cs:C1710.ReactionEntity
 	If (This:C1470.reactions#Null:C1517)
@@ -49,7 +52,7 @@ exposed Function get reactionConnUser()->$result : Text  // used in all posts ma
 			End if 
 		End if 
 	End if 
-exposed Function createPost()  // used 
+exposed Function createPost()
 	var $saved : Object
 	var $activityLog : cs:C1710.ActivityLogEntity
 	If ((This:C1470.content#"") && (This:C1470.visibility#""))
@@ -57,7 +60,7 @@ exposed Function createPost()  // used
 		$saved:=This:C1470.save()
 		If ($saved.success)
 			$activityLog:=ds:C1482.ActivityLog.new()
-			$activityLog.createLog("You added a new post in the feed !: "+String:C10(This:C1470.title))  //testing
+			$activityLog.createLog("You added a new post in the feed !: "+String:C10(This:C1470.title))
 			Web Form:C1735["newPost"].hide()
 			If (This:C1470.visibility="public")
 				ds:C1482.Notification.createNotif(This:C1470; "New post!"; Null:C1517)
@@ -66,7 +69,6 @@ exposed Function createPost()  // used
 		Else 
 			Web Form:C1735.setError("Error!")
 		End if 
-		
 	Else 
 		Web Form:C1735.setError("Fill the required fields!")
 	End if 

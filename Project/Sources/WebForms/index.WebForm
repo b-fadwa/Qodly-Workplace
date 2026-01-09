@@ -177,13 +177,6 @@
 				"pageSize": 100
 			},
 			{
-				"id": "invitedEmail",
-				"type": "scalar",
-				"namespace": "",
-				"dataType": "string",
-				"initialValue": ""
-			},
-			{
 				"id": "newPost",
 				"type": "entity",
 				"dataclass": "Post",
@@ -408,8 +401,8 @@
 					"value": "",
 					"valueType": "hardCoded",
 					"op": "notnull",
-					"path": "Users:selectedChatGroup",
-					"dsType": "entity"
+					"path": "Users:selectedChatGroup.ID",
+					"dsType": "long"
 				}
 			},
 			{
@@ -422,8 +415,8 @@
 					"value": "",
 					"valueType": "hardCoded",
 					"op": "notnull",
-					"path": "Users:selectedRecipient",
-					"dsType": "entity"
+					"path": "Users:selectedRecipient.ID",
+					"dsType": "long"
 				}
 			},
 			{
@@ -646,7 +639,6 @@
 				"RvHO3-3_R3",
 				"aeWu0kAb6G",
 				"iSGKPE4lkw",
-				"K0vEAxPvGQ",
 				"pBeRDPAae8",
 				"rcTKmTD-9E",
 				"zVSQxdsvdM"
@@ -996,32 +988,6 @@
 							"type": "cs.MessageSelection",
 							"datasource": "Users:groupMessages"
 						}
-					},
-					{
-						"type": "simple-action",
-						"id": "ab11xN18piHiWBJNaS9xH5",
-						"events": [
-							"onclick"
-						],
-						"action": "orderBy",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "currentUser.receivedMessages",
-							"type": "entitysel",
-							"namespace": "Shared",
-							"from": ""
-						},
-						"orderBy": [
-							{
-								"id": "sWHJdoegwbsVkeWMt523ix",
-								"name": "createdAt",
-								"order": "desc"
-							}
-						],
-						"feedback": {
-							"enabled": false
-						},
-						"disabled": false
 					}
 				],
 				"iconPosition": "left",
@@ -1145,7 +1111,7 @@
 							"name": "result",
 							"type": "Variable"
 						},
-						"disabled": true
+						"disabled": false
 					},
 					{
 						"type": "simple-action",
@@ -1159,7 +1125,8 @@
 							"name": "currentUser",
 							"type": "entity",
 							"namespace": "Shared"
-						}
+						},
+						"disabled": true
 					},
 					{
 						"type": "simple-action",
@@ -1177,7 +1144,8 @@
 						},
 						"query": {
 							"query": "isTurnedOff = false or isTurnedOff = null",
-							"params": []
+							"params": [],
+							"onPreviousData": true
 						},
 						"feedback": {
 							"enabled": false
@@ -1307,7 +1275,8 @@
 					"paddingLeft": "0px",
 					"display": "flex",
 					"flexDirection": "column",
-					"height": "100%"
+					"height": "100%",
+					"width": "100%"
 				}
 			},
 			"displayName": "Stylebox",
@@ -1493,7 +1462,8 @@
 					"paddingRight": "0px",
 					"paddingBottom": "0px",
 					"paddingTop": "0px",
-					"paddingLeft": "0px"
+					"paddingLeft": "0px",
+					"width": "100%"
 				},
 				"classNames": [
 					"flexGrow"
@@ -1889,10 +1859,11 @@
 						"events": [
 							"onclick"
 						],
-						"id": "3xeKhwnqQ7dVAhyyoyr6Pa",
+						"id": "izVTwYJTjabwShUNgmmDjT",
 						"method": "ds.User.logout",
 						"params": [],
 						"datasource": "",
+						"allowedOnHTTPGET": false,
 						"returns": {
 							"name": "result",
 							"type": "Variable"
@@ -1900,20 +1871,25 @@
 						"feedback": true
 					},
 					{
-						"type": "method",
-						"dataclass": "DataStore",
+						"type": "qodly-pro-action",
+						"id": "3d9F5RN4aXAJD5PoTxFPS6",
 						"events": [
 							"onclick"
 						],
-						"id": "ojKo2HgB1dsK7ct4Y2Nzu5",
-						"method": "ds.returnLandingPage",
-						"params": [],
-						"datasource": "",
-						"returns": {
-							"name": "result",
-							"type": "Variable",
-							"datasource": "Shared:landingPage"
-						}
+						"actionType": "auth",
+						"action": "logout"
+					},
+					{
+						"type": "navigation",
+						"id": "hc3FuyQjhn4U1MNBg56Mn8",
+						"events": [
+							"onclick"
+						],
+						"externalLink": false,
+						"loader": "CHTAqyzKHL",
+						"parent": "webform-loader-self",
+						"target": "startPage",
+						"isHardCoded": true
 					}
 				],
 				"iterableChild": true,
@@ -2589,9 +2565,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Name",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Name",
 				"deletable": true
 			},
 			"displayName": "Label",
@@ -2622,7 +2599,8 @@
 				"moveable": false,
 				"datasource": "Groups:newGroup.name",
 				"revealPassword": true,
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {},
@@ -2662,9 +2640,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Description",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Description",
 				"deletable": true
 			},
 			"displayName": "Label",
@@ -2695,7 +2674,8 @@
 				"moveable": false,
 				"datasource": "Groups:newGroup.description",
 				"revealPassword": true,
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {},
@@ -2731,9 +2711,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Select Privacy",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Select Privacy",
 				"deletable": true
 			},
 			"displayName": "Label",
@@ -3477,10 +3458,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Qodlysource",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"deletable": true,
-				"text": "Qodlysource"
+				"deletable": true
 			},
 			"displayName": "Label",
 			"custom": {},
@@ -3509,7 +3491,8 @@
 				"datasource": "choosenStatus.label",
 				"dataType": "object",
 				"revealPassword": true,
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {},
@@ -3594,10 +3577,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Do Not Disturb",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
 				"htmlfor": "ps521PA8Lo",
-				"text": "Do Not Disturb",
 				"deletable": true
 			},
 			"displayName": "Label",
@@ -5297,7 +5281,7 @@
 							"namespace": "Shared",
 							"target": "selectedGroup",
 							"targetNamespace": "Groups",
-							"targetType": "entity"
+							"targetType": "unknown"
 						}
 					},
 					{
@@ -6064,80 +6048,6 @@
 			"displayName": "Stylebox",
 			"custom": {},
 			"parent": "QXoyS44dDV",
-			"hidden": false,
-			"nodes": [
-				"X1pxDRznLE"
-			],
-			"linkedNodes": {}
-		},
-		"X1pxDRznLE": {
-			"type": {
-				"resolvedName": "Button"
-			},
-			"isCanvas": false,
-			"props": {
-				"text": "Invite coworkers",
-				"classNames": [
-					"activeButton"
-				],
-				"events": [
-					{
-						"type": "dialog",
-						"id": "tTjGeD8aAPoENbyojc1E7j",
-						"events": [
-							"onclick"
-						],
-						"actionType": "open",
-						"targetDialog": "newInvitation"
-					}
-				],
-				"iconPosition": "left",
-				"style": {
-					"display": "flex",
-					"color": "#1763cf",
-					"backgroundColor": "transparent",
-					"width": "100%",
-					"justifyContent": "flex-start"
-				}
-			},
-			"displayName": "Button",
-			"custom": {
-				"states:fpUYJdotx6wxLmTphuT5iH": {
-					"style": {
-						"color": "#4599ff",
-						"width": "100%"
-					}
-				}
-			},
-			"parent": "84V949ebPR",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {
-				"icon": "qGyTYGODFX"
-			}
-		},
-		"qGyTYGODFX": {
-			"type": {
-				"resolvedName": "Icon"
-			},
-			"isCanvas": false,
-			"props": {
-				"classNames": [],
-				"events": [],
-				"icon": "fa-solid fa-plus",
-				"style": {
-					"width": "36px",
-					"height": "36px",
-					"display": "flex",
-					"justifyContent": "center",
-					"alignItems": "center",
-					"backgroundColor": "#e7f3ff",
-					"borderRadius": "10px"
-				}
-			},
-			"displayName": "Icon",
-			"custom": {},
-			"parent": "X1pxDRznLE",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}
@@ -7042,7 +6952,7 @@
 						"events": [
 							"onclick"
 						],
-						"action": "all",
+						"action": "query",
 						"actionType": "datasource",
 						"datasource": {
 							"name": "currentUser.notifications",
@@ -7051,13 +6961,9 @@
 							"from": ""
 						},
 						"query": {
-							"query": "user.ID = :1",
-							"params": [
-								{
-									"id": "9sxKhz1WQ2Zidwyg5XbHNf",
-									"datasource": "Shared:currentUser.ID"
-								}
-							]
+							"query": "",
+							"params": [],
+							"onPreviousData": true
 						},
 						"disabled": false
 					}
@@ -8384,7 +8290,7 @@
 					},
 					{
 						"type": "simple-action",
-						"id": "nx7q6Qms9dvf2KYB6wYGjq",
+						"id": "4e6BPvsYKY4dDQTjQXsqHD",
 						"events": [
 							"onclick"
 						],
@@ -8393,14 +8299,10 @@
 						"datasource": {
 							"name": "currentUser.receivedMessages",
 							"type": "entitysel",
-							"namespace": "Shared",
-							"from": ""
-						},
-						"query": {
-							"query": "(isDraft = false or isDraft = null) and (isHidden = false or isHidden = null ) ",
-							"params": []
-						},
-						"disabled": false
+							"from": "",
+							"dataType": "unknown",
+							"namespace": "Shared"
+						}
 					}
 				],
 				"iconPosition": "hidden",
@@ -8601,109 +8503,12 @@
 					"matrixStyle",
 					"flexGrow"
 				],
-				"events": [
-					{
-						"type": "navigation",
-						"id": "15wEssvYEFGXuLVDimduBh",
-						"events": [
-							"onselect"
-						],
-						"externalLink": false,
-						"loader": "CHTAqyzKHL",
-						"parent": "webform-loader",
-						"target": "chatDetails",
-						"isHardCoded": true,
-						"disabled": true
-					},
-					{
-						"type": "simple-action",
-						"id": "t39weryjHmLRCr88tcxyhM",
-						"events": [
-							"onselect"
-						],
-						"action": "query",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "receivedMessages",
-							"type": "entitysel",
-							"from": "",
-							"namespace": "Users"
-						},
-						"query": {
-							"query": "(sender.ID = :1 and receiver.ID = :2)  or (sender.ID = :2 and receiver.ID = :1)  and (isDraft=false or isDraft = null)",
-							"params": [
-								{
-									"id": "oJUGts2PfVuhG99wqdF2vT",
-									"datasource": "Shared:selectedMessage.sender.ID"
-								},
-								{
-									"id": "w1cp5XN87rEHDaqEn8f8iu",
-									"datasource": "Shared:currentUser.ID"
-								}
-							]
-						},
-						"disabled": true
-					},
-					{
-						"type": "simple-action",
-						"id": "ryjGD15WCHnZtXaS5GyouW",
-						"events": [
-							"onselect"
-						],
-						"action": "set",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "selectedMessage.isRead",
-							"type": "bool",
-							"namespace": "Shared",
-							"from": "",
-							"set": {
-								"value": "true",
-								"type": "bool"
-							}
-						},
-						"disabled": true
-					},
-					{
-						"type": "simple-action",
-						"id": "3k7d2r6wpqwKoRVyXBZc3G",
-						"events": [
-							"onselect"
-						],
-						"action": "save",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "selectedMessage",
-							"type": "entity",
-							"namespace": "Shared"
-						},
-						"feedback": {
-							"enabled": false
-						},
-						"disabled": true
-					},
-					{
-						"type": "simple-action",
-						"id": "nLpTnV9yhPf7YuXnkhAyuM",
-						"events": [
-							"onselect"
-						],
-						"action": "refresh",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "currentUser.receivedMessages",
-							"type": "entitysel",
-							"namespace": "Shared",
-							"from": ""
-						},
-						"disabled": true
-					}
-				],
+				"events": [],
 				"style": {
 					"borderStyle": "none",
 					"width": "100%"
 				},
-				"datasource": "Shared:currentUser.receivedMessages",
+				"datasource": "Shared:currentUser.messages",
 				"gridProps": {
 					"styleboxWidth": 1,
 					"styleboxHeight": 88,
@@ -8820,6 +8625,7 @@
 			"parent": "2Q0JVsMr4Q",
 			"hidden": false,
 			"nodes": [
+				"OYn6vzu9yO",
 				"ybJdWPdsSY",
 				"S1swFCG3s9",
 				"wJ0XHOn4DU"
@@ -8842,11 +8648,11 @@
 					"minHeight": "40px"
 				},
 				"defaultImgSrc": "/$Shared/visuals/user.jpg",
-				"datasource": "Shared:$This.sender.avatar"
+				"datasource": "Shared:$This.receiver.avatar"
 			},
 			"displayName": "Image",
 			"custom": {},
-			"parent": "ybJdWPdsSY",
+			"parent": "OYn6vzu9yO",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}
@@ -9320,7 +9126,6 @@
 			"hidden": false,
 			"nodes": [
 				"iPr3_HAcgD",
-				"t6P_rI4cBI",
 				"-yNN24VMGs"
 			],
 			"linkedNodes": {}
@@ -10062,11 +9867,11 @@
 							"namespace": "Users"
 						},
 						"query": {
-							"query": "(sender.ID = :1 and receiver.ID = :2)  or (sender.ID = :2 and receiver.ID = :1)  and (isDraft=false or isDraft = null)",
+							"query": "((sender.ID = :1 and receiver.ID = :2)  or (sender.ID = :2 and receiver.ID = :1))  and (isDraft=false or isDraft = null)",
 							"params": [
 								{
 									"id": "oJUGts2PfVuhG99wqdF2vT",
-									"datasource": "Shared:selectedMessage.sender.ID"
+									"datasource": "Shared:selectedMessage.receiver.ID"
 								},
 								{
 									"id": "w1cp5XN87rEHDaqEn8f8iu",
@@ -10131,18 +9936,33 @@
 						"disabled": false
 					},
 					{
-						"type": "simple-action",
-						"id": "c1c1XRAadZgxJ5FvnFaLUF",
+						"type": "method",
+						"dataclass": "Message",
 						"events": [
 							"onclick"
 						],
-						"action": "refresh",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "currentUser.receivedMessages",
-							"type": "entitysel",
-							"namespace": "Shared",
-							"from": ""
+						"id": "aYii8sdrSmMwP1yfs1ZL1r",
+						"method": "ds.Message.getMessages",
+						"params": [
+							{
+								"name": "otherUser",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:selectedMessage.receiver",
+								"id": "oi5JsFH9ZhHK1MwVTsRtux"
+							},
+							{
+								"name": "currentUser",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "hUrn6xWa64ARAT7t1mz1RG"
+							}
+						],
+						"datasource": "",
+						"allowedOnHTTPGET": false,
+						"returns": {
+							"name": "result",
+							"type": "cs.MessageSelection",
+							"datasource": "chat:conversation"
 						}
 					},
 					{
@@ -11049,7 +10869,8 @@
 				"position": "right",
 				"radius": "rounded-none",
 				"openChevron": "fa-solid fa-angle-down",
-				"closeChevron": "fa-solid fa-angle-up"
+				"closeChevron": "fa-solid fa-angle-up",
+				"style": {}
 			},
 			"displayName": "Accordion",
 			"custom": {
@@ -11057,6 +10878,9 @@
 					"classNames": [
 						"accordionCSS"
 					]
+				},
+				"states:vy5BaihctatDF3fFADQmma": {
+					"style": {}
 				}
 			},
 			"parent": "RvHO3-3_R3",
@@ -11705,9 +11529,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Search",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Search",
 				"deletable": true
 			},
 			"displayName": "Label",
@@ -11818,7 +11643,8 @@
 				"moveable": false,
 				"placeholder": "Search Workplace",
 				"revealPassword": true,
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -12903,55 +12729,6 @@
 							"type": "entity",
 							"namespace": "Shared"
 						}
-					},
-					{
-						"type": "simple-action",
-						"id": "gZJeUc2VfPVZMxNmX8kqxV",
-						"events": [
-							"onselect"
-						],
-						"action": "reset",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "selectedRecipient",
-							"type": "entity",
-							"namespace": "Users",
-							"target": "selectedMessage.receiverGroup",
-							"targetNamespace": "Shared",
-							"targetType": "entity"
-						},
-						"disabled": true
-					},
-					{
-						"type": "method",
-						"dataclass": "GroupEntity",
-						"events": [
-							"onselect"
-						],
-						"id": "fzqzN9i7yfGGYmg2tVAKV8",
-						"method": "selectedChatGroup.returnMessage",
-						"params": [],
-						"namespace": "Users",
-						"datasource": "",
-						"returns": {
-							"name": "result",
-							"type": "cs.MessageEntity",
-							"datasource": "Shared:selectedMessage"
-						},
-						"disabled": true
-					},
-					{
-						"type": "navigation",
-						"id": "dychia69qa7D9muwSc6jFe",
-						"events": [
-							"onselect"
-						],
-						"externalLink": false,
-						"loader": "CHTAqyzKHL",
-						"parent": "webform-loader",
-						"target": "chatDetails",
-						"isHardCoded": true,
-						"disabled": true
 					}
 				],
 				"style": {
@@ -15692,13 +15469,28 @@
 						"action": "refresh",
 						"actionType": "datasource",
 						"datasource": {
-							"name": "selectedChatGroup.messages",
-							"type": "entitysel",
-							"namespace": "Users",
-							"from": ""
+							"name": "selectedChatGroup",
+							"type": "entity",
+							"namespace": "Users"
 						},
 						"query": {
 							"query": "receiverGroup.ID = :1 and sender.ID = :2"
+						}
+					},
+					{
+						"type": "simple-action",
+						"id": "k4eNHkJPUnsxc3xK74ToTF",
+						"events": [
+							"onclick"
+						],
+						"action": "refresh",
+						"actionType": "datasource",
+						"datasource": {
+							"name": "selectedChatGroup.messages",
+							"type": "entitysel",
+							"namespace": "Users",
+							"from": "",
+							"dataType": "unknown"
 						}
 					}
 				],
@@ -15777,55 +15569,6 @@
 					},
 					{
 						"type": "simple-action",
-						"id": "gZJeUc2VfPVZMxNmX8kqxV",
-						"events": [
-							"onselect"
-						],
-						"action": "reset",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "selectedRecipient",
-							"type": "entity",
-							"namespace": "Users",
-							"target": "selectedMessage.receiverGroup",
-							"targetNamespace": "Shared",
-							"targetType": "entity"
-						},
-						"disabled": true
-					},
-					{
-						"type": "method",
-						"dataclass": "GroupEntity",
-						"events": [
-							"onselect"
-						],
-						"id": "fzqzN9i7yfGGYmg2tVAKV8",
-						"method": "selectedChatGroup.returnMessage",
-						"params": [],
-						"namespace": "Users",
-						"datasource": "",
-						"returns": {
-							"name": "result",
-							"type": "cs.MessageEntity",
-							"datasource": "Shared:selectedMessage"
-						},
-						"disabled": true
-					},
-					{
-						"type": "navigation",
-						"id": "dychia69qa7D9muwSc6jFe",
-						"events": [
-							"onselect"
-						],
-						"externalLink": false,
-						"loader": "CHTAqyzKHL",
-						"parent": "webform-loader",
-						"target": "chatDetails",
-						"isHardCoded": true,
-						"disabled": true
-					},
-					{
-						"type": "simple-action",
 						"id": "faouAdyi4WKJPDSgcvN6ac",
 						"events": [
 							"onselect"
@@ -15852,7 +15595,45 @@
 							]
 						},
 						"state": {},
-						"disabled": false
+						"disabled": true,
+						"feedback": {
+							"enabled": true
+						}
+					},
+					{
+						"type": "method",
+						"dataclass": "Message",
+						"events": [
+							"onselect"
+						],
+						"id": "c8wAckywrJDWvg52Zj3iHG",
+						"method": "ds.Message.getMessages",
+						"params": [
+							{
+								"name": "otherUser",
+								"type": "cs.UserEntity",
+								"datasource": "Users:selectedRecipient",
+								"id": "43vnyy1G8uGXKewZWV7cVb"
+							},
+							{
+								"name": "currentUser",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "saDfT9HaCsYFjTwGCyXtYo"
+							}
+						],
+						"datasource": "",
+						"allowedOnHTTPGET": false,
+						"returns": {
+							"name": "result",
+							"type": "cs.MessageSelection",
+							"datasource": "Users:receivedMessages"
+						},
+						"extra": {
+							"shortcuts": {
+								"onclick": []
+							}
+						}
 					}
 				],
 				"style": {
@@ -16251,7 +16032,7 @@
 				"datasource": "Users:receivedMessages",
 				"gridProps": {
 					"styleboxWidth": 1,
-					"styleboxHeight": 58,
+					"styleboxHeight": 45,
 					"styleboxPercentWidth": "100%",
 					"enableMosaic": false
 				}
@@ -16452,7 +16233,14 @@
 							"targetNamespace": "Shared",
 							"targetType": "unknown"
 						},
-						"disabled": false
+						"disabled": false,
+						"extra": {
+							"shortcuts": {
+								"onblur": [],
+								"onclick": [],
+								"onfocus": []
+							}
+						}
 					},
 					{
 						"type": "simple-action",
@@ -16607,34 +16395,39 @@
 						}
 					},
 					{
-						"type": "simple-action",
-						"id": "nrdZVqUc96UymPaScTJCyh",
+						"type": "method",
+						"dataclass": "Message",
 						"events": [
 							"onclick"
 						],
-						"action": "query",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "receivedMessages",
-							"from": "",
-							"namespace": "Users",
-							"type": "entitysel"
+						"id": "4EDvqvMNLnK1Tny3BFW2Sq",
+						"method": "ds.Message.getMessages",
+						"params": [
+							{
+								"name": "otherUser",
+								"type": "cs.UserEntity",
+								"datasource": "Users:selectedRecipient",
+								"id": "43vnyy1G8uGXKewZWV7cVb"
+							},
+							{
+								"name": "currentUser",
+								"type": "cs.UserEntity",
+								"datasource": "Shared:currentUser",
+								"id": "saDfT9HaCsYFjTwGCyXtYo"
+							}
+						],
+						"datasource": "",
+						"allowedOnHTTPGET": false,
+						"returns": {
+							"name": "result",
+							"type": "cs.MessageSelection",
+							"datasource": "Users:receivedMessages"
 						},
-						"query": {
-							"query": "(receiver.ID = :1 and sender.ID = :2) or (receiver.ID = :2 and sender.ID = :1)  and isDraft=false",
-							"params": [
-								{
-									"id": "mMEr4KBuncMjmumYh5MTFf",
-									"datasource": "Users:selectedRecipient.ID"
-								},
-								{
-									"id": "qKtANXFH6PjwtLANvFD3Wu",
-									"datasource": "Shared:currentUser.ID"
-								}
-							]
-						},
-						"state": {},
-						"disabled": false
+						"extra": {
+							"shortcuts": {
+								"onclick": []
+							}
+						}
 					},
 					{
 						"type": "simple-action",
@@ -16673,7 +16466,7 @@
 								"id": "9x2CgKFzSMiDjGTA1iN2Uo",
 								"isHardCoded": true,
 								"hardCodedType": "string",
-								"hardCodedValue": "New message"
+								"hardCodedValue": "New message!"
 							},
 							{
 								"name": "receivingUser",
@@ -16777,363 +16570,6 @@
 			"displayName": "Text",
 			"custom": {},
 			"parent": "4KHFv4nhou",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"K0vEAxPvGQ": {
-			"type": {
-				"resolvedName": "Dialog"
-			},
-			"isCanvas": false,
-			"props": {
-				"classNames": [],
-				"events": [
-					{
-						"type": "simple-action",
-						"id": "ebokE4zfx8jA7uCSkNt6q8",
-						"events": [
-							"oninit"
-						],
-						"action": "clear",
-						"actionType": "datasource",
-						"datasource": {
-							"name": "invitedEmail",
-							"type": "scalar",
-							"from": "",
-							"namespace": "",
-							"dataType": "string"
-						}
-					}
-				],
-				"overlay": true,
-				"serverSideRef": "newInvitation",
-				"closable": true,
-				"style": {
-					"paddingRight": "10px",
-					"paddingBottom": "10px",
-					"paddingTop": "10px",
-					"paddingLeft": "10px",
-					"borderRadius": "6px"
-				}
-			},
-			"displayName": "Dialog",
-			"custom": {
-				"states:fpUYJdotx6wxLmTphuT5iH": {
-					"style": {
-						"backgroundColor": "#242526"
-					}
-				}
-			},
-			"parent": "ROOT",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {
-				"Dialog": "NjMnJXt5PG",
-				"close": "WdR5hXwbsa"
-			}
-		},
-		"NjMnJXt5PG": {
-			"type": {
-				"resolvedName": "StyleBox"
-			},
-			"isCanvas": true,
-			"props": {
-				"events": [],
-				"className": "h-full flex-1",
-				"iterableChild": true,
-				"style": {
-					"display": "flex",
-					"flexDirection": "column",
-					"gap": "5px"
-				}
-			},
-			"displayName": "Stylebox",
-			"custom": {},
-			"parent": "K0vEAxPvGQ",
-			"hidden": false,
-			"nodes": [
-				"f6eH3o9NWJ",
-				"kFCaDSbHiT",
-				"GEJCZePMuc"
-			],
-			"linkedNodes": {}
-		},
-		"WdR5hXwbsa": {
-			"type": {
-				"resolvedName": "Icon"
-			},
-			"isCanvas": false,
-			"props": {
-				"classNames": [],
-				"events": [],
-				"icon": "fa-times",
-				"style": {
-					"width": "32px",
-					"height": "32px",
-					"display": "flex",
-					"justifyContent": "center",
-					"alignItems": "center",
-					"borderRadius": "50%",
-					"backgroundColor": "#f0f2f5",
-					"fontSize": "22px"
-				}
-			},
-			"displayName": "Icon",
-			"custom": {
-				"states:fpUYJdotx6wxLmTphuT5iH": {
-					"style": {
-						"color": "#ffffffff",
-						"backgroundColor": "#ffffff33"
-					}
-				}
-			},
-			"parent": "K0vEAxPvGQ",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"kFCaDSbHiT": {
-			"type": {
-				"resolvedName": "TextInput"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [],
-				"placeholder": "placeholder",
-				"label": "label",
-				"labelPosition": "hidden",
-				"iterableChild": true,
-				"style": {
-					"borderRadius": "6px"
-				}
-			},
-			"displayName": "Text Input",
-			"custom": {},
-			"parent": "NjMnJXt5PG",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {
-				"label": "gHFkQiB_AX",
-				"input": "HL9aXM2e6H"
-			}
-		},
-		"gHFkQiB_AX": {
-			"type": {
-				"resolvedName": "Label"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [],
-				"moveable": false,
-				"deletable": true,
-				"text": "Label"
-			},
-			"displayName": "Label",
-			"custom": {},
-			"parent": "kFCaDSbHiT",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"HL9aXM2e6H": {
-			"type": {
-				"resolvedName": "Input"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [],
-				"deletable": false,
-				"className": "w-full bg-transparent",
-				"type": "text",
-				"style": {
-					"paddingRight": "5px",
-					"paddingBottom": "5px",
-					"paddingTop": "5px",
-					"paddingLeft": "10px",
-					"height": "46px",
-					"borderRadius": "6px"
-				},
-				"placeholder": "Enter an email",
-				"datasource": "invitedEmail",
-				"dataType": "string",
-				"moveable": false,
-				"revealPassword": true,
-				"eyePosition": "right"
-			},
-			"displayName": "Input",
-			"custom": {
-				"states:fpUYJdotx6wxLmTphuT5iH": {
-					"style": {
-						"color": "#ffffffff"
-					}
-				}
-			},
-			"parent": "kFCaDSbHiT",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"GEJCZePMuc": {
-			"type": {
-				"resolvedName": "StyleBox"
-			},
-			"isCanvas": true,
-			"props": {
-				"events": [],
-				"iterableChild": true,
-				"style": {
-					"display": "flex",
-					"justifyContent": "flex-end"
-				}
-			},
-			"displayName": "Stylebox",
-			"custom": {},
-			"parent": "NjMnJXt5PG",
-			"hidden": false,
-			"nodes": [
-				"40g9Xz6-_A"
-			],
-			"linkedNodes": {}
-		},
-		"40g9Xz6-_A": {
-			"type": {
-				"resolvedName": "Button"
-			},
-			"isCanvas": false,
-			"props": {
-				"text": "Send by email",
-				"classNames": [],
-				"events": [
-					{
-						"type": "method",
-						"dataclass": "User",
-						"events": [
-							"onclick"
-						],
-						"id": "keG37mdBPwXxpATqyhDV8L",
-						"method": "ds.User.sendInvit",
-						"params": [
-							{
-								"name": "receiverEmail",
-								"type": "string",
-								"datasource": "invitedEmail",
-								"id": "uLYqPGGZkWFa1khDUMW4zp"
-							}
-						],
-						"datasource": "",
-						"returns": {
-							"name": "result",
-							"type": "Variable"
-						},
-						"feedback": true
-					}
-				],
-				"iconPosition": "hidden",
-				"style": {
-					"display": "flex",
-					"backgroundColor": "#e4e6eb",
-					"color": "#1c1e21",
-					"height": "40px"
-				}
-			},
-			"displayName": "Button",
-			"custom": {},
-			"parent": "GEJCZePMuc",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {
-				"icon": "EHg0yuNHPR"
-			}
-		},
-		"EHg0yuNHPR": {
-			"type": {
-				"resolvedName": "Icon"
-			},
-			"isCanvas": false,
-			"props": {
-				"classNames": [],
-				"events": [],
-				"icon": "fa-regular fa-star"
-			},
-			"displayName": "Icon",
-			"custom": {},
-			"parent": "40g9Xz6-_A",
-			"hidden": false,
-			"nodes": [],
-			"linkedNodes": {}
-		},
-		"f6eH3o9NWJ": {
-			"type": {
-				"resolvedName": "StyleBox"
-			},
-			"isCanvas": true,
-			"props": {
-				"events": [],
-				"iterableChild": true,
-				"style": {
-					"display": "flex",
-					"alignItems": "center",
-					"justifyContent": "center",
-					"paddingRight": "0px",
-					"paddingBottom": "0px",
-					"paddingTop": "0px",
-					"paddingLeft": "0px",
-					"borderBottomWidth": "1px"
-				}
-			},
-			"displayName": "Stylebox",
-			"custom": {},
-			"parent": "NjMnJXt5PG",
-			"hidden": false,
-			"nodes": [
-				"eIdwLW4wVb"
-			],
-			"linkedNodes": {}
-		},
-		"eIdwLW4wVb": {
-			"type": {
-				"resolvedName": "Text"
-			},
-			"isCanvas": false,
-			"props": {
-				"events": [],
-				"iterableChild": true,
-				"doc": [
-					{
-						"type": "paragraph",
-						"children": [
-							{
-								"text": "Add People:",
-								"bold": false,
-								"italic": false,
-								"underlined": false,
-								"strikethrough": false
-							}
-						]
-					}
-				],
-				"datasource": "",
-				"style": {
-					"width": "fit-content",
-					"fontSize": "18px",
-					"fontWeight": "400",
-					"color": "#2078f4",
-					"textDecorationLine": " underline"
-				},
-				"classNames": [
-					"fontWeight600"
-				]
-			},
-			"displayName": "Text",
-			"custom": {
-				"states:fpUYJdotx6wxLmTphuT5iH": {
-					"style": {
-						"color": "#4599ff"
-					}
-				}
-			},
-			"parent": "f6eH3o9NWJ",
 			"hidden": false,
 			"nodes": [],
 			"linkedNodes": {}
@@ -20477,10 +19913,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Label",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"deletable": true,
-				"text": "Label"
+				"deletable": true
 			},
 			"displayName": "Label",
 			"custom": {},
@@ -20541,7 +19978,8 @@
 				"revealPassword": true,
 				"eyePosition": "right",
 				"datasource": "searchGroupName",
-				"dataType": "string"
+				"dataType": "string",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -21581,9 +21019,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Audience:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Audience:",
 				"style": {
 					"width": "fit-content",
 					"minWidth": "fit-content",
@@ -21822,9 +21261,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Title:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Title:",
 				"style": {
 					"paddingRight": "0px",
 					"minWidth": "75px",
@@ -21869,7 +21309,8 @@
 				"moveable": false,
 				"revealPassword": true,
 				"eyePosition": "right",
-				"intervals": []
+				"intervals": [],
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -22051,10 +21492,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Is Key Update:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
 				"htmlfor": "ee6IDyv6Fv",
-				"text": "Is Key Update:",
 				"deletable": true,
 				"style": {
 					"fontSize": "14px",
@@ -22153,10 +21595,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Media URL:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
 				"deletable": true,
-				"text": "Media URL:",
 				"style": {
 					"paddingRight": "0px",
 					"width": "75px",
@@ -22200,7 +21643,8 @@
 					"borderWidth": "1px"
 				},
 				"intervals": [],
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -23163,6 +22607,33 @@
 			"parent": "u_1XYZyij0",
 			"hidden": false,
 			"nodes": [],
+			"linkedNodes": {}
+		},
+		"OYn6vzu9yO": {
+			"type": {
+				"resolvedName": "StyleBox"
+			},
+			"isCanvas": true,
+			"props": {
+				"events": [],
+				"iterableChild": true,
+				"style": {
+					"display": "flex",
+					"alignItems": "start",
+					"flexDirection": "column",
+					"justifyContent": "center",
+					"gap": "5px",
+					"width": "fit-content",
+					"minWidth": "fit-content"
+				}
+			},
+			"displayName": "Stylebox",
+			"custom": {},
+			"parent": "Ka5KgYrAHu",
+			"hidden": false,
+			"nodes": [
+				"t6P_rI4cBI"
+			],
 			"linkedNodes": {}
 		}
 	}

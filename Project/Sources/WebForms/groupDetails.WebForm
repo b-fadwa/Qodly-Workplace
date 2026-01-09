@@ -719,7 +719,7 @@
 				},
 				"states:qVM9Y13VopTbonaBzibkmH": {
 					"style": {
-						"backgroundColor": "#f5e717ff"
+						"backgroundColor": ""
 					}
 				}
 			},
@@ -6122,10 +6122,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Label",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"deletable": true,
-				"text": "Label"
+				"deletable": true
 			},
 			"displayName": "Label",
 			"custom": {},
@@ -6158,7 +6159,8 @@
 				"moveable": false,
 				"placeholder": "",
 				"revealPassword": true,
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -9807,9 +9809,10 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Title:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
-				"text": "Title:",
 				"style": {
 					"paddingRight": "0px",
 					"minWidth": "75px",
@@ -9854,7 +9857,8 @@
 				"moveable": false,
 				"revealPassword": true,
 				"eyePosition": "right",
-				"intervals": []
+				"intervals": [],
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {
@@ -10023,8 +10027,6 @@
 				],
 				"events": [],
 				"style": {
-					"height": "100%",
-					"width": "100%",
 					"borderStyle": "none"
 				},
 				"datasource": "Posts:posts",
@@ -14147,10 +14149,11 @@
 			},
 			"isCanvas": false,
 			"props": {
+				"text": "Media URL:",
+				"classNames": [],
 				"events": [],
 				"moveable": false,
 				"deletable": true,
-				"text": "Media URL:",
 				"style": {
 					"paddingRight": "0px",
 					"width": "75px",
@@ -14194,7 +14197,8 @@
 					"borderWidth": "1px"
 				},
 				"intervals": [],
-				"eyePosition": "right"
+				"eyePosition": "right",
+				"twentyFourHours": true
 			},
 			"displayName": "Input",
 			"custom": {

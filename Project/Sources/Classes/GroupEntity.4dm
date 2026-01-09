@@ -1,12 +1,12 @@
 Class extends Entity
 
-exposed Function get admins()->$admins : cs:C1710.UserSelection  //used in groupsPage
+exposed Function get admins()->$admins : cs:C1710.UserSelection
 	var $groupMembers : cs:C1710.GroupMemberSelection:=This:C1470.groupMembers.query("isAdmin = :1"; True:C214)
 	If ($groupMembers.length#0)
 		$admins:=$groupMembers.user
 	End if 
 	
-exposed Function get isPinned()->$isPinned : Boolean  //used in groupsPage
+exposed Function get isPinned()->$isPinned : Boolean
 	var $currentUser : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $groupMembers : cs:C1710.GroupMemberSelection
 	If ($currentUser#Null:C1517)
@@ -18,7 +18,7 @@ exposed Function get isPinned()->$isPinned : Boolean  //used in groupsPage
 		End if 
 	End if 
 	
-exposed Function createGroup()  //used in dialog current user params
+exposed Function createGroup()
 	var $currentUser : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $status : Object
 	var $groupMember : cs:C1710.GroupMemberEntity
@@ -45,7 +45,7 @@ exposed Function deleteGroup()
 	Web Form:C1735.setMessage(String:C10(This:C1470.name)+" was successfully deleted !")
 	Web Form:C1735.deleteDialog.hide()
 	
-exposed Function pinUnpin()  //used in groupsPage
+exposed Function pinUnpin()
 	var $currentUser : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $currentGroupMember : cs:C1710.GroupMemberEntity
 	var $status : Object
@@ -55,7 +55,6 @@ exposed Function pinUnpin()  //used in groupsPage
 		$status:=$currentGroupMember.save()
 		If ($status.success)
 			Web Form:C1735.setMessage(String:C10(This:C1470.name)+" was unpinned successfully !")
-			// return this
 		Else 
 			Web Form:C1735.setError("Couldn't unpin "+This:C1470.name)
 		End if 
@@ -64,13 +63,12 @@ exposed Function pinUnpin()  //used in groupsPage
 		$status:=$currentGroupMember.save()
 		If ($status.success)
 			Web Form:C1735.setMessage(This:C1470.name+" was pinned successfully !")
-			// return this
 		Else 
 			Web Form:C1735.setError("Couldn't pin "+String:C10(This:C1470.name))
 		End if 
 	End if 
 	
-exposed Function leaveGroup()  //used in groupsPage
+exposed Function leaveGroup()
 	var $currentUser : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $currentGroupMember : cs:C1710.GroupMemberEntity
 	var $status : Object
@@ -82,7 +80,9 @@ exposed Function leaveGroup()  //used in groupsPage
 	Else 
 		Web Form:C1735.setError("Something went wrong !")
 	End if 
-exposed Function joinGroup() : cs:C1710.GroupSelection  //used in groupsPage
+	
+	
+exposed Function joinGroup() : cs:C1710.GroupSelection
 	var $currentUser : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $newGroupMember : cs:C1710.GroupMemberEntity:=ds:C1482.GroupMember.new()
 	var $status : Object
@@ -99,7 +99,8 @@ exposed Function joinGroup() : cs:C1710.GroupSelection  //used in groupsPage
 		Web Form:C1735.setError("An error occured when joining the group !")
 	End if 
 	
-exposed Function chatGroupInit($allReceivers : cs:C1710.UserSelection; $currentUser : cs:C1710.UserEntity) : cs:C1710.GroupEntity  //used
+	//creates chat group
+exposed Function chatGroupInit($allReceivers : cs:C1710.UserSelection; $currentUser : cs:C1710.UserEntity) : cs:C1710.GroupEntity
 	$allReceivers:=$allReceivers.addInList($currentUser)
 	var $formulaQ : 4D:C1709.Function:=Formula:C1597(This:C1470.groupMembers.user.ID.equal($allReceivers.ID))
 	var $groups : cs:C1710.GroupSelection:=ds:C1482.Group.query(":1 and type = 'Chat'"; $formulaQ)
@@ -109,8 +110,8 @@ exposed Function chatGroupInit($allReceivers : cs:C1710.UserSelection; $currentU
 	If ($groups.length#0)
 		$chatGroup:=$groups.first()
 	End if 
-	If ($chatGroup=Null:C1517)  //chatgroup does not exist
-		If ($allReceivers.length>2)  //only create a group if the receivers are more then 1
+	If ($chatGroup=Null:C1517)
+		If ($allReceivers.length>2)
 			This:C1470.type:="Chat"
 			This:C1470.name:="Chat group!"
 			This:C1470.createdBy:=$currentUser
@@ -126,5 +127,5 @@ exposed Function chatGroupInit($allReceivers : cs:C1710.UserSelection; $currentU
 		return $chatGroup.first()
 	End if 
 	
-exposed Function returnMessage() : cs:C1710.MessageEntity  //used
+exposed Function returnMessage() : cs:C1710.MessageEntity
 	return This:C1470.messages.first()

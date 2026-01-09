@@ -61,47 +61,47 @@
 		"styles": [
 			{
 				"name": "lighQueryBuilderCss",
-				"content": ".builder {\n  background-color: white !important;\n}\n .builder-header {\n  background-color: white !important;\n}\n\n .builder-andOrExcept {\n  background-color: white !important;\n}\n\n .builder-and {\n  border-color: white !important;\n  background-color: #e7f3ff !important;\n}\n\n .builder-or {\n  border-color: white !important;\n  background-color: #e7f3ff !important;\n}\n\n .builder-except {\n  border-color: white !important;\n  background-color: #e7f3ff !important;\n}\n\n .builder-rule {\n background-color: #e7f3ff !important;\n min-width: fit-content !important;\n}\n\n .builder-rule-line {\n background-color: #e7f3ff !important;\n}\n\n .builder-group {\n background-color: #e7f3ff !important;\n min-width: fit-content !important;\n}\n\n .builder-footer {\n  background-color: white !important;\n}\n\n .builder-clear {\n  border-color: #e7f3ff !important;\n}\n\n .builder-apply {\n  background-color: #e7f3ff !important;\n}\n\n .builder-group-container {\n\n}\n\n .builder-and-group,   .builder-or-group {\n  border-color: white !important;\n  background-color: #e7f3ff !important;\n}",
+				"content": ".builder {\n  background-color: #e4e6eb !important;\n}\n .builder-header {\n  background-color: #e4e6eb !important;\n}\n\n .builder-andOrExcept {\n  background-color: #e4e6eb !important;\n}\n\n .builder-and {\n  border-color: #e4e6eb !important;\n  background-color: #e7f3ff !important;\n}\n\n .builder-or {\n  border-color: #e4e6eb !important;\n  background-color: #e7f3ff !important;\n}\n\n .builder-except {\n  border-color: #e4e6eb !important;\n  background-color: #e7f3ff !important;\n}\n\n .builder-rule {\n background-color: #e7f3ff !important;\n min-width: fit-content !important;\n}\n\n .builder-rule-line {\n background-color: #e7f3ff !important;\n}\n\n .builder-group {\n background-color: #e7f3ff !important;\n min-width: fit-content !important;\n}\n\n .builder-footer {\n  background-color: #e4e6eb !important;\n}\n\n .builder-clear {\n  border-color: #e7f3ff !important;\n}\n\n .builder-apply {\n  background-color: #e7f3ff !important;\n}\n\n .builder-group-container {\n\n}\n\n .builder-and-group,   .builder-or-group {\n  border-color: #e4e6eb !important;\n  background-color: #e7f3ff !important;\n}",
 				"parentId": null,
-				"id": "YJ9wOJ4R1tsiRU3vGkF3_"
+				"id": "YJ9wOJ4R1tsiRU3vGkF3_",
+				"scope": "local"
 			},
 			{
 				"name": "darkQueryBuilderCss",
-				"content": ".builder {\n  background-color: #3e4042 !important;\n}\n\n .builder-header {\n  background-color: #3e4042 !important;\n\tcolor:#2e89ff !important;\n}\n\n .builder-andOrExcept {\n  background-color: #3e4042 !important;\n}\n\n .builder-and {\n  background-color: #2d88ff20 !important;\n\tborder-color:#2e89ff !important;\n}\n\n .builder-or {\n\tborder-color:#2e89ff !important;\n   background-color: #2d88ff20 !important;\n}\n\n .builder-except {\n\tborder-color:#2e89ff !important;\n   background-color: #2d88ff20 !important;\n}\n\n .builder-rule {\n background-color: #2d88ff20 !important;\n min-width: fit-content !important;\n border: solid 2px #2e89ff !important;\n}\n\n .builder-group {\n background-color: #2d88ff20 !important;\n min-width: fit-content !important;\n border: solid 2px #2e89ff !important;\n}\n\n .builder-footer {\n  background-color: #3e4042 !important;\n\tcolor:#2e89ff !important;\n}\n\n .builder-clear {\n\tborder-color:#2e89ff !important;\n}\n\n .builder-apply {\n  background-color: #2d88ff20 !important;\n\tborder: solid 2px #2e89ff !important;\n}\n\n .builder-and-group,   .builder-or-group {\n  border-color: #3e4042 !important;\n  background-color: #2d88ff20 !important;\n}",
+				"content": "/* .builder {\n  background-color: #3e4042 !important;\n}\n\n .builder-header {\n  background-color: #3e4042 !important;\n\tcolor:#2e89ff !important;\n}\n\n .builder-andOrExcept {\n  background-color: #3e4042 !important;\n}\n\n .builder-and {\n  background-color: #2d88ff20 !important;\n\tborder-color:#2e89ff !important;\n}\n\n .builder-or {\n\tborder-color:#2e89ff !important;\n   background-color: #2d88ff20 !important;\n}\n\n .builder-except {\n\tborder-color:#2e89ff !important;\n   background-color: #2d88ff20 !important;\n}\n\n .builder-rule {\n background-color: #2d88ff20 !important;\n min-width: fit-content !important;\n border: solid 2px #2e89ff !important;\n}\n\n .builder-group {\n background-color: #2d88ff20 !important;\n min-width: fit-content !important;\n border: solid 2px #2e89ff !important;\n}\n\n .builder-footer {\n  background-color: #3e4042 !important;\n\tcolor:#2e89ff !important;\n}\n\n .builder-clear {\n\tborder-color:#2e89ff !important;\n}\n\n .builder-apply {\n  background-color: #2d88ff20 !important;\n\tborder: solid 2px #2e89ff !important;\n}\n\n .builder-and-group,   .builder-or-group {\n  border-color: #3e4042 !important;\n  background-color: #2d88ff20 !important;\n} */",
 				"parentId": null,
-				"id": "G-pCqHF2XM9IVAe6suecu"
-			},
-			{
-				"name": "queryBuilderCss",
-				"content": "Neutral colors\n.builder {\n  background-color: transparent; /* Light gray */\n  color: #1a1a1a; /* Dark gray text */\n}\n\n.builder.dark {\n  /* background-color: #6e6e6e; Medium gray */\n  background-color: transparent;\n  /* color: #ffffff; White text */\n}\n\n.builder-header,\n.builder-footer {\n  /* background-color: #e0e0e0; Light gray */\n  background-color: transparent;\n  color: #1a1a1a; /* Dark gray text */\n}\n\n.builder-header.dark,\n.builder-footer.dark {\n  /* background-color: #6e6e6e; Medium gray */\n  background-color: transparent;\n  color: #ffffff; /* White text */\n}\n\n.builder-andOrExcept,\n.builder-and,\n.builder-or,\n.builder-except,\n.builder-rule,\n.builder-rule-line,\n.builder-group {\n  /* background-color: #a3a3a3; Light gray */\n  background-color: transparent;\n  border-color: #6e6e6e; /* Medium gray border */\n  color: #1a1a1a; /* Dark gray text */\n}\n\n.builder-andOrExcept.dark,\n.builder-and.dark,\n.builder-or.dark,\n.builder-except.dark,\n.builder-rule.dark,\n.builder-rule-line.dark,\n.builder-group.dark {\n  /* background-color: #6e6e6e; Medium gray */\n  background-color: transparent;\n  border-color: #a3a3a3; /* Light gray border */\n  color: #ffffff; /* White text */\n}\n\n.builder-clear,\n.builder-apply {\n  /* background-color: #a3a3a3; Light gray */\n  background-color: transparent;\n  border-color: #6e6e6e; /* Medium gray border */\n}\n\n.builder-clear.dark,\n.builder-apply.dark {\n  background-color: transparent;\n  /* background-color: #6e6e6e; Medium gray */\n  border-color: #a3a3a3; /* Light gray border */\n}",
-				"parentId": null,
-				"id": "G0VAMJWtQilx9kuoc9Vp2"
+				"id": "G-pCqHF2XM9IVAe6suecu",
+				"scope": "local"
 			},
 			{
 				"name": "isFollowed",
 				"content": "/*self:has(p span[title=\"false\"]) {\n\tdisplay: none !important;\n}*/\n\n.isFollowed:has(span[title='false']){\n\tdisplay: none !important;\n}",
 				"parentId": null,
-				"id": "JClEEBmeLdW24I-lO3tlY"
+				"id": "JClEEBmeLdW24I-lO3tlY",
+				"scope": "local"
 			},
 			{
 				"id": "nzKk3AIB3TPP1IJy8NIE4",
 				"name": "isUnfollowed",
 				"content": "/*self:has(p span[title='true']) {\n\tdisplay: none !important;\n}*/\n\n.isUnfollowed:has(span[title='true']){\n\tdisplay: none !important;\n}",
 				"parentId": null,
-				"children": {}
+				"children": {},
+				"scope": "local"
 			},
 			{
 				"id": "Y2QxNRG86zcOAibWlY4Gl",
 				"name": "isByConnUser",
 				"content": "/*self:has(span[title='yes']){\n\tdisplay: none !important;\n}*/\n.popoverbuttons > .isByConnUser:has(span[title='yes']){\n\tdisplay: none !important;\n}",
 				"parentId": null,
-				"children": {}
+				"children": {},
+				"scope": "local"
 			},
 			{
 				"name": "popoverbuttons",
 				"content": "self {\n\n}",
 				"parentId": null,
-				"id": "8CDMGl0F4JfCD93WPLawo"
+				"id": "8CDMGl0F4JfCD93WPLawo",
+				"scope": "local"
 			}
 		],
 		"states": [

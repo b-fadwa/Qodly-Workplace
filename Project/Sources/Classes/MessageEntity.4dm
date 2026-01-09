@@ -1,94 +1,95 @@
 Class extends Entity
 
-exposed function create($receivers : cs.UserSelection; $currentUser : cs.UserEntity; $ChatGroup : cs.GroupEntity)  //used 
-	var $receiver: cs.UserEntity
-	this.createdAt := current Date()
-	this.atHour := current Time()
-	this.sender := $currentUser
-	this.isDraft := this.isDraft ? true : false
-	if ($receivers.length = 1)
-		$receiver := $receivers.first()
-		// if (this.isDraft = false)
-		this.receiver := $receiver
-		// end 
-		this.type := "Direct"
-		this.save()
-		ds.Notification.createNotif(null; "New message!"; $receiver)
-	else 
-		// if (this.isDraft = false)
-		this.receiverGroup := $ChatGroup
-		// end 
-		this.type := "Group"
-		this.save()
-			for Each ($receiver; $receivers)
-				ds.Notification.createNotif(null; "New message!"; $receiver)
-			end for each 
-	end if 
+exposed Function create($receivers : cs:C1710.UserSelection; $currentUser : cs:C1710.UserEntity; $ChatGroup : cs:C1710.GroupEntity)
+	var $receiver : cs:C1710.UserEntity
+	This:C1470.createdAt:=Current date:C33()
+	This:C1470.atHour:=Current time:C178()
+	This:C1470.sender:=$currentUser
+	This:C1470.isDraft:=This:C1470.isDraft ? True:C214 : False:C215
+	If ($receivers.length=1)
+		$receiver:=$receivers.first()
+		This:C1470.receiver:=$receiver
+		This:C1470.type:="Direct"
+		This:C1470.save()
+		ds:C1482.Notification.createNotif(Null:C1517; "New message!"; $receiver)
+	Else 
+		This:C1470.receiverGroup:=$ChatGroup
+		This:C1470.type:="Group"
+		This:C1470.save()
+		For each ($receiver; $receivers)
+			ds:C1482.Notification.createNotif(Null:C1517; "New message!"; $receiver)
+		End for each 
+	End if 
 	
-exposed function get isItMute()->$isItMute : text  //used
-	return this.isMuted = true ? "Umute" : "Mute"
-	
-exposed function setMute()  //used
-	var $saved: object
-	this.isMuted := this.isMuted = null ? true : not(this.isMuted)
-	$saved := this.save()
-	if ($saved.success)
-		web Form.setMessage("Message muted!")
-	else 
-		web Form.setError("Error")
-	end if 
-	
-exposed function get isItRead->$isItRead : text  //used
-	return this.isRead = true ? "unread" : "read"
-	
-exposed function setRead()  //used
-	var $saved: object
-	this.isRead := this.isRead = null ? true : not(this.isRead)
-	$saved := this.save()
-	if ($saved.success)
-		web Form.setMessage("Message read!")
-	else 
-		web Form.setError("Error")
-	end if 
-	
-exposed function get isItPinned()->$isItPinned : text  //used
-	return this.isPinned = true ? "Unpin" : "Pin"
-	
-exposed function setPinned()  //used
-	var $saved: object
-	this.isPinned := this.isPinned = null ? true : not(this.isPinned)
-	$saved := this.save()
-	if ($saved.success)
-		web Form.setMessage("Message pinned!")
-	else 
-		web Form.setError("Error")
-	end if 
-	
-exposed function get isItHidden->$isItHidden : text  //used
-	return this.isHidden = true ? "Unhide" : "Hide"
-	
-exposed function setHidden()  //used
-	var $saved: object
-	this.isHidden := this.isHidden = null ? true : not(this.isHidden)
-	$saved := this.save()
-	if ($saved.success)
-		web Form.setMessage("Message hidden!")
-	else 
-		web Form.setError("Error")
-	end if 
+exposed Function get isItMute()->$isItMute : Text
+	return This:C1470.isMuted=True:C214 ? "Umute" : "Mute"
 	
 	
-exposed function leaveChatGroup($currentUser : cs.UserEntity)  //used
-	var $chatGroupMembers: cs.UserSelection
-	var $groupMember: cs.UserEntity
-	var $dropped: object
-	$chatGroupMembers := this.receiverGroup.groupMembers.query("user.ID = :1"; $currentUser.ID)
-	if ($chatGroupMembers.length # 0)
-		$groupMember := $chatGroupMembers.first()
-		$dropped := $groupMember.drop()
-		if ($dropped.success)
-			web Form.setMessage("You left this chat group!")
-		else 
-			web Form.setError("Error!")
-		end if 
-	end if
+	//mute/unmute message
+exposed Function setMute()
+	var $saved : Object
+	This:C1470.isMuted:=This:C1470.isMuted=Null:C1517 ? True:C214 : Not:C34(This:C1470.isMuted)
+	$saved:=This:C1470.save()
+	If ($saved.success)
+		Web Form:C1735.setMessage("Message muted!")
+	Else 
+		Web Form:C1735.setError("Error")
+	End if 
+	
+exposed Function get isItRead->$isItRead : Text
+	return This:C1470.isRead=True:C214 ? "unread" : "read"
+	
+	//read/unread message
+exposed Function setRead()
+	var $saved : Object
+	This:C1470.isRead:=This:C1470.isRead=Null:C1517 ? True:C214 : Not:C34(This:C1470.isRead)
+	$saved:=This:C1470.save()
+	If ($saved.success)
+		Web Form:C1735.setMessage("Message read!")
+	Else 
+		Web Form:C1735.setError("Error")
+	End if 
+	
+exposed Function get isItPinned()->$isItPinned : Text
+	return This:C1470.isPinned=True:C214 ? "Unpin" : "Pin"
+	
+	//pin/unpin message
+exposed Function setPinned()
+	var $saved : Object
+	This:C1470.isPinned:=This:C1470.isPinned=Null:C1517 ? True:C214 : Not:C34(This:C1470.isPinned)
+	$saved:=This:C1470.save()
+	If ($saved.success)
+		Web Form:C1735.setMessage("Message pinned!")
+	Else 
+		Web Form:C1735.setError("Error")
+	End if 
+	
+exposed Function get isItHidden->$isItHidden : Text
+	return This:C1470.isHidden=True:C214 ? "Unhide" : "Hide"
+	
+	//hide/unhide message
+exposed Function setHidden()
+	var $saved : Object
+	This:C1470.isHidden:=This:C1470.isHidden=Null:C1517 ? True:C214 : Not:C34(This:C1470.isHidden)
+	$saved:=This:C1470.save()
+	If ($saved.success)
+		Web Form:C1735.setMessage("Message hidden!")
+	Else 
+		Web Form:C1735.setError("Error")
+	End if 
+	
+	//leave  group chat
+exposed Function leaveChatGroup($currentUser : cs:C1710.UserEntity)
+	var $chatGroupMembers : cs:C1710.UserSelection
+	var $groupMember : cs:C1710.UserEntity
+	var $dropped : Object
+	$chatGroupMembers:=This:C1470.receiverGroup.groupMembers.query("user.ID = :1"; $currentUser.ID)
+	If ($chatGroupMembers.length#0)
+		$groupMember:=$chatGroupMembers.first()
+		$dropped:=$groupMember.drop()
+		If ($dropped.success)
+			Web Form:C1735.setMessage("You left this chat group!")
+		Else 
+			Web Form:C1735.setError("Error!")
+		End if 
+	End if 

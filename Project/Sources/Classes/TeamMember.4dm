@@ -1,16 +1,16 @@
 Class extends DataClass
 
-exposed Function dropTeamMember($user : cs:C1710.UserEntity)  // called in the function below ($addUserToTeams)
+exposed Function dropTeamMember($user : cs:C1710.UserEntity)
 	var $teamMembers : cs:C1710.TeamMemberSelection
 	$teamMembers:=This:C1470.query("user.ID = :1"; $user.ID)
 	If ($teamMembers#Null:C1517)
 		$teamMembers.drop()
 	End if 
 	
-exposed Function addUserToTeams($user : cs:C1710.UserEntity; $teams : cs:C1710.TeamSelection)  // used in the page "seeProfile" - tab "about" (dialog "editYourTeams")
+exposed Function addUserToTeams($user : cs:C1710.UserEntity; $teams : cs:C1710.TeamSelection)
 	var $team : cs:C1710.TeamEntity
 	var $teamMember : cs:C1710.TeamMemberEntity
-	This:C1470.dropTeamMember($user)  //F: why you drop the other relations??
+	This:C1470.dropTeamMember($user)
 	For each ($team; $teams)
 		$teamMember:=This:C1470.new()
 		$teamMember.user:=$user

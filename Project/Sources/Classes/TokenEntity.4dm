@@ -1,8 +1,8 @@
 Class extends Entity
 
-exposed Function setMailingToken()  //used
-	//username = @ mail + token = password / sendgrid api key
-	// trace
+//setting tokens (mailing/zoom)
+
+exposed Function setMailingToken()
 	This:C1470.label:="mailToken"
 	If (This:C1470.userName#"" && This:C1470.token#"" && This:C1470.user#Null:C1517)
 		This:C1470.save()
@@ -16,9 +16,7 @@ exposed Function setMailingToken()  //used
 	End if 
 	
 	
-exposed Function setZoomToken()  //used
-	//username = accountID + token = clientID + additionalToken = secretID
-	// trace
+exposed Function setZoomToken()
 	This:C1470.label:="zoomToken"
 	If ((This:C1470.userName#"") && (This:C1470.token#"") && (This:C1470.additionalToken#""))
 		This:C1470.save()

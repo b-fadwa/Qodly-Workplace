@@ -1,5 +1,5 @@
 {
-	"webforms.renderer.indexPage": "mainPage",
+	"webforms.renderer.indexPage": "home",
 	"webforms.display-mode": "neutral",
 	"webforms.i18n": {
 		"supported": [],

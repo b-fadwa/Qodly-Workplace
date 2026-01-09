@@ -3,42 +3,22 @@ Class extends Entity
 exposed Alias myGroups groupMembers.group
 exposed Alias userTeams teamMembers.team
 
-//local Function $aws()->$aws : Object
-//var $userCS : cs.Qodly.Users
-//$userCS:=cs.Qodly.Users.me
-//If (Session.storage.users=Null)
-//Use (Session.storage)
-//Session.storage.currentUser:=New shared object("ID"; This.ID)
-//Session.storage.users:=$userCS.allUsers().copy(16)
-//End use 
-//End if 
-//If (Session.storage.users#Null)
-//$aws:=Session.storage.users.query("email = :1"; This.email).at(0)
-//End if 
-
 exposed Function get fullName()->$fullName : Text
 	$fullName:=(This:C1470.firstName && This:C1470.lastName) ? (This:C1470.firstName+" "+Uppercase:C13(This:C1470.lastName)) : (Uppercase:C13(This:C1470.lastName) || This:C1470.firstName) || ""
 	
-exposed Function get role()->$role : Text
-	var $aws : Object
-	$role:=""
-	$aws:=This:C1470.aws()
-	If ($aws#Null:C1517)
-		$role:=$aws.role
-	End if 
 	
-exposed Function get managedGroups()->$managedGroups : cs:C1710.GroupSelection  //used in groupsPage
+exposed Function get managedGroups()->$managedGroups : cs:C1710.GroupSelection
 	If (This:C1470.groupMembers.query("isAdmin = :1"; True:C214).length#0)
 		$managedGroups:=This:C1470.groupMembers.query("isAdmin = :1"; True:C214).group
 	End if 
 	
-exposed Function get pinnedGroups()->$pinnedGroups : cs:C1710.GroupSelection  //used in groupsPage
+exposed Function get pinnedGroups()->$pinnedGroups : cs:C1710.GroupSelection
 	$pinnedGroups:=This:C1470.groupMembers.group.query("isPinned = true")
 	
-exposed Function get chatGroups()->$pinnedGroups : cs:C1710.GroupSelection  //used 
+exposed Function get chatGroups()->$pinnedGroups : cs:C1710.GroupSelection
 	$pinnedGroups:=This:C1470.groupMembers.group.query("type = 'Chat'")
 	
-exposed Function get isFollowedByConnUser()->$result : Boolean  // used
+exposed Function get isFollowedByConnUser()->$result : Boolean
 	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $friendship : cs:C1710.FriendshipEntity
 	If (This:C1470.ID#$user.ID)
@@ -50,7 +30,7 @@ exposed Function get isFollowedByConnUser()->$result : Boolean  // used
 		End if 
 	End if 
 	
-exposed Function get isByConnUser()->$result : Text  // used
+exposed Function get isByConnUser()->$result : Text
 	var $user : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	var $friendship : cs:C1710.FriendshipEntity
 	If (This:C1470.ID=$user.ID)
@@ -59,9 +39,9 @@ exposed Function get isByConnUser()->$result : Text  // used
 		$result:="no"
 	End if 
 	
-exposed Function setConnectionStatus($choosenStatus : Object; $doNotDisturb : Boolean)  //used
+	//sets current user status
+exposed Function setConnectionStatus($choosenStatus : Object; $doNotDisturb : Boolean)
 	var $isSaved : Object
-	TRACE:C157
 	If (($doNotDisturb) && ($choosenStatus.emoji=Null:C1517))
 		This:C1470.status:={emoji: "⛔"; label: "Do not disturb"}
 		$isSaved:=This:C1470.save()
@@ -90,7 +70,8 @@ exposed Function setConnectionStatus($choosenStatus : Object; $doNotDisturb : Bo
 		End if 
 	End if 
 	
-exposed Function showUserPosts()->$result : cs:C1710.PostSelection  // used in the page seeProfile
+	//show current user posts
+exposed Function showUserPosts()->$result : cs:C1710.PostSelection
 	var $connectedUser : cs:C1710.UserEntity:=ds:C1482.User.getCurrentUser()
 	If (This:C1470.ID=$connectedUser.ID)
 		$result:=This:C1470.posts.orderBy("createdAt desc")
@@ -98,10 +79,10 @@ exposed Function showUserPosts()->$result : cs:C1710.PostSelection  // used in t
 		$result:=This:C1470.posts.query("visibility = 'public'").orderBy("createdAt desc")
 	End if 
 	
-exposed Function reloadUser()  //used (bug #331)
+exposed Function reloadUser()
 	This:C1470.reload()
 	
-exposed Function groupMessage() : cs:C1710.MessageSelection  //used
+exposed Function groupMessage() : cs:C1710.MessageSelection
 	var $group : cs:C1710.GroupEntity
 	var $distinctIds : Collection:=This:C1470.groupMembers.query("group.type = 'Chat'").group.distinct("ID")
 	var $messages : cs:C1710.MessageSelection:=ds:C1482.Message.newSelection()
@@ -112,24 +93,21 @@ exposed Function groupMessage() : cs:C1710.MessageSelection  //used
 	End for each 
 	return $messages.query("isHidden # false or isHidden # null")
 	
-exposed Function get hasActiveAccount()->$hasActiveAccount : Boolean  //used
+exposed Function get hasActiveAccount()->$hasActiveAccount : Boolean
 	$hasActiveAccount:=((This:C1470.department#Null:C1517) && (This:C1470.jobTitle#"")) ? True:C214 : False:C215
 	
-exposed Function getHierarchy() : Object  //used
+exposed Function getHierarchy() : Object
 	var $user : cs:C1710.UserEntity
 	var $team : cs:C1710.TeamEntity
 	var $colleagues : Collection:=[]
 	var $test : Object:={}
 	This:C1470.reload()
-	TRACE:C157
 	If (This:C1470.teamMembers.length#0)
 		For each ($team; This:C1470.teamMembers.team)
-			// $team = this.teamMembers.first().team
-			For each ($user; $team.members)  //.minus(this))
+			For each ($user; $team.teamMembers)
 				$colleagues.push({label: String:C10($user.fullName)})
 			End for each 
 			return {label: "App Admin"; children: [{label: String:C10($team.manager.fullName); children: $colleagues}]}
-			// $test = {label: "App Admin"; children: [{label: text($team.manager.fullName); children: $colleagues}]}
 		End for each 
 	Else 
 		Web Form:C1735.setWarning("Set your manager or join a team!")
@@ -149,4 +127,7 @@ exposed Function setManager($user : cs:C1710.UserEntity)
 	Else 
 		Web Form:C1735.setError("This user does not belong to any team!")
 	End if 
+	
+exposed Function get messages()->$messages : cs:C1710.MessageSelection
+	return ds:C1482.Message.all().query("sender.ID = :1 || receiver.ID = :1"; This:C1470.ID)
 	
